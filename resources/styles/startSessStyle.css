@@ -1,0 +1,351 @@
+.showHeaderAndTimer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 10rem;
+}
+.showHeaderAndTimer span,
+.currentCardOrient {
+  max-width: 500px;
+}
+
+.showCard {
+  display: flex;
+  width: 95%;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.frontOfCard,
+.backOfCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 0;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+  min-width: 100px;
+  max-width: 500px;
+  height: 20rem;
+  padding-top:1rem;
+  padding-right:1rem;
+  padding-left :1rem;
+  overflow:hidden;
+}
+
+
+
+.flipAndSkip {
+  flex: 1;
+  margin-top: 1.4rem;
+  height: 5rem;
+  display: flex;
+  gap: 9rem;
+  flex-wrap: wrap;
+}
+
+/**/
+/* @media (max-width: 940px) { */
+/*   button.correctButton, */
+/*   button.incorrectButton { */
+/*     letter-spacing: 0.1rem; */
+/*     font-weight: bold; */
+/*     font-size: 2em; */
+/*     width: 50%; */
+/*     background-color: #ffffff; */
+/*     transition: */
+/*       color 0.3s ease-in-out, */
+/*       background-color 0.3s ease-in-out, */
+/*       border 0.3s ease-in-out; */
+/*   } */
+/* } */
+
+.flipButton,
+.skipButton,
+.correctButton,
+.incorrectButton,
+.downloadButton,
+.mainButton {
+  font-size: 1.1rem;
+  position: relative;
+  height: 3rem;
+  border: none;
+  font-size: 1.1rem;
+  min-width: 6rem;
+  transition: filter 0.3s;
+}
+
+.correctButton,
+.incorrectButton {
+  height: 3rem;
+}
+
+.correctButton {
+  border-radius: 30rem;
+}
+
+.flipShadow,
+.skipShadow,
+.correctShadow,
+.incorrectShadow,
+.downloadShadow,
+.mainShadow {
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(1px);
+  background: hsl(0deg 0% 0% / 0.25);
+  /*Ensures hardware acceleration*/
+  will-change: transform;
+  transform: translateY(4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.correctShadow {
+  border-radius: 30rem;
+}
+
+.flipEdge,
+.skipEdge,
+.correctEdge,
+.incorrectEdge,
+.downloadEdge,
+.mainEdge {
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flipEdge {
+  border: 0.5px solid black;
+  background-image: linear-gradient(
+    90deg,
+    hsl(180deg 44% 41%) 0%,
+    hsl(180deg 40% 45%) 2%,
+    hsl(180deg 36% 49%) 6%,
+    hsl(180deg 37% 52%) 11%,
+    hsl(180deg 40% 56%) 21%,
+    hsl(180deg 43% 60%) 49%,
+    hsl(180deg 40% 56%) 79%,
+    hsl(180deg 37% 52%) 89%,
+    hsl(180deg 36% 49%) 94%,
+    hsl(180deg 40% 45%) 98%,
+    hsl(180deg 44% 41%) 100%
+  );
+}
+.skipEdge {
+  background: linear-gradient(
+    90deg,
+    hsl(246deg 32% 25%) 0%,
+    hsl(246deg 31% 27%) 1%,
+    hsl(246deg 30% 30%) 2%,
+    hsl(246deg 29% 32%) 3%,
+    hsl(246deg 29% 35%) 5%,
+    hsl(246deg 28% 37%) 7%,
+    hsl(246deg 28% 40%) 9%,
+    hsl(246deg 27% 43%) 12%,
+    hsl(246deg 27% 45%) 16%,
+    hsl(246deg 27% 48%) 23%,
+    hsl(246deg 27% 51%) 36%,
+    hsl(246deg 30% 54%) 64%,
+    hsl(246deg 27% 51%) 74%,
+    hsl(246deg 27% 48%) 80%,
+    hsl(246deg 27% 45%) 84%,
+    hsl(246deg 27% 43%) 88%,
+    hsl(246deg 28% 40%) 90%,
+    hsl(246deg 28% 37%) 92%,
+    hsl(246deg 29% 35%) 94%,
+    hsl(246deg 29% 32%) 96%,
+    hsl(246deg 30% 30%) 98%,
+    hsl(246deg 31% 27%) 99%,
+    hsl(246deg 32% 25%) 100%
+  );
+}
+
+.correctEdge {
+  border-radius: 30rem;
+  border: 0.5px solid black;
+  background-image: linear-gradient(
+    90deg,
+    hsl(145deg 62% 23%) 0%,
+    hsl(145deg 62% 25%) 2%,
+    hsl(146deg 63% 27%) 4%,
+    hsl(146deg 63% 30%) 9%,
+    hsl(146deg 64% 32%) 19%,
+    hsl(145deg 64% 35%) 56%,
+    hsl(146deg 64% 32%) 83%,
+    hsl(146deg 65% 29%) 91%,
+    hsl(146deg 65% 26%) 96%,
+    hsl(146deg 66% 24%) 98%,
+    hsl(146deg 67% 21%) 100%
+  );
+}
+
+.incorrectEdge {
+  background-image: linear-gradient(
+    90deg,
+    hsl(6deg 80% 24%) 0%,
+    hsl(5deg 79% 27%) 2%,
+    hsl(5deg 79% 30%) 4%,
+    hsl(5deg 79% 34%) 9%,
+    hsl(5deg 79% 37%) 19%,
+    hsl(6deg 79% 40%) 56%,
+    hsl(5deg 79% 37%) 83%,
+    hsl(5deg 79% 34%) 91%,
+    hsl(5deg 79% 30%) 96%,
+    hsl(5deg 79% 27%) 98%,
+    hsl(6deg 80% 24%) 100%
+  );
+}
+
+.downloadEdge {
+  background-image: linear-gradient(
+    90deg,
+    hsl(43deg 72% 28%) 0%,
+    hsl(43deg 73% 31%) 2%,
+    hsl(43deg 74% 33%) 5%,
+    hsl(43deg 75% 35%) 10%,
+    hsl(43deg 76% 37%) 18%,
+    hsl(43deg 77% 39%) 44%,
+    hsl(43deg 76% 37%) 77%,
+    hsl(43deg 75% 35%) 87%,
+    hsl(43deg 74% 33%) 93%,
+    hsl(43deg 73% 31%) 97%,
+    hsl(43deg 72% 28%) 100%
+  );
+}
+.mainEdge {
+  background-image: linear-gradient(
+    90deg,
+    hsl(182deg 46% 31%) 0%,
+    hsl(182deg 41% 37%) 0%,
+    hsl(182deg 37% 42%) 1%,
+    hsl(182deg 34% 48%) 3%,
+    hsl(182deg 37% 53%) 8%,
+    hsl(182deg 44% 59%) 50%,
+    hsl(182deg 37% 53%) 92%,
+    hsl(182deg 34% 48%) 97%,
+    hsl(182deg 37% 42%) 99%,
+    hsl(182deg 41% 37%) 100%,
+    hsl(182deg 46% 31%) 100%
+  );
+}
+.flipFront,
+.skipFront,
+.correctFront,
+.incorrectFront,
+.downloadFront,
+.mainFront {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 1rem 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transform: translateY(-6px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.flipFront {
+  background-color: #8cd3d3;
+  color: #16305d;
+}
+.skipFront {
+  background-color: #9590b3;
+  color: #f7f9fc;
+}
+
+.correctFront {
+  border-radius: 30rem;
+
+  background-color: #27ae60;
+  color: #f7f9fc;
+}
+
+.incorrectFront {
+  background-color: #e74c3c;
+  color: #fefefe;
+}
+
+.downloadFront {
+  background-color: #daa520;
+  color: #273c4f;
+}
+.mainFront {
+  background-color: #a8dadc;
+  color: #273c4f;
+}
+
+.flipButton:hover,
+.skipButton:hover,
+.correctButton:hover,
+.incorrectButton:hover,
+.downloadButton:hover,
+.mainButton:hover {
+  filter: brightness(110%);
+  cursor: pointer;
+}
+
+.flipButton:hover .flipFront,
+.skipButton:hover .skipFront,
+.correctButton:hover .correctFront,
+.incorrectButton:hover .incorrectFront,
+.downloadButton:hover .downloadFront,
+.mainButton:hover .mainFront {
+  transform: translateY(-8px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+.flipButton:active .flipFront,
+.skipButton:active .skipFront,
+.correctButton:active .correctFront,
+.incorrectButton:active .incorrectFront,
+.downloadButton:active .downloadFront,
+.mainButton:active .mainFront {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.flipButton:hover .flipShadow,
+.skipButton:hover .skipShadow,
+.correctButton:hover .correctShadow,
+.incorrectButton:hover .incorrectShadow,
+.downloadButton:hover .downloadShadow,
+.mainButton:hover .mainShadow {
+  transform: translateY(5px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.flipButton:active .flipShadow,
+.skipButton:active .skipShadow,
+.correctButton:active .correctShadow,
+.incorrectButton:active .incorrectShadow,
+.downloadButton:active .downloadShadow,
+.mainButton:active .mainShadow {
+  transform: translateY(2px);
+  transition: transform 34ms;
+}
+.flipButton:focus:not(:focus-visible),
+.skipButton:focus:not(:focus-visible),
+.correctButton:focus:not(:focus-visible),
+.incorrectButton:focus:not(:focus-visible),
+.downloadButton:focus:not(:focus-visible),
+.mainButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}

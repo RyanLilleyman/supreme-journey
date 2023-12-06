@@ -1,0 +1,20 @@
+.resultsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.outcomes,
+.cardResults {
+  width: 20rem;
+  padding: 1rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}

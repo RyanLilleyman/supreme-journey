@@ -1,0 +1,225 @@
+/* Main structure of the css came from the navBar link inside the references.html. Any
+* changes are promptly indicated below */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.html {
+  font-size: 62.5%;
+}
+/*Added brain tree for image sizing*/
+.BrainTree {
+  width: 3rem;
+  height: 3rem;
+}
+
+.navbar input[type="checkbox"],
+.navbar .hamburger-lines {
+  display: none;
+}
+/*Changed the width of the container to be able to adjust the margins of the flex items*/
+.container {
+  width: 90%;
+  margin: auto;
+}
+/*Added a box shadow for greater depth, changed the background and color */
+.navbar {
+  width: 100%;
+  background: #f7f9fc;
+  color: #002855;
+  opacity: 0.85;
+  z-index: 100;
+}
+/*Added margin on the right and left*/
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+  margin-right: 2rem;
+  margin-left: 2rem;
+  padding-bottom: 0.5rem;
+  width: 90%;
+}
+
+.menu-items {
+  order: 2;
+  display: flex;
+}
+/*Changed the font-size, color, gap, display, and added a transition to the color*/
+.logo {
+  margin: 0;
+  order: 1;
+  font-size: 2.3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #2c3e50;
+  transition: color 0.3s ease-in-out;
+}
+/*Here is where the new class names changed due to listing issues*/
+.menu-items .navListItem {
+  list-style: none;
+  margin-left: 1.5rem;
+  font-size: 1.3rem;
+}
+/*Changed the color*/
+.navbar a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+/*Added hover effects for both the logo flex container and the navbar links*/
+.logo:hover {
+  color: #5a8bae;
+  cursor: pointer;
+}
+.navbar a:hover {
+  color: #5a8bae;
+}
+
+@media (max-width: 1100px) {
+  /*changed the opacity from 0.95 to 1*/
+  .navbar {
+    opacity: 1;
+  }
+
+  .navbar-container input[type="checkbox"],
+  .navbar-container .hamburger-lines {
+    display: block;
+  }
+
+  .navbar-container {
+    display: block;
+    position: relative;
+    height: 64px;
+  }
+
+  .navbar-container input[type="checkbox"] {
+    margin: 0;
+    position: absolute;
+    display: block;
+    height: 32px;
+    width: 32px;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .navbar-container .hamburger-lines {
+    display: block;
+    height: 28px;
+    width: 35px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  /*changed the color*/
+  .navbar a {
+    color: #576884;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .navbar-container .hamburger-lines .line {
+    display: block;
+    height: 5px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #333;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  /*deleted unnecessary hamburger line configuration*/
+
+  /*added margin-top, border-radius, changed background, max-width*/
+  .navbar .menu-items {
+    border-radius: 0.5rem;
+    margin-top: 0;
+    padding-top: 100px;
+    background: #e0e5eb;
+    height: 100vh;
+    max-width: 14rem;
+    transform: translate(-150%);
+    display: flex;
+    flex-direction: column;
+    margin-left: -40px;
+    padding-left: 40px;
+    transition: transform 0.5s ease-in-out;
+    box-shadow:
+      4px 4px 12px 0px #576884,
+      -4px -4px 12px 0px #e0e5eb;
+    overflow: scroll;
+  }
+
+  .navbar .menu-items::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar .menu-items li {
+    margin-bottom: 1.8rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  /*changed the fontsize, added color*/
+  .logo {
+    color: #2c3e50;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5rem;
+  }
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+    background-color: #576884;
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+    background-color: #576884;
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+    background-color: #576884;
+  }
+  /*deleted the animation effects of the lines as it was cumbersome and annoying to look at.*/
+  .navbar-container input[type="checkbox"]:checked ~ .menu-items {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 500px) {
+  /*added the entire logo class selector into this media query*/
+  .logo {
+    color: #2c3e50;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    gap: 0.5rem;
+  }
+  /*added braintree into media query*/
+  .BrainTree {
+    width: 2rem;
+    height: 2rem;
+  }
+  .navbar-container input[type="checkbox"]:checked ~ .logo {
+    display: none;
+  }
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+

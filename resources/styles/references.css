@@ -1,0 +1,56 @@
+/*chat gpt for reference typography suggestions*/
+.references {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+.referenceHeader {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+.references ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+  padding: 2rem 2rem;
+}
+.references li {
+  margin-bottom: 20px;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.references li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #0077cc;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.references a {
+  color: #0077cc;
+  transition: color 0.3s ease;
+}
+
+.references a:hover {
+  color: #0055aa;
+  text-decoration: underline;
+}
+
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+

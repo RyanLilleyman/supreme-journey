@@ -1,0 +1,539 @@
+
+
+.createHeaderContainer {
+  transform: translateX(-30px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.createHeaderContainer a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.createHeader {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin: 0 0 1rem 0;
+}
+
+.upArrow {
+  transform:translate(10px,10px);
+  height: 2rem;
+  width: 2rem;
+  transform: rotate(180deg);
+  transition: all 0.3s ease-in-out;
+  align-self: center;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.upArrow:hover {
+  cursor: pointer;
+  transform: rotate(270deg);
+  background-image: url("../images/blue_arrowTest.png");
+}
+
+.createCard {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.topContainer,
+.bottomContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.topContainer,
+.bottomContainer {
+  justify-content: space-evenly;
+}
+
+.bottomContainer {
+  flex-direction: column;
+}
+
+.frontContainer,
+.backContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.frontContainer h3,
+.backContainer h3,
+.deckContainer h3,
+.buttonContainer h3 {
+  align-self:center;
+  margin: 0;
+}
+
+.backCardCreate,
+.frontCardCreation,
+.deckSettings {
+  border-radius: 0.5rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+  width: 100%;
+  min-width: 19rem;
+  background-color: #ffffff;
+}
+
+.uploadImageContainer {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0.5rem 0.5rem 0 0;
+
+}
+
+.frontCardCreation {
+  position: relative;
+}
+
+#uploadImage {
+  width: 10rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  color: #004477;
+  transition: all 0.3s ease-in-out;
+}
+
+.frontCardCreation #uploadImage:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+#removeImage {
+  position:relative;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  text-align: center;
+  gap:0.5rem;
+  margin:1rem 1.2rem;
+  width:5rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  color: #004477;
+  transition: all 0.3s ease-in-out;
+}
+
+#removeImage img {
+  /* position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%); */
+  width:1rem;
+  height:1rem;
+
+}
+
+#removeImage:hover {
+  transform: scale(1.1) ;
+  cursor: pointer;
+}
+
+#imagePossible {
+  display: flex;
+  justify-content: center;
+}
+
+#imagePossible img {
+    margin-bottom: 0.5rem;
+    width: 12rem;
+    margin-top: 0.2rem;
+}
+
+.frontCardCreate,
+.backCardCreate {
+  width:25rem;
+  font-family: "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  padding: 8px;
+  resize: vertical;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-radius: 0.5rem;
+
+}
+
+.frontCardCreate{
+  height:12.2rem;
+}
+
+.backCardCreate{
+    height:17rem;
+}
+/* .deckSettings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 10rem;
+  max-width: 11rem;
+} */
+
+.deckSettings div {
+  font-size: 1.05rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.deckSettings select {
+  min-width: 5rem;
+}
+
+.frontCardCreate::placeholder,
+.backCardCreate::placeholder {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  color: #aaa;
+  text-align: center;
+  vertical-align: center;
+  line-height: 16rem;
+}
+.frontCardCreate::placeholder {
+  line-height: 11rem;
+}
+
+.deckContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.deckSettings {
+  padding: 1rem;
+  font-size: 0.8em;
+  overflow: hidden;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.deckSettings:nth-of-type(2) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+.deckSettings input {
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.buttonContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.buttonsForCreating {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+  min-width: 20rem;
+}
+.buttonsForCreating:nth-of-type(2) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.nextButton,
+.clearButton,
+.previousButton,
+.finishButton {
+  font-size: 1.2rem;
+  position: relative;
+  height: 3rem;
+  border: none;
+  font-size: 1.1rem;
+  min-width: 4rem;
+  transition: filter 0.3s;
+}
+
+.previousButton::after {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0;
+  right: -1rem;
+  width: 1px;
+  background-color: #aaa;
+  border-radius: 0.5rem;
+}
+
+.clearButton::after {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0;
+  right: -1rem;
+  width: 1px;
+  background-color: #aaa;
+  border-radius: 0.5rem;
+}
+
+.createButton::after {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0;
+  right: -1rem;
+  width: 1px;
+  background-color: #aaa;
+  border-radius: 0.5rem;
+}
+
+.backShadow,
+.nextShadow,
+.previousShadow,
+.finishShadow,
+.clearShadow {
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(1px);
+  background: hsl(0deg 0% 0% / 0.25);
+  /*Ensures hardware acceleration*/
+  will-change: transform;
+  transform: translateY(4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.backEdge,
+.nextEdge,
+.previousEdge,
+.clearEdge,
+.finishEdge {
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.backEdge {
+  background: linear-gradient(
+    90deg,
+    hsl(246deg 32% 25%) 0%,
+    hsl(246deg 31% 27%) 1%,
+    hsl(246deg 30% 30%) 2%,
+    hsl(246deg 29% 32%) 3%,
+    hsl(246deg 29% 35%) 5%,
+    hsl(246deg 28% 37%) 7%,
+    hsl(246deg 28% 40%) 9%,
+    hsl(246deg 27% 43%) 12%,
+    hsl(246deg 27% 45%) 16%,
+    hsl(246deg 27% 48%) 23%,
+    hsl(246deg 27% 51%) 36%,
+    hsl(246deg 30% 54%) 64%,
+    hsl(246deg 27% 51%) 74%,
+    hsl(246deg 27% 48%) 80%,
+    hsl(246deg 27% 45%) 84%,
+    hsl(246deg 27% 43%) 88%,
+    hsl(246deg 28% 40%) 90%,
+    hsl(246deg 28% 37%) 92%,
+    hsl(246deg 29% 35%) 94%,
+    hsl(246deg 29% 32%) 96%,
+    hsl(246deg 30% 30%) 98%,
+    hsl(246deg 31% 27%) 99%,
+    hsl(246deg 32% 25%) 100%
+  );
+}
+
+.nextEdge {
+    background-image: linear-gradient(
+        90deg,
+        hsl(180deg 96% 11%) 0%,
+        hsl(180deg 97% 13%) 2%,
+        hsl(180deg 98% 14%) 4%,
+        hsl(180deg 98% 15%) 9%,
+        hsl(180deg 99% 17%) 17%,
+        hsl(180deg 100% 18%) 45%,
+        hsl(180deg 99% 17%) 82%,
+        hsl(180deg 98% 15%) 91%,
+        hsl(180deg 98% 14%) 96%,
+        hsl(180deg 97% 13%) 98%,
+        hsl(180deg 96% 11%) 100%
+      );
+}
+
+.previousEdge {
+    background-image: linear-gradient(
+        90deg,
+        hsl(180deg 96% 11%) 0%,
+        hsl(180deg 97% 13%) 2%,
+        hsl(180deg 98% 14%) 4%,
+        hsl(180deg 98% 15%) 9%,
+        hsl(180deg 99% 17%) 17%,
+        hsl(180deg 100% 18%) 45%,
+        hsl(180deg 99% 17%) 82%,
+        hsl(180deg 98% 15%) 91%,
+        hsl(180deg 98% 14%) 96%,
+        hsl(180deg 97% 13%) 98%,
+        hsl(180deg 96% 11%) 100%
+      );
+}
+
+.clearEdge {
+  border: 0.5px solid black;
+  background-image: linear-gradient(
+    90deg,
+    hsl(180deg 44% 41%) 0%,
+    hsl(180deg 40% 45%) 2%,
+    hsl(180deg 36% 49%) 6%,
+    hsl(180deg 37% 52%) 11%,
+    hsl(180deg 40% 56%) 21%,
+    hsl(180deg 43% 60%) 49%,
+    hsl(180deg 40% 56%) 79%,
+    hsl(180deg 37% 52%) 89%,
+    hsl(180deg 36% 49%) 94%,
+    hsl(180deg 40% 45%) 98%,
+    hsl(180deg 44% 41%) 100%
+  );
+}
+
+.finishEdge {
+  background-image: linear-gradient(
+    90deg,
+    hsl(0deg 0% 0%) 0%,
+    hsl(232deg 100% 5%) 2%,
+    hsl(224deg 100% 6%) 6%,
+    hsl(220deg 90% 7%) 11%,
+    hsl(219deg 75% 8%) 21%,
+    hsl(219deg 64% 9%) 53%,
+    hsl(219deg 75% 8%) 80%,
+    hsl(220deg 90% 7%) 89%,
+    hsl(224deg 100% 6%) 94%,
+    hsl(232deg 100% 5%) 98%,
+    hsl(0deg 0% 0%) 100%
+  );
+}
+
+.backFront,
+.nextFront,
+.previousFront,
+.clearFront,
+.finishFront {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 1rem 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transform: translateY(-6px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.backFront {
+  background-color: #9590b3;
+  color: #f7f9fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nextFront {
+  background-color: #008080;
+  color: #f7f9fc;
+}
+
+.previousFront {
+  background-color: #008080;
+  color: #f7f9fc;
+}
+
+.clearFront {
+  background-color: #8cd3d3;
+  color: #16305d;
+}
+
+.finishFront {
+  background-color: #16305d;
+  color: #f7f9fc;
+}
+
+.backButton:hover,
+.nextButton:hover,
+.previousButton:hover,
+.clearButton:hover,
+.finishButton:hover {
+  filter: brightness(110%);
+  cursor: pointer;
+}
+
+.backButton:hover .backFront,
+.nextButton:hover .nextFront,
+.previousButton:hover .previousFront,
+.clearButton:hover .clearFront,
+.finishButton:hover .finishFront {
+  transform: translateY(-8px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.backButton:active .backFront,
+.nextButton:active .nextFront,
+.previousButton:active .previousFront,
+.clearButton:active .clearFront,
+.finishButton:active .finishFront {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.backButton:hover .backShadow,
+.nextButton:hover .nextShadow,
+.previousButton:hover .previousShadow,
+.clearButton:hover .clearShadow,
+.finishButton:hover .finishShadow {
+  transform: translateY(5px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.backButton:active .backShadow,
+.nextButton:active .nextShadow,
+.previousButton:active .previousShadow,
+.clearButton:active .clearShadow,
+.finishButton:active .finishShadow {
+  transform: translateY(2px);
+  transition: transform 34ms;
+}
+
+.editButton:focus:not(:focus-visible),
+.destroyButton:focus:not(:focus-visible),
+.startSessButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+

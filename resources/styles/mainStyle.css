@@ -1,0 +1,717 @@
+/*Chat gpt for typography suggestions*/
+/*Chat gpt for all button color suggestions*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600&family=Montserrat:wght@600;700&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f9fc;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: #2c3e50;
+}
+
+body p {
+  width: 60%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.75rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 2rem;
+}
+
+.mainBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f7f9fc;
+  padding: 2rem 2rem;
+  min-width: 100%;
+  max-width: 800px;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  margin-bottom:5rem;
+}
+
+.deckBarAndSearch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.deckBarAndSearch h3 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin: 0 0 1rem 0;
+}
+
+.thisHoldsStepThree h3 {
+  display:flex;
+  justify-content:center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin: 0 0 1rem 0;
+}
+
+.createButtonContainer {
+  display: flex;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.decks {
+  display: flex;
+  width: 20rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #ffffff;
+  /* border: none; */
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+}
+.dl{
+  display:flex;
+  padding:1rem;
+  flex-direction: column;
+  max-height: 13rem;
+  overflow-y: auto;
+  scrollbar-width: auto;
+  scrollbar-color: #888 #f1f1f1;
+  box-shadow: inset 0 0 2px #004477;
+  border-radius: 0.5rem;
+}
+.dl::-webkit-scrollbar {
+    width: 12px;
+}
+
+.dl::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dl::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.dl::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.dl::-webkit-scrollbar-thumb:active {
+    background: #444;
+}
+
+.deck_input_info_container{
+    display:flex;
+    gap:1rem;
+    transition: background-color 1s cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+.deck_input_info_container:hover{
+    cursor:pointer;
+    background-color:#ccc;
+    border-radius:0.5rem;
+}
+
+.radios_outer{
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+}
+
+
+
+.divider {
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+    background-color: #ccc;
+    min-height: 1px;
+    width: 13rem;
+    align-self: center;
+    border-radius: 0.5rem;
+}
+
+.radios_outer input{
+    margin-right:0.5rem;
+}
+
+.search{
+    font-size:18px;
+    border:none;
+    box-shadow: inset 0 0 2px #004477;
+}
+
+.generalHeader{
+    display:flex;
+    justify-content:center;
+}
+
+.instructionsAndLib {
+  display: flex;
+  justify-content: center;
+  gap: 3.5rem;
+  flex-wrap: wrap;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 0;
+}
+
+.generalInstList {
+  display: none;
+}
+
+/*chatgpt for select style suggestions*/
+select,
+input {
+  background-color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  cursor: pointer;
+}
+
+select:hover,
+input:hover {
+  border-color: #5a8bae;
+  cursor: pointer;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  box-shadow: 0 0 4px #5a8bae;
+  cursor: pointer;
+}
+
+.generalInstList.active {
+  display: block;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+  padding: 1rem 2rem;
+  margin: 0 0 1rem 0;
+}
+
+.generalInstructions {
+  display: flex;
+  flex-direction: column;
+}
+
+.generalInstructions img {
+  height: 1.3rem;
+  width: 1.3rem;
+  transform: rotate(180deg);
+  transition: all 0.3s ease-in-out;
+}
+
+.generalInstructions img:hover {
+  cursor: pointer;
+  transform: rotate(360deg);
+}
+
+.generalInstructions img.activeArrow {
+  transform: rotate(0deg);
+}
+
+.deckSetter {
+  background-color: #ffffff;
+  /* border: none; */
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 19rem;
+  align-self: center;
+  margin-right: 0;
+}
+.deckSetter span {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+.deckSetter select {
+  width: 7rem;
+  height:2.5rem;
+}
+.sessionSettings {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 19rem;
+  justify-content:space-between;
+  background-color: #ffffff;
+  /* border: none; */
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+}
+
+.Session_Holder{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.Session_Holder select{
+    width: 7rem;
+    height: 2.5rem;
+}
+
+.sessionSettings h4 {
+  margin: 0;
+}
+
+.editAndDestroy {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.instructionsButton {
+  border: none;
+  background: transparent;
+  transition: color 0.3s ease-in-out;
+  font-size: 1em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.instructionsButton h3 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin: 0 0 1rem 0;
+}
+
+.instructionsButton.active {
+  color: #5a8bae;
+}
+
+.instructionsButton:hover {
+  color: #5a8bae;
+  cursor: pointer;
+}
+
+.createButton {
+  position: relative;
+  text-align: center;
+  font-size: 1.1rem;
+  border: none;
+  height: 3rem;
+  transition: filter 0.3s;
+}
+
+/*Main Button styling for 3d effects came from https://www.joshwcomeau.com/animation/3d-button/*/
+.createButtonShadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  background: hsl(0deg 0% 0% / 0.25);
+  filter: blur(1px);
+  /*Ensures hardware acceleration*/
+  will-change: transform;
+  transform: translateY(4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.createButtonEdge {
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: linear-gradient(
+    90deg,
+    hsl(123deg 30% 45%) 0%,
+    hsl(123deg 29% 46%) 1%,
+    hsl(123deg 29% 47%) 2%,
+    hsl(123deg 28% 47%) 4%,
+    hsl(123deg 28% 48%) 6%,
+    hsl(123deg 27% 49%) 8%,
+    hsl(123deg 27% 50%) 10%,
+    hsl(123deg 27% 50%) 14%,
+    hsl(123deg 27% 51%) 18%,
+    hsl(123deg 27% 52%) 25%,
+    hsl(124deg 27% 53%) 34%,
+    hsl(124deg 28% 53%) 50%,
+    hsl(124deg 27% 53%) 65%,
+    hsl(123deg 27% 52%) 74%,
+    hsl(123deg 27% 51%) 80%,
+    hsl(123deg 27% 50%) 85%,
+    hsl(123deg 27% 50%) 88%,
+    hsl(123deg 27% 49%) 91%,
+    hsl(123deg 28% 48%) 94%,
+    hsl(123deg 28% 47%) 96%,
+    hsl(123deg 29% 47%) 97%,
+    hsl(123deg 29% 46%) 99%,
+    hsl(123deg 30% 45%) 100%
+  );
+}
+
+.createButtonFront {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #7bb67e;
+  color: #f7f9fc;
+  will-change: transform;
+  transform: translateY(-6px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+.createButton:hover {
+  filter: brightness(110%);
+  cursor: pointer;
+}
+.createButton:hover .createButtonFront {
+  transform: translateY(-8px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+.createButton:active .createButtonFront {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+.createButton:hover .createButtonShadow {
+  transform: translateY(5px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+.createButton:active .createButtonShadow {
+  transform: translateY(2px);
+  transition: transform 34ms;
+}
+.createButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.deckPreview {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.parametersAndSess {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  width: 95%;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.Session_Holder_Span {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.buttonList {
+  margin: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.editButton,
+.destroyButton,
+.startSessButton {
+  position: relative;
+  height: 3rem;
+  outline: none;
+  border: none;
+  padding: 1px 1px;
+  font-size: 1.1rem;
+  min-width: 5rem;
+  transition: filter 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.startSessButton{
+    height:5rem;
+}
+
+.editShadow,
+.destroyShadow,
+.startSessShadow {
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(1px);
+  background: hsl(0deg 0% 0% / 0.25);
+  /*Ensures hardware acceleration*/
+  will-change: transform;
+  transform: translateY(4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.editEdge,
+.destroyEdge,
+.startSessEdge {
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.editEdge {
+  background-image: linear-gradient(
+    90deg,
+    hsl(247deg 21% 39%) 0%,
+    hsl(247deg 21% 40%) 1%,
+    hsl(247deg 20% 41%) 2%,
+    hsl(247deg 20% 43%) 4%,
+    hsl(247deg 20% 44%) 6%,
+    hsl(247deg 20% 45%) 8%,
+    hsl(247deg 19% 47%) 10%,
+    hsl(247deg 19% 48%) 14%,
+    hsl(246deg 19% 49%) 18%,
+    hsl(246deg 19% 51%) 25%,
+    hsl(246deg 20% 52%) 34%,
+    hsl(246deg 21% 54%) 50%,
+    hsl(246deg 20% 52%) 65%,
+    hsl(246deg 19% 51%) 74%,
+    hsl(246deg 19% 49%) 80%,
+    hsl(247deg 19% 48%) 85%,
+    hsl(247deg 19% 47%) 88%,
+    hsl(247deg 20% 45%) 91%,
+    hsl(247deg 20% 44%) 94%,
+    hsl(247deg 20% 43%) 96%,
+    hsl(247deg 20% 41%) 97%,
+    hsl(247deg 21% 40%) 99%,
+    hsl(247deg 21% 39%) 100%
+  );
+}
+
+.destroyEdge {
+  background-image: linear-gradient(
+    90deg,
+    hsl(6deg 80% 24%) 0%,
+    hsl(5deg 79% 27%) 2%,
+    hsl(5deg 79% 30%) 4%,
+    hsl(5deg 79% 34%) 9%,
+    hsl(5deg 79% 37%) 19%,
+    hsl(6deg 79% 40%) 56%,
+    hsl(5deg 79% 37%) 83%,
+    hsl(5deg 79% 34%) 91%,
+    hsl(5deg 79% 30%) 96%,
+    hsl(5deg 79% 27%) 98%,
+    hsl(6deg 80% 24%) 100%
+  );
+}
+
+.startSessEdge {
+  border: 0.5px solid black;
+  background-image: linear-gradient(
+    90deg,
+    hsl(180deg 44% 41%) 0%,
+    hsl(180deg 40% 45%) 2%,
+    hsl(180deg 36% 49%) 6%,
+    hsl(180deg 37% 52%) 11%,
+    hsl(180deg 40% 56%) 21%,
+    hsl(180deg 43% 60%) 49%,
+    hsl(180deg 40% 56%) 79%,
+    hsl(180deg 37% 52%) 89%,
+    hsl(180deg 36% 49%) 94%,
+    hsl(180deg 40% 45%) 98%,
+    hsl(180deg 44% 41%) 100%
+  );
+}
+.editFront,
+.destroyFront,
+.startSessFront {
+  border-radius: 0.5rem;
+  padding: 1rem 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transform: translateY(-6px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.editFront {
+  background-color: #9692b7;
+  color: #fefefe;
+}
+
+.destroyFront {
+  background-color: #d46a6a;
+  color: #f7f9fc;
+}
+
+.startSessFront {
+  background-color: #8cd3d3;
+  color: #16305d;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.toggleSessionTime,
+.toggleRoundTime{
+    width:7rem;
+    height: 2.5rem;
+    border:#004477 0.5px solid;
+    border-radius:0.5rem ;
+    position:relative;
+    box-shadow: 0 0 20px 0px inset #ccc;
+
+}
+
+.togglerBoxOFF{
+    position:absolute;
+    top: 0;
+    left: 40%;
+    width: 60%;
+    height: 100%;
+    border-radius:0.5rem;
+    background-color: #ccc;
+    color:#ffffff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border:#fff solid 1px;
+    transition: all 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.togglerBoxON{
+    position:absolute;
+    top:0;
+    left:0;
+    width:60%;
+    height:100%;
+    border-radius:0.5rem;
+    background-color: #7bb67e;
+    color:#ffffff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border:#fff solid 1px;
+    transition: all 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+
+}
+
+.toggleRoundTime:hover .togglerBoxOFF,
+.toggleSessionTime:hover .togglerBoxOFF{
+    cursor: pointer;
+    filter: brightness(110%);
+}
+
+.toggleSessionTime:hover .togglerBoxON,
+.toggleRoundTime:hover .togglerBoxON{
+    cursor: pointer;
+    filter: brightness(110%);
+}
+
+.editButton:hover,
+.destroyButton:hover,
+.startSessButton:hover {
+  filter: brightness(110%);
+  cursor: pointer;
+}
+.editButton:hover .editFront,
+.destroyButton:hover .destroyFront,
+.startSessButton:hover .startSessFront {
+  transform: translateY(-8px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+.editButton:active .editFront,
+.destroyButton:active .destroyFront,
+.startSessButton:active .startSessFront {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.editButton:hover .editShadow,
+.destroyButton:hover .destroyShadow,
+.startSessButton:hover .startSessShadow {
+  transform: translateY(5px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+.editButton:active .editShadow,
+.destroyButton:active .destroyShadow,
+.startSessButton:active .startSessShadow {
+  transform: translateY(2px);
+  transition: transform 34ms;
+}
+.editButton:focus:not(:focus-visible),
+.destroyButton:focus:not(:focus-visible),
+.startSessButton:focus:not(:focus-visible) {
+  outline: none;
+}
+.instructionItem {
+  list-style: number;
+}
+
+.parameterList {
+  list-style: disc;
+}
+
+/*chatgpt for footer color and background-color*/
+.footer {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  height: 2.5rem;
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:
+    1px -2px 10px 0px #aaa,
+    0px -2px 5px 0px #004477;
+}
+
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}

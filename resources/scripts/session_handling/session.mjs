@@ -243,13 +243,14 @@ class Session {
         skip.type = "submit";
         skip.className = "skipButton";
         skip.innerHTML =
-            '<span class="skipShadow"></span><span class="skipEdge"></span><span class="skipFront"><i class="fa-solid fa-forward fa-xl" style="color: #ffffff;"></i></span>';
+            '<span class="skipShadow"></span><span class="skipEdge"></span><span class="skipFront">Skip</span>';
 
+        //<i class="fa-solid fa-forward fa-xl" style="color: #ffffff;"></i>
         let flip = document.createElement("button");
         flip.type = "submit";
         flip.className = "flipButton";
         flip.innerHTML =
-            '<span class="flipShadow"></span><span class="flipEdge"></span><span class="flipFront"><i class="fa-solid fa-repeat fa-xl" style="color: #004477;"></i></span>';
+            '<span class="flipShadow"></span><span class="flipEdge"></span><span class="flipFront">Flip</span>';
 
         flipandskip.appendChild(skip);
         flipandskip.appendChild(flip);

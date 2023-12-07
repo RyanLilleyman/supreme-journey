@@ -17,7 +17,7 @@ class CardSeeder extends Seeder
     public function run(): void
     {
 
-        $deck_count = rand(6,10);
+        $deck_count = rand(10,15);
         $decks = Deck::factory()->count($deck_count)->create();
         $decks->each(function ($deck) {
             dump('Deck ID: ' . $deck->id); // Output the deck ID

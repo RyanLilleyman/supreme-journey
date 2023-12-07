@@ -73,11 +73,11 @@
                 <div class="timeToRespond">Time to Respond: <span
                         value = '{{ $roundTime }}'>{{ $roundTime }}</span></div>
             </div>
-            <div class="cardResults">
+            {{-- <div class="cardResults">
                 <ol class="cards">
                     <li>Future Cards List</li>
                 </ol>
-            </div>
+            </div> --}}
         </div>
         <div class="flipAndSkip">
             <button type="submit" class="downloadButton">

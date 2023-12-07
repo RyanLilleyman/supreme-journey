@@ -5,7 +5,18 @@
   justify-content: center;
 }
 
-.outcomes,
+.outcomes{
+    display: flex;
+    gap: 1rem;
+    width: 20rem;
+    padding: 3rem;
+    border: 1px solid #004477;
+    box-shadow: 2px 2px #047;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: center;
+}
 .cardResults {
   width: 20rem;
   padding: 1rem;

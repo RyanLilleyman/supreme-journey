@@ -1,15 +1,23 @@
-<!DOCTYPE html> <html lang="en"> <head> <title>Edit Deck</title> <meta charset="UTF-8" /> <meta name="viewport"
-    content="width=device-width, initial-scale=1" /> <link rel="apple-touch-icon" sizes="180x180"
-    href="../favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png" /> <link rel="icon"
-    type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png" /> <link rel="manifest"
-    href=".../favicons/site.webmanifest" />
-<link rel="mask-icon" href="../favicons/safari-pinned-tab.svg" color="#5bbad5" />
-<link rel="shortcut icon" href="../favicons/favicon.ico" />
-<meta name="msapplication-TileColor" content="#da532c" />
-<meta name="msapplication-config" content="~/Repos/IWT/midterm/src/favicons/browserconfig.xml" />
-<meta name="theme-color" content="#ffffff" />
-@vite(['resources/styles/mainStyle.css','resources/styles/createDeck.css','resources/styles/navStyle.css'])
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Edit Deck</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png" />
+    <link rel="manifest" href="../favicons/site.webmanifest" />
+    <link rel="mask-icon" href="../favicons/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="../favicons/favicon.ico" />
+    <script src="https://kit.fontawesome.com/c1c8aa52a6.js" crossorigin="anonymous"></script>
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="~/Repos/IWT/midterm/src/favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+
+    @vite(['resources/styles/mainStyle.css', 'resources/styles/createDeck.css', 'resources/styles/navStyle.css', 'resources/scripts/deck_creation/inject_dom.mjs'])
 </head>
 
 <body>
@@ -37,67 +45,103 @@
             <a href="/">
                 <h1 class="logo">
                     SAFMEDS
-                    <img class="BrainTree" src="images/MoM.png" alt="Picture of Brain Tree." />
+                    <img class="BrainTree" src={{ asset('images/MoM.png') }} alt="Picture of Brain Tree." />
                 </h1>
             </a>
         </div>
     </nav>
     <main class="mainBar">
-        <div class="createHeaderContainer">
-            <a href="{{url('/')}}">
-                <div class="upArrow"></div>
+        {{-- <div class="createHeaderContainer">
+            <a href="{{ url('/') }}">
+                <img class='upArrow' src={{ asset('images/blue_arrowTest.png') }} alt="Back Button" srcset="">
             </a>
-            <h1 class="createHeader">Edit Deck</h1>
-        </div>
+            <h1 class="createHeader">Create Deck</h1>
+        </div> --}}
+
+
+
         <section class="createCard">
             <div class="topContainer">
                 <div class="frontContainer">
-                    <h3>Front:</h3>
-                    <div class="frontCardCreate"></div>
+                    <h3>Front of Card:</h3>
+                    <div class="frontCardCreation">
+                        <span class="uploadImageContainer">
+                            <span id="uploadImage">
+                                <input type="file" id="fileInput" style="display: none" />
+                                <img src="../images/icons8-upload-image-24.png" alt="upload image" />
+                                Add Image
+                            </span>
+                            <span id="removeImage" style="display: none">
+                                <span>Remove</span>
+                                <img src="../images/delete.png" alt="deletion of image" />
+                            </span>
+                        </span>
+                        <hr>
+
+                        <div id="imagePossible"></div>
+                        <textarea class="frontCardCreate" name="frontOfCardText" placeholder="Front of Card Text Here" spellcheck="True"
+                            cols="36" rows="10"></textarea>
+                    </div>
                 </div>
+
                 <div class="backContainer">
-                    <h3>Back:</h3>
-                    <div class="backCardCreate"></div>
+                    <h3>Back of Card:</h3>
+                    <textarea class="backCardCreate" name="backOfCardText" placeholder=" ...And Back of Card Text Here" spellcheck="True"
+                        cols="36" rows="10"></textarea>
                 </div>
             </div>
             <div class="bottomContainer">
                 <div class="deckContainer">
                     <div class="deckSettings">
                         <div class="deckName">
-                            Name:
-                            <input required type="text" name="deckName" value="deckName" />
+                            <input required type="text" name="deckName" placeholder="Enter Deck Name Here" />
+                            <span>Card #<span class="cardNumber">1</span></span>
                         </div>
                     </div>
                     <div class="deckSettings">
-                        <div class="cardNumberContainer">
-                            Card Number: <span class="cardNumber">01</span>
-                        </div>
+                        <button type="submit" class="createButton" title="Add Card">
+                            <span class="createButtonShadow"></span>
+                            <span class="createButtonEdge"></span>
+                            <span class="createButtonFront"><i class="fa-solid fa-plus fa-xl"
+                                    style="color: #ffffff;"></i></span>
+                        </button>
+                        <button type="submit" class="indexButton destroyButton" title="Destroy Card">
+                            <span class="destroyShadow"></span>
+                            <span class="destroyEdge"></span>
+                            <span class="destroyFront"><i class="fa-solid fa-trash fa-xl"
+                                    style="color: #ffffff;"></i></span>
+                        </button>
                     </div>
                 </div>
 
                 <div class="buttonContainer">
                     <div class="buttonsForCreating">
-                        <button type="submit" class="previousButton">
+                        <button type="submit" class="previousButton" title='Previous'>
                             <span class="previousShadow"></span>
                             <span class="previousEdge"></span>
-                            <span class="previousFront">Previous</span>
+                            <span class="previousFront"><i class="fa-solid fa-arrow-left fa-xl"
+                                    style="color: #ffffff;"></i></span>
                         </button>
-                        <button type="submit" class="nextButton">
+                        <button type="submit" class="nextButton" title='Next'>
                             <span class="nextShadow"></span>
                             <span class="nextEdge"></span>
-                            <span class="nextFront">Next</span>
+                            <span class="nextFront"><i class="fa-solid fa-arrow-right fa-xl"
+                                    style="color: #ffffff;"></i></span>
                         </button>
                     </div>
                     <div class="buttonsForCreating">
-                        <button type="submit" class="clearButton">
+                        <button type="submit" class="clearButton" title='Clear'>
                             <span class="clearShadow"></span>
                             <span class="clearEdge"></span>
-                            <span class="clearFront">Clear</span>
+                            <span class="clearFront"><i class="fa-solid fa-eraser fa-xl"
+                                    style="color: #004477;"></i></span>
                         </button>
-                        <button type="submit" class="finishButton">
+
+                        <button type="submit" class="finishButton" title='Finish'>
                             <span class="finishShadow"></span>
                             <span class="finishEdge"></span>
-                            <span class="finishFront">Finish</span>
+                            <span class="finishFront"><i class="fa-solid fa-flag-checkered fa-xl"
+                                    style="color: #ffffff;"></i></span>
                         </button>
                     </div>
                 </div>
@@ -105,7 +149,6 @@
         </section>
     </main>
     <footer class="footer">&copy; Something Copyright</footer>
-    <script type="module" src="../scripts/bundle.mjs"></script>
 </body>
 
 </html>

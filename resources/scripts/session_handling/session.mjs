@@ -48,7 +48,7 @@ class Session {
             correct_array: [],
             incorrect_array: [],
         };
-        this.#env_url = "http://www.supremesafmeds.com";
+        // this.#env_url = "http://127.0.0.1:8000";
         this.#front_url_array = [];
         this.#back_url_array = [];
         this.#url_array = [];
@@ -151,7 +151,8 @@ class Session {
                 })
                 .then((response) => {
                     window.location.href = response.data.url;
-                    resolve(response.data.url);
+                    console.log(response);
+                    resolve(response);
                 })
                 .catch((error) => {
                     reject(error);
@@ -365,7 +366,7 @@ class Session {
     async get_next_front(string) {
         return new Promise((resolve, reject) => {
             axios
-                .get(this.#env_url + "/fetch_front/" + string)
+                .get("/fetch_front/" + string)
                 .then((response) => {
                     resolve(response.data);
                 })
@@ -378,7 +379,7 @@ class Session {
     async get_next_back(string) {
         return new Promise((resolve, reject) => {
             axios
-                .get(this.#env_url + "/fetch_back/" + string)
+                .get("/fetch_back/" + string)
                 .then((response) => {
                     resolve(response.data);
                 })
@@ -408,8 +409,9 @@ class Session {
     grab_url_arrays_and_timers_then_merge_and_start_session() {
         document.addEventListener("DOMContentLoaded", () => {
             axios
-                .get(this.#env_url + "/fetch_arrays")
+                .get("/fetch_arrays")
                 .then((response) => {
+                    console.log(response);
                     this.#back_url_array = response.data.backs;
                     this.#front_url_array = response.data.fronts;
                     this.#session_time = response.data.session_timer;
@@ -438,7 +440,7 @@ class Session {
         this.session_main_loop();
     }
 
-    grab_results() {
+    async grab_results() {
         this.#results.correct = this.#results.correct_array.length;
         this.#results.incorrect = this.#results.incorrect_array.length;
         this.#results.skipped_manual =
@@ -456,6 +458,33 @@ class Session {
         this.#results.totalRoundTime = parseInt(this.#round_time);
         this.#results.totalSessionTime = parseInt(this.#session_time);
         console.log(this.#results);
+        let results = {
+            sessTime: this.#results.totalSessionTime,
+            roundTime: this.#results.totalRoundTime,
+            correct: this.#results.correct,
+            incorrect: this.#results.incorrect,
+            skipped_manual: this.#results.skipped_manual,
+            skipped_latency: this.#results.skipped_latency,
+            skipped_total: this.#results.skipped_total,
+            number_of_cards_viewed: this.#results.number_of_cards_viewed,
+            number_of_cards_in_deck: this.#results.number_of_cards_in_deck,
+        };
+
+        console.log(this.#deck_id);
+        console.log(await this.results_request(results));
+    }
+
+    async results_request(results) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post("save-results", results)
+                .then((response) => {
+                    console.log("response: ", response);
+                    window.location.href = response.data.url;
+                    resolve(response);
+                })
+                .catch((error) => console.log(error));
+        });
     }
 
     session_main_loop() {

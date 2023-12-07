@@ -62,7 +62,6 @@
         </div>
         <div class="flipAndSkip">
         </div>
-        <button><a href="{{ url('http://127.0.0.1:8000/results') }}">to results</a></button>
     </main>
     <footer class="footer">&copy; Something Copyright</footer>
 </body>

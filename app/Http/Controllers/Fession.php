@@ -107,10 +107,10 @@ class Fession extends Controller
 
     }
 
-    public function show_session($id){
-        $viewContent = Storage::get("cardsView/{$id}.html");
-        return response($viewContent)->header('Content-Type', 'text/html');
-    }
+    // public function show_session($id){
+    //     $viewContent = Storage::get("cardsView/{$id}.html");
+    //     return response($viewContent)->header('Content-Type', 'text/html');
+    // }
 
     public function generate_session_url(Request $request){
         $session_id = $request->query('deck_id');
@@ -129,4 +129,35 @@ class Fession extends Controller
         $showRoundTime = $session->show_round_timer;
         return response()->json(['fronts'=>$fronts, 'backs'=>$backs, 'session_timer'=>$session_timer, 'round_timer'=>$round_timer, 'showSessTime'=>$showSessTime, 'showRoundTime'=>$showRoundTime]);
     }
+
+    public function save_results(Request $request){
+        $correct = $request->input('correct');
+        $incorrect = $request->input('incorrect');
+        $number_of_cards_in_deck =  $request->input('number_of_cards_in_deck');
+        $number_of_cards_viewed = $request->input('number_of_cards_viewed');
+        $roundTime = $request->input('roundTime');
+        $sessionTime = $request->input('sessTime');
+        $skipped_latency = $request->input('skipped_latency');
+        $skipped_manual = $request->input('skipped_manual');
+        $skipped_total = $request->input('skipped_total');
+
+        $results_view = View::make('results',[
+            'correct'=>$correct,
+            'incorrect'=>$incorrect,
+            'number_of_cards_in_deck'=>$number_of_cards_in_deck,
+            'number_of_cards_viewed'=>$number_of_cards_viewed,
+            'roundTime'=>$roundTime,
+            'sessionTime'=>$sessionTime,
+            'skipped_latency'=>$skipped_latency,
+            'skipped_manual'=>$skipped_manual,
+            'skipped_total'=>$skipped_total,
+        ])->render();
+
+        Storage::put('cardsView/results.html', $results_view);
+        $data = $request->all();
+        $url = route('file.show_results');
+        return response()->json(['data'=>$data, 'url'=>$url]);
+    }
+
+
 }

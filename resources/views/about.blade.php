@@ -76,7 +76,7 @@
                         <li>Gender issues</li>
                     </ul>
                 </div>
-                <div class="imageContainer"> <img src={{ asset('images/Curiel.jpg') }} alt="Professor Curiel"></div>
+                <div class="imageContainer"> <img src={{ asset('images/Curiel.png') }} alt="Professor Curiel"></div>
             </div>
             <h4>Bio:</h4>
             <p>

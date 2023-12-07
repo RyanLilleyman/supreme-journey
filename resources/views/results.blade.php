@@ -16,7 +16,7 @@
     <meta name="msapplication-config" content="~/Repos/IWT/midterm/src/favicons/browserconfig.xml" />
     <meta name="theme-color" content="#ffffff" />
 
-    @vite(['resources/styles/mainStyle.css', 'resources/styles/results.css', 'resources/styles/navStyle.css', 'resources/styles/startSessStyle.css'])
+    @vite(['resources/styles/mainStyle.css', 'resources/styles/results.css', 'resources/styles/navStyle.css', 'resources/styles/startSessStyle.css', 'resources/scripts/results_handling/inject_results.mjs'])
 </head>
 
 <body>
@@ -53,28 +53,29 @@
         <h2 class="resultHeader">Results</h2>
         <div class="resultsContainer">
             <div class="outcomes">
-                <div class="sessionTime">Total Session Time: 60 sec</div>
-                <div class="correctResponses">Correct Responses: 25</div>
-                <div class="incorrectResponses">Incorrect Reponses: 10</div>
-                <div class="skippedResponses">Skipped Responses: 10</div>
-                <div class="skippedLatency">Skipped (Latency): 3</div>
+
+                <div class="correctResponses">Correct Responses: <span
+                        value={{ $correct }}>{{ $correct }}</span></div>
+                <div class="incorrectResponses">Incorrect Reponses: <span
+                        value = "{{ $incorrect }}">{{ $incorrect }}</span></div>
+                <div class="skippedResponses">Skipped Responses: <span
+                        value = '{{ $skipped_manual }}'>{{ $skipped_manual }}</span></div>
+                <div class="skippedLatency">Skipped (Latency): <span
+                        value={{ $skipped_latency }}>{{ $skipped_latency }}</span></div>
                 <div class="divider"></div>
-                <div class="cardsViewed">Number of Cards Viewed: 48</div>
-                <div class="cardsInDeck">Number of Cards in Deck: 50</div>
-                <div class="timeToRespond">Time to Respond: 5 sec</div>
+                <div class="cardsViewed">Number of Cards Viewed: <span
+                        value='{{ $number_of_cards_viewed }}'>{{ $number_of_cards_viewed }}</span></div>
+                <div class="cardsInDeck">Number of Cards in Deck: <span
+                        value='{{ $number_of_cards_in_deck }}'>{{ $number_of_cards_in_deck }}</span></div>
+                <div class="sessionTime">Total Session Time: <span
+                        value={{ $sessionTime }}>{{ $sessionTime }}</span>
+                </div>
+                <div class="timeToRespond">Time to Respond: <span
+                        value = '{{ $roundTime }}'>{{ $roundTime }}</span></div>
             </div>
             <div class="cardResults">
                 <ol class="cards">
-                    <li>California - Correct</li>
-                    <li>Texas - Incorrect</li>
-                    <li>Washington - Skipped</li>
-                    <li>Idaho - Incorrect</li>
-                    <li>Montana - Correct</li>
-                    <li>Arizona - Correct</li>
-                    <li>New Mexico - Skipped (Latency)</li>
-                    <li>Florida - Incorrect</li>
-                    <li>Oklahoma - Correct</li>
-                    <li>Ohio - Skipped</li>
+                    <li>Future Cards List</li>
                 </ol>
             </div>
         </div>
@@ -96,7 +97,6 @@
 
     <footer class="footer">&copy; Something Copyright</footer>
 
-    <script type="module" src="../scripts/bundle.mjs"></script>
 </body>
 
 </html>

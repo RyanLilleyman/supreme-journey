@@ -17,6 +17,9 @@ class FileFromStorage extends Controller
             'Content-Type' => $mime_type,
             'Content-Disposition' => "inline; filename={$id}.html",
         ]);
+        // $res->header('Access-Control-Allow-Origin', '*');
+        // $res->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        // $res->header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
         return $res;
     }
 
@@ -44,6 +47,16 @@ class FileFromStorage extends Controller
         $res = Response::make($file_content, 200, [
             'Content-Type' => $mime_type,
             'Content-Disposition' => "inline; filename={$id}.html",
+        ]);
+        return $res;
+    }
+
+    public function show_results(){
+        $file_content = Storage::get("cardsView/results.html");
+        $mime_type = Storage::mimeType("cardsView/results.html");
+        $res = Response::make($file_content, 200, [
+            'Content-Type' => $mime_type,
+            'Content-Disposition' => "inline; filename=results.html",
         ]);
         return $res;
     }

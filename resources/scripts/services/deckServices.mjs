@@ -84,6 +84,20 @@ class DeckServices {
                 console.log(error);
             });
     }
+
+    async getDeckById(deck_id) {
+        return new Promise((resolve, reject) => {
+            axios
+                .get(this.uri + "/" + deck_id)
+                .then((r) => {
+                    console.log(r);
+                    resolve(r);
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        });
+    }
 }
 
 const DECK_SERVICES = DeckServices.getInstance();

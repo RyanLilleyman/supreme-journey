@@ -284,7 +284,6 @@ class Session {
                 this.#results.skipped_array_manual.push(
                     this.#url_array[this.#idx]
                 );
-                console.log("skip:", this.#results.skipped_array_manual);
                 this.#idx++;
                 this.next_front();
 
@@ -294,7 +293,6 @@ class Session {
                 }
                 this.create_front_buttons();
             } else {
-                console.log("heading to results ");
                 this.grab_results();
             }
         });
@@ -310,7 +308,6 @@ class Session {
         incorrect.addEventListener("click", () => {
             if (this.#idx < this.#url_array.length) {
                 this.#results.incorrect_array.push(this.#url_array[this.#idx]);
-                console.log("incorrect:", this.#results.incorrect_array);
                 this.#idx++;
                 this.next_front();
                 this.#session_timer.reset_round_timer();
@@ -326,7 +323,6 @@ class Session {
         correct.addEventListener("click", () => {
             if (this.#idx < this.#url_array.length) {
                 this.#results.correct_array.push(this.#url_array[this.#idx]);
-                console.log("correct:", this.#results.correct_array);
                 this.#idx++;
                 this.next_front();
                 this.#session_timer.reset_round_timer();
@@ -347,11 +343,9 @@ class Session {
 
     async next_front() {
         if (this.#idx > this.#url_array.length - 1) {
-            console.log("no more cards");
             return;
         }
         if (this.#idx == this.#url_array.length - 1) {
-            console.log("last card");
         }
         let string = await this.get_next_front(
             this.#url_array[this.#idx][0].id
@@ -424,7 +418,6 @@ class Session {
                     this.#session_settings.showRoundTimer =
                         response.data.showRoundTime == 1 ? true : false;
 
-                    console.log(this.#session_settings);
                     this.merge_url_array();
                 })
                 .catch((error) => {
@@ -460,7 +453,6 @@ class Session {
             this.#results.skipped_total;
         this.#results.totalRoundTime = parseInt(this.#round_time);
         this.#results.totalSessionTime = parseInt(this.#session_time);
-        console.log(this.#results);
         let results = {
             sessTime: this.#results.totalSessionTime,
             roundTime: this.#results.totalRoundTime,
@@ -473,8 +465,7 @@ class Session {
             number_of_cards_in_deck: this.#results.number_of_cards_in_deck,
         };
 
-        console.log(this.#deck_id);
-        console.log(await this.results_request(results));
+        let rel = await this.results_request(results);
     }
 
     async results_request(results) {
@@ -482,7 +473,6 @@ class Session {
             axios
                 .post("save-results", results)
                 .then((response) => {
-                    console.log("response: ", response);
                     // window.location.href = response.data.url;
                     resolve(response);
                 })
@@ -491,15 +481,12 @@ class Session {
     }
 
     session_main_loop() {
-        console.log(this.#session_timer);
         this.#session_timer = new CountdownTimer(
             this.#session_time * 1000,
             this.#round_time * 1000,
             (roundTimeLeft) => {
-                console.log("round tick");
                 if (this.#session_settings.showRoundTimer) {
                     let roundTimeSpan = document.querySelector(".roundTime");
-                    console.log("round time: ", roundTimeLeft);
                     if (roundTimeLeft > 1) {
                         roundTimeSpan.innerHTML =
                             "<span>Round: " +
@@ -515,16 +502,13 @@ class Session {
             },
 
             () => {
-                console.log("round over");
                 this.#results.skipped_array_latency.push(
                     this.#url_array[this.#idx]
                 );
                 this.#idx++;
                 this.next_front();
             },
-            () => {
-                console.log("starting timer");
-            },
+            () => {},
             (timeLeft) => {
                 if (this.#session_settings.showSessionTimer) {
                     let sessionTimeSpan = document.querySelector(".totalTime");
@@ -540,17 +524,13 @@ class Session {
             },
             () => {
                 this.grab_results();
-                console.log("Time is up!");
-                console.log("calculating score");
             }
         );
-        console.log(this.#session_timer);
 
         this.#session_timer.test();
 
         this.first_card();
         this.#session_timer.start_with_many_rounds();
-        console.log(this.#session_timer.toString());
         this.create_front_buttons();
 
         // while (i < this.#url_array.length) {

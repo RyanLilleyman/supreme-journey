@@ -67,12 +67,11 @@
                                 </a>
                             </button>
                             <button type="submit" class="indexButton editButton">
-                                <a href="{{ url('/edit-deck') }}" title='Edit a Deck'>
+                                <a class = 'edit-button' title='Edit a Deck'>
                                     <span class="editShadow"></span>
                                     <span class="editEdge"></span>
                                     <span class="editFront"><i class="fa-solid fa-pencil fa-xl"
                                             style="color: #ffffff;"></i></span>
-
                                 </a>
                             </button>
 

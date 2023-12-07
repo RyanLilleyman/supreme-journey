@@ -5,6 +5,7 @@ import SESSION from "../session_handling/session.mjs";
 UtilityCenter.fill_Deck();
 UtilityCenter.onHomeDelete();
 UtilityCenter.bindSearch();
+UtilityCenter.bindEdit();
 SESSION.bind_session_and_round_spans();
 SESSION.bindRenders();
 

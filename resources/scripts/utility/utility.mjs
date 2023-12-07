@@ -146,7 +146,6 @@ export class UtilityCenter {
         let search = document.querySelector(".search");
         search.addEventListener("input", (e) => {
             let decks_inputs = document.querySelectorAll(".radios_inner");
-            console.log("new search: ", e.target.value);
             for (let deck of decks_inputs) {
                 if (
                     deck.name
@@ -160,6 +159,32 @@ export class UtilityCenter {
                     deck.parentElement.nextSibling.style.display = "none";
                 }
             }
+        });
+    }
+
+    static async fett(deck_id) {
+        return await DECK_SERVICES.getDeckById(deck_id);
+    }
+
+    static bindEdit() {
+        let edit_button = document.querySelector(".edit-button");
+        edit_button.addEventListener("click", () => {
+            const empty = [];
+            let decks_inputs = document.querySelectorAll(".radios_inner");
+            for (let deck of decks_inputs) {
+                if (deck.checked) {
+                    empty.push(deck.id);
+                    console.log(deck.id);
+                }
+            }
+            if (empty.length > 1) {
+                alert("Please select only one deck to edit.");
+                return;
+            } else if (empty.length == 0) {
+                alert("Please select at least one deck to edit.");
+                return;
+            }
+            this.fett(empty[0]);
         });
     }
 

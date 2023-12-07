@@ -17,12 +17,11 @@ class CardFactory extends Factory
      */
     public function definition(): array
     {
-
         return [
-            'deck_id' => fake()->uuid(),
+            'deck_id' => $this->faker->uuid(),
             'imgUrl' => '',
-            'front' => fake()->paragraph($nbSentences = 3, $variableNbSentences = true),
-            'back' => fake()->paragraph($nbSentences = 3, $variableNbSentences = true),
+            'front' => $this->faker->paragraph(),
+            'back' => $this->faker->paragraph(),
         ];
     }
 

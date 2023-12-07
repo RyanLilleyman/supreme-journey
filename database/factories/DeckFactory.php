@@ -19,8 +19,8 @@ class DeckFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => fake()->uuid(),
-            'name' => fake()->unique()->word().' '.'Deck',
+            'id' => $this->faker->uuid(),
+            'name' => $this->faker->unique()->word().' '.'Deck',
         ];
     }
 

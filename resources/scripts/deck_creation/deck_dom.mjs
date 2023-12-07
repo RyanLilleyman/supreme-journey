@@ -119,15 +119,20 @@ export class DeckDOM extends DeckCreator {
                     this.Deck.removeLastCard();
                     const name = this.Deck.Name;
                     const cards = this.Deck.Cards;
+                    alert("Deck added!");
+
                     console.log("to deck globals");
                     DECK_GLOBALS.addDeck(name, cards);
                     this.clearCardOnDOM();
+                    window.location.href = "/";
                 } else {
                     const name = this.Deck.Name;
                     const cards = this.Deck.Cards;
+                    alert("Deck added!");
                     console.log("to deck globals.");
                     DECK_GLOBALS.addDeck(name, cards);
                     this.clearCardOnDOM();
+                    window.location.href = "/";
                 }
             }
         });

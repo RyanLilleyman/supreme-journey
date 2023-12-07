@@ -368,6 +368,7 @@ class Session {
             axios
                 .get("/fetch_front/" + string)
                 .then((response) => {
+                    console.log(response);
                     resolve(response.data);
                 })
                 .catch((error) => {
@@ -381,6 +382,7 @@ class Session {
             axios
                 .get("/fetch_back/" + string)
                 .then((response) => {
+                    console.log(response);
                     resolve(response.data);
                 })
                 .catch((error) => {
@@ -480,7 +482,7 @@ class Session {
                 .post("save-results", results)
                 .then((response) => {
                     console.log("response: ", response);
-                    window.location.href = response.data.url;
+                    // window.location.href = response.data.url;
                     resolve(response);
                 })
                 .catch((error) => console.log(error));

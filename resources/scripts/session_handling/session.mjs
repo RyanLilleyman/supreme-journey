@@ -506,6 +506,7 @@ class Session {
                     this.#url_array[this.#idx]
                 );
                 this.#idx++;
+                this.create_front_buttons();
                 this.next_front();
             },
             () => {},

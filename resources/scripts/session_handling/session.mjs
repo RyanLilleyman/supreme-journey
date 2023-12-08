@@ -473,7 +473,7 @@ class Session {
             axios
                 .post("save-results", results)
                 .then((response) => {
-                    // window.location.href = response.data.url;
+                    window.location.href = response.data.url;
                     resolve(response);
                 })
                 .catch((error) => console.log(error));

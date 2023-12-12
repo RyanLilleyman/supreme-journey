@@ -1,4 +1,6 @@
-import DECK_SERVICES from "../services/deckServices.mjs";
+/**
+ * I wrote this simple injection script.
+ */
 import { UtilityCenter } from "./utility.mjs";
 import SESSION from "../session_handling/session.mjs";
 // UtilityCenter.bindArrowStyleChange();

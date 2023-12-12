@@ -178,7 +178,7 @@ export class UtilityCenter {
     }
 
     /**
-     *
+     * I wrote this for the edit button.
      */
     static bindEdit() {
         let edit_button = document.querySelector(".edit-button");
@@ -239,10 +239,4 @@ export class UtilityCenter {
             catalog.appendChild(outer_div);
         }
     }
-
-    // <h4>Math Deck:</h4>
-    //         <div class="mathDeck">
-    //             <span class="front">4+5 = </span>
-    //             <span class="back">9</span>
-    //         </div>
 }

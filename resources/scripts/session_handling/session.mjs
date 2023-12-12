@@ -451,7 +451,7 @@ class Session {
     }
 
     /**
-     * This deletes the buttons from the viewport. It isn't used anywhere in the code.
+     * I wrote this method which deletes the buttons from the viewport. It isn't used anywhere in the code.
      */
     delete_buttons() {
         let flipandskip = document.querySelector(".flipAndSkip");
@@ -459,8 +459,8 @@ class Session {
     }
 
     /**
-     * This function checks the arrays.
-     * and returns them from the database.
+     * I wrote this method which is the starting point for fetching the url arrays from the database.
+     * It then uses the merge method to place them in a single url array.
      */
     grab_url_arrays_and_timers_then_merge_and_start_session() {
         document.addEventListener("DOMContentLoaded", () => {
@@ -485,6 +485,9 @@ class Session {
         });
     }
 
+    /**
+     * I wrote this to merge this.#front_url_array with this.#back_url_array.
+     */
     merge_url_array() {
         for (let i = 0; i < this.#back_url_array.length; i++) {
             let card = [];
@@ -495,6 +498,10 @@ class Session {
         this.session_main_loop();
     }
 
+    /**
+     * I wrote this asynchronous method to grab the statistics of the
+     * session and place them into the this.#results object.
+     */
     async grab_results() {
         this.#results.correct = this.#results.correct_array.length;
         this.#results.incorrect = this.#results.incorrect_array.length;
@@ -527,6 +534,10 @@ class Session {
         let rel = await this.results_request(results);
     }
 
+    /**
+     * I wrote this function to send the results to the server and place them into
+     * inside a newly created result.view.
+     */
     async results_request(results) {
         return new Promise((resolve, reject) => {
             axios
@@ -539,6 +550,12 @@ class Session {
         });
     }
 
+    /**
+     * I wrote this method to import the instantiate a new instance of the CountdownTimer
+     * and then set the various properties of the timer from the session setting. It handles
+     * all necessary timing events. It also displays the current round time and session time
+     * if the show boolean is truthy.
+     */
     session_main_loop() {
         this.#session_timer = new CountdownTimer(
             this.#session_time * 1000,
@@ -592,23 +609,6 @@ class Session {
         this.first_card();
         this.#session_timer.start_with_many_rounds();
         this.create_front_buttons();
-
-        // while (i < this.#url_array.length) {
-        //     let round_time = new CountdownTimer(
-        //         this.#round_time * 1000,
-        //         (round_time_left) => {
-        //             let roundTimeSpan = document.querySelector(".roundTime");
-        //             roundTimeSpan.innerHTML =
-        //                 Math.ceil(round_time_left / 1000) + " seconds";
-        //         },
-        //         () => {
-        //             console.log("round over!");
-        //             this.next_card();
-        //         }
-        //     );
-        //     round_time.start();
-        //     i++;
-        // }
     }
 }
 

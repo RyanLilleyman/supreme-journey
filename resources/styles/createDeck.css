@@ -329,6 +329,7 @@
   height: 100%;
 }
 
+/*[10] “CSS Gradient Generator,” CSS, https://www.joshwcomeau.com/gradient-generator/ (accessed Dec. 12, 2023). */
 .backEdge {
   background: linear-gradient(
     90deg,
@@ -357,7 +358,7 @@
     hsl(246deg 32% 25%) 100%
   );
 }
-
+/*[10] “CSS Gradient Generator,” CSS, https://www.joshwcomeau.com/gradient-generator/ (accessed Dec. 12, 2023). */
 .nextEdge {
     background-image: linear-gradient(
         90deg,
@@ -374,7 +375,7 @@
         hsl(180deg 96% 11%) 100%
       );
 }
-
+/*[10] “CSS Gradient Generator,” CSS, https://www.joshwcomeau.com/gradient-generator/ (accessed Dec. 12, 2023). */
 .previousEdge {
     background-image: linear-gradient(
         90deg,
@@ -391,7 +392,7 @@
         hsl(180deg 96% 11%) 100%
       );
 }
-
+/*[10] “CSS Gradient Generator,” CSS, https://www.joshwcomeau.com/gradient-generator/ (accessed Dec. 12, 2023). */
 .clearEdge {
   border: 0.5px solid black;
   background-image: linear-gradient(
@@ -409,7 +410,7 @@
     hsl(180deg 44% 41%) 100%
   );
 }
-
+/*[10] “CSS Gradient Generator,” CSS, https://www.joshwcomeau.com/gradient-generator/ (accessed Dec. 12, 2023). */
 .finishEdge {
   background-image: linear-gradient(
     90deg,

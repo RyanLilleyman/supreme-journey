@@ -5,6 +5,8 @@
     <title>References</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[7] “W3Schools online HTML editor,” W3Schools Tryit Editor, https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select (accessed Dec. 12, 2023).
+    I imported a modified image to make relevant flaticons for the webpage.-->
     <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png" />
@@ -82,45 +84,31 @@
                 2023).
             </li>
             <li>
-                Bodke, S. (n.d.).
-                <a href="https://codepen.io/sanketbodke/pen/LYyzzYb">Responsive Navigation Bar Design</a>. Retrieved
-                from CodePen.
+                [6] Responsive navbar (HTML and CSS) - codepen, <a
+                    href="https://codepen.io/sanketbodke/pen/LYyzzYb?anon=true&amp;view=pen">
+                    https://codepen.io/sanketbodke/pen/LYyzzYb?anon=true&amp;view=pen</a> (accessed Dec. 12, 2023).
             </li>
             <li>
-                W3Schools. (n.d.).
-                <a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover">Dropdown Menu
-                    Interaction</a>. Retrieved from W3Schools.
+                [7] “W3Schools online HTML editor,” W3Schools Tryit Editor,
+                <a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select">
+                    https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select</a> (accessed Dec. 12, 2023).
             </li>
             <li>
-                W3Schools. (n.d.).
-                <a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select">HTML Select Element
-                    Example</a>. Retrieved from W3Schools.
+                [8] “Free icons and stickers - millions of images to download,” Flaticon, <a
+                    href="https://www.flaticon.com/">https://www.flaticon.com/</a>
+                (accessed Dec. 12, 2023).
             </li>
             <li>
-                OpenAI. (n.d.).
-                <a href="https://chat.openai.com/">Chat GPT Interface for Color and Typography Suggestions</a>.
-                Retrieved from OpenAI.
+                [9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS,
+                <a
+                    href="https://www.joshwcomeau.com/animation/3d-button/">https://www.joshwcomeau.com/animation/3d-button/</a>
+                (accessed Dec. 12, 2023).
             </li>
             <li>
-                Morrison, C. (n.d.).
-                <a href="https://codepen.io/cveg2112/pen/waPxXy">Interactive Arrow Design</a>. Retrieved from CodePen.
-            </li>
-            <li>
-                Flaticon. (n.d.).
-                <a href="https://cdn-icons-png.flaticon.com/512/20/20679.png">Uparrow Image Icon</a>. Retrieved from
-                Flaticon.
-            </li>
-            <li>
-                Comeau, J. W. (n.d.).
-                <a href="https://www.joshwcomeau.com/animation/3d-button/">3D Button Animation Inspiration</a>.
-                Retrieved from Josh W Comeau's Blog.
-            </li>
-            <li>
-                Comeau, J. W. (n.d.).
-                <a href="https://www.joshwcomeau.com/gradient-generator/">
-                    All Linear Gradients Inspiration
-                </a>
-                . Retrieved from Josh W Comeau's Blog.
+                [10] “CSS Gradient Generator,” CSS, <a
+                    href="https://www.joshwcomeau.com/gradient-generator/">https://www.joshwcomeau.com/gradient-generator/</a>
+                (accessed Dec. 12,
+                2023).
             </li>
             <li>
                 Western Michigan University, (n.d.).

@@ -603,9 +603,6 @@ class Session {
                 this.grab_results();
             }
         );
-
-        this.#session_timer.test();
-
         this.first_card();
         this.#session_timer.start_with_many_rounds();
         this.create_front_buttons();

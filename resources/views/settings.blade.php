@@ -1,3 +1,4 @@
+<!--I wrote this as a test for the return of the settings content when entering into the actual session.-->
 <!DOCTYPE html>
 <html lang="en">
 

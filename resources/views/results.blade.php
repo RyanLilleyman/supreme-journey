@@ -5,7 +5,8 @@
     <title>Results</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <!--[7] “W3Schools online HTML editor,” W3Schools Tryit Editor, https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select (accessed Dec. 12, 2023).
+    I imported a modified image to make relevant flaticons for the webpage.-->
     <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png" />
@@ -81,6 +82,8 @@
                 </ol>
             </div> --}}
         </div>
+        <!--[1] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
+        I modified the class names and the relevant text content within the below buttons.-->
         <div class="flipAndSkip">
             <button type="submit" class="downloadButton">
                 <span class="downloadShadow"></span>

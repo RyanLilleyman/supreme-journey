@@ -1,13 +1,13 @@
 /**
- * I wrote these import statements to import the Deck and Card
- *  classes from the respective modules.
+ * I wrote these import statements for the Deck and Card
+ * classes.
  */
 import Deck from "./deck.mjs";
 import Card from "./card.mjs";
 
 /**
- *  I wrote this class as a super class which contains all the methods for creating and editing
- * cards within a deck
+ *  I wrote this superclass which contains all the methods for creating and editing
+ * cards within a new Deck().
  */
 export class DeckCreator {
     constructor() {
@@ -40,22 +40,23 @@ export class DeckCreator {
      * [2] “Codeium · Free AI Code Completion &amp; Chat.” Codeium · Free AI Code Completion &amp; Chat, codeium.com/.
      *
      * This method was initially implemented as getCurrentCard() and was
-     * refactored as for simplicity. It's use is meant to to access the current card in the deckArray.
+     * refactored for simplicity. Its use is to access the current card in the deckArray.
      */
     get Current() {
         return this.currentCard;
     }
 
     /**
-     * I wrote this class to set the current card.
+     * I wrote this method to set the current card.
      */
     setCurrent(card) {
         this.currentCard = card;
     }
 
     /**
-     * I wrote this class to set automatically add a default NEW card instance
-     * everytime the setBlank() method is called. It then adds the card to the the current deck instance being
+     * I wrote this method to automatically add a default blank NEW card
+     * everytime the setBlank() method is called.
+     * It then adds the card to the the current deck instance being
      * edited in the Deck Creator class.
      */
     setBlank(card = new Card()) {
@@ -64,8 +65,8 @@ export class DeckCreator {
     }
 
     /**
-     * I wrote this class to update the current card being viewed by the deck_dom subclass
-     * of the Deck Creator class to the current card accessed by the current Index.
+     * I wrote this method to update the current card being viewed by the deck_dom subclass
+     * to the current card accessed by the current Index.
      */
     updateCard() {
         this.currentCard = this.Deck.Cards[this.Index];
@@ -74,9 +75,10 @@ export class DeckCreator {
 
     /**
      * I wrote this method to first be callable from the deck_dom subclass by the next button.
-     * It acts as a callback which if and only if the current length of the interior cards array
+     * It acts as a callback if and only if the current length of the interior cards array minus one
      * is greater than the current index will then add one to the index and then update the current card.
-     * I deleted the Index console.log for the sake of performance and privacy.
+     * This ensures that the next 'view' only works when the number of cards is greater than one..
+     * I commented out the Index console.log for the sake of performance and privacy.
      */
     Next() {
         if (this.Deck.Cards.length - 1 > this.Index) {
@@ -88,7 +90,7 @@ export class DeckCreator {
 
     /**
      * I wrote the following method such that the previous button fires from the
-     * subclass deck_dom. It's designed to update the card if and only if the Index is greater than one.
+     * subclass deck_dom. It's designed to update the card if and only if the Index is greater than 0.
      * This then updates the card after decrementing the Index.
      */
     Previous() {
@@ -102,8 +104,8 @@ export class DeckCreator {
     /**
      * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
      *
-     * I wrote this method to bind the name field and then on any input change the current
-     * decks name from the event target's value. In a private conversation, it was suggested to me
+     * I wrote this method to bind the name field and then on any input event change the current
+     * deck's name from the event target's value. In a private conversation, it was suggested to me
      * to use the input option for the first argument within the addEventListener() method.
      */
     bindNameField() {
@@ -146,11 +148,10 @@ export class DeckCreator {
 
     /**
      * [3] JavaScript array methods, https://www.w3schools.com/js/js_array_methods.asp.
-     * This method was written following a search for the .shift and .splice methods.
-     * I wrote it to delete the current card either at the end of the Deck array or from anywhere within the array.
-     * It includes a check for the last card. If the current index is equal to the Cards array length - 1, then
-     * the program alerts that the last card cannot be deleted. Basically, there has to be at least one
-     * card in the deck in order to be deleted and cannot delete the current editable card.
+     * This method was written following a search for the .shift() and .splice() methods.
+     * I wrote this to delete the current card either at the end of the Deck array if and only if it exists.
+     * It includes a check for the first card and then shifts the array or if the index
+     * is between 0 and the lenght minus 1, then the card is spliced and the indices are shifted.
      */
     handleDelete() {
         if (this.Index == this.Deck.Cards.length - 1) {
@@ -174,22 +175,21 @@ export class DeckCreator {
     }
 
     /**
-     * I wrote this method to handle creation of the card. It alerts the user that the
-     * card was added to the deck and then sets the new current card to a new instance of a blank card.
-     * This effectively adds a new Card object with all its attributes and methods to the back of the Cards array.
-     * It updates the Index and then updates the card number on the DOM accordingly.
+     * I wrote this method to add the current card to the back of the cards array.
+     * It then sets the current card to a new blank instance of new Card().
+     * It increments the index and handles the card number on the dom.
      */
     handleCreation() {
         alert("Card added");
         this.setCurrent(this.setBlank());
         this.idx++;
         this.handleCardNumber();
-        console.log(this.idx);
-        console.log(this.Deck.Cards);
+        // console.log(this.idx);
+        // console.log(this.Deck.Cards);
     }
 
     /**
-     * I wrote this method to handle the image creattion for the current card if the blob is provided.
+     * I wrote this method to handle the image creation for the current card if the blob is provided.
      * Otherwise, it sets the current cards image to an empty string.
      */
     handleImageCreation(blob = "") {
@@ -198,7 +198,7 @@ export class DeckCreator {
 
     /**
      * I wrote this method to change the card number based on the
-     * current index plus one due to zero based indexing.
+     * current index plus one, due to zero based indexing.
      */
     handleCardNumber() {
         let element = document.querySelector(".cardNumber");

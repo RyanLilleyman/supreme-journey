@@ -1,8 +1,8 @@
 /**
  * I wrote this class to encapsulate the attributes of a standard flash card. The front contains
- * an object literal with two fields. The first field, entitled text, is designed for strings.
- * While the second field, called blob, is designed to indicate that images (Binary Large Objects).
- * The back contains a single field named text which is self explanatory.
+ * an object literal with two fields. The first field, entitled 'text', is designed for strings.
+ * While the second field, called blob, is designed for images (Binary Large Objects).
+ * The back contains a single field named 'text' which is self explanatory.
  */
 class Card {
     constructor(front = { text: "", blob: "" }, back = "") {
@@ -15,7 +15,7 @@ class Card {
      * Accessed 6 Oct, 2023.
      *
      * The following method was initially implemented as getFront() and was refactored to
-     * get Front based on the suggestions from Codieum.
+     * get Front() based on the suggestions from Codieum.
      */
     get Front() {
         return this.front;
@@ -33,7 +33,7 @@ class Card {
     }
 
     /**
-     * I wrote this method to set the front text field for the specific instance of this card.
+     * I wrote this method to set the front text field.
      */
     setFrontText(text) {
         this.front.text = text;
@@ -59,7 +59,7 @@ class Card {
 
     /**
      * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
-     * This method was suggested initially in a conversation to change the
+     * This method was suggested initially to change the
      * front and back attributes of the class into an object literal.
      * It isn't used in the application. I kept it in for transparency.
      */
@@ -69,6 +69,6 @@ class Card {
 }
 
 /**
- * I wrote this class to be compatible with ES6 module syntax
+ * I wrote this export statement to be compatible with ES6 module syntax
  */
 export default Card;

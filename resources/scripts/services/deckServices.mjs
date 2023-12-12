@@ -1,3 +1,8 @@
+/**
+ * [5] “Getting started,” Getting Started |&nbsp;Axios Docs, https://axios-http.com/docs/intro (accessed Dec. 11, 2023).
+ *
+ * I used axios to make necessary requests to my server.
+ */
 import axios from "axios";
 class DeckServices {
     constructor() {
@@ -5,6 +10,9 @@ class DeckServices {
         this.map = new Map();
     }
 
+    /**
+     * I wrote this method to ensure the class acted as a singleton.
+     */
     static getInstance() {
         if (!this.instance) {
             this.instance = new DeckServices();
@@ -12,24 +20,35 @@ class DeckServices {
         return this.instance;
     }
 
+    /**
+     * I wrote this funciton to incorporate the current env_uri
+     */
     setEnvUri(env_uri) {
         this.uri = env_uri;
     }
+    /**
+     * I wrote this function to return the current env_uri
+     */
     getEnvUri() {
         return this.env_uri;
     }
 
+    /**
+     * I wrote this function to grab the current map.
+     */
     getmap() {
         return this.map;
     }
 
+    /**
+     * I wrote this function to grab the current array of deck objects from the database.
+     */
     getDecks() {
         return new Promise((resolve, reject) => {
             axios
                 .get(this.uri)
                 .then((response) => {
                     const array = response.data;
-                    console.log("The Array is: ", array);
                     resolve(array);
                 })
                 .catch((error) => {
@@ -38,12 +57,14 @@ class DeckServices {
         });
     }
 
+    /**
+     * I wrote this function to post the decks to the database.
+     */
     postDecks(deck) {
         console.log(deck);
         axios
             .post(this.uri, deck)
             .then((response) => {
-                console.log("This is the response: ", response);
                 console.log(response.data);
             })
             .catch((error) => {
@@ -51,6 +72,9 @@ class DeckServices {
             });
     }
 
+    /**
+     * I wrote this function for put requests.
+     */
     putDecks() {
         axios
             .put(this.uri)
@@ -62,6 +86,9 @@ class DeckServices {
             });
     }
 
+    /**
+     * I wrote this function for patch requests.
+     */
     patchDecks() {
         axios
             .patch(this.uri)
@@ -73,6 +100,9 @@ class DeckServices {
             });
     }
 
+    /**
+     * I wrote thie function to delete decks by their uuid.
+     */
     deleteDeckById(deck_id) {
         console.log(this.uri + "/" + deck_id);
         axios
@@ -85,6 +115,9 @@ class DeckServices {
             });
     }
 
+    /**
+     * I wrote this function to get a deck by a specific uuid.
+     */
     async getDeckById(deck_id) {
         return new Promise((resolve, reject) => {
             axios
@@ -100,6 +133,12 @@ class DeckServices {
     }
 }
 
+/**
+ * I wrote the below assignment statement to instantiate the singleton.
+ */
 const DECK_SERVICES = DeckServices.getInstance();
 
+/**
+ * I exported the above constant.
+ */
 export default DECK_SERVICES;

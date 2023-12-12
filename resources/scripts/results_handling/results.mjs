@@ -1,3 +1,6 @@
+/**
+ * I wrote this class to
+ */
 class Results {
     constructor() {
         this.results = {
@@ -42,8 +45,6 @@ class Results {
                 document.querySelector(".cardsViewed span").innerText;
             this.results.number_of_cards_in_deck =
                 document.querySelector(".cardsInDeck span").innerText;
-
-            console.log(this.results);
         });
     }
 }

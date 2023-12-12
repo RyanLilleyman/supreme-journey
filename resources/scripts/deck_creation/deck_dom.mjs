@@ -1,5 +1,5 @@
 /**
- * I wrote this class to allow the below DECK_GLOBALS import granting access to various methods to the hash map within
+ * I wrote the import statements below to allow DeckDOM access to various methods to the hash map within
  * the DECK_GLOBALS module.
  *
  * The DeckCreator superclass is responsible for creating and manipulating the Deck.Cards array.
@@ -19,7 +19,7 @@ export class DeckDOM extends DeckCreator {
     }
 
     /**
-     * I wrote this method as an
+     * I wrote this method as a catchall for rendering the card on the DOM.
      */
     renderCard() {
         this.clearCardOnDOM();
@@ -28,6 +28,9 @@ export class DeckDOM extends DeckCreator {
         this.displayImage();
     }
 
+    /**
+     * I wrote this method to show the current cards front text string on the DOM.
+     */
     innerFrontTextArea() {
         const cards = this.Deck.Cards;
         const currentIndex = this.Index;
@@ -42,6 +45,9 @@ export class DeckDOM extends DeckCreator {
         return "";
     }
 
+    /**
+     * Same as above but for the back text area.
+     */
     innerBackTextArea() {
         const cards = this.Deck.Cards;
         const currentIndex = this.Index;
@@ -54,6 +60,10 @@ export class DeckDOM extends DeckCreator {
         return "";
     }
 
+    /**
+     * I wrote this method to act as a callback for clearing the front and back text areas.
+     * This method also removes the img child from the imdPoss div element if the img exists.
+     */
     clearCardOnDOM() {
         let imgPoss = document.querySelector("#imagePossible");
         let frontCardToClear = document.querySelector(".frontCardCreate");
@@ -67,6 +77,9 @@ export class DeckDOM extends DeckCreator {
         this.removeRemoveImgButton();
     }
 
+    /**
+     * I wrote this method to bind the clear button to the above callback and also to the handle clear callback.
+     */
     bindClear() {
         const clearButton = document.querySelector(".clearButton");
         clearButton?.addEventListener("click", () => {
@@ -76,7 +89,8 @@ export class DeckDOM extends DeckCreator {
     }
 
     /**
-     * bindPrevious
+     * I wrote this to bind the previous button element. It calls the Previous() method
+     * and then rerenders the card.
      */
     bindPrevious() {
         const previousButton = document.querySelector(".previousButton");
@@ -88,7 +102,8 @@ export class DeckDOM extends DeckCreator {
     }
 
     /**
-     * bindNext
+     * I wrote this to bind the next button and then call the Next() method. It also
+     * rerenders the card.
      */
     bindNext() {
         const nextButton = document.querySelector(".nextButton");
@@ -99,6 +114,10 @@ export class DeckDOM extends DeckCreator {
         return nextButton;
     }
 
+    /**
+     * I wrote this method to handle creation. It binds the button to the creation callback
+     * and then clears the card.
+     */
     bindCreate() {
         const createButton = document.querySelector(".createButton");
         createButton.addEventListener("click", () => {
@@ -108,16 +127,31 @@ export class DeckDOM extends DeckCreator {
         return createButton;
     }
 
+    /**
+     * I wrote this method to handle destruction of a card from the array.
+     * It completely destroys the card unlike the clear method which just erases the fields.
+     * It rerenders the card and handles the cardnumber.
+     */
     bindDestroy() {
         const destroyButton = document.querySelector(".destroyButton");
         destroyButton.addEventListener("click", () => {
             this.handleDelete();
             this.renderCard();
             this.handleCardNumber();
-            console.log(this.Deck.Cards);
         });
     }
 
+    /**
+     * I wrote this method to first check if the name exist. If not, alert the user.
+     * It has a variety of checks to make sure that the deck actually has a card added and
+     * also to check that if the last card is just a blank card. If the last card is blank,
+     * then it will remove the card from the deck array.
+     *
+     * The method then uses the DECK_GLOBALS.addDeck() with the name and cards as parameters
+     * to create a hash map where the key is the name and the cards array is the value.
+     * It then makes a get request to the server to change the view back to the index.blade.php
+     * or Route::get('/', funciton(){});
+     */
     bindFinish() {
         const finishButton = document.querySelector(".finishButton");
         finishButton.addEventListener("click", () => {
@@ -151,6 +185,11 @@ export class DeckDOM extends DeckCreator {
             }
         });
     }
+    /**
+     * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
+     * I needed a way to bind the shift + I key such that the bindFileInput() method was called.
+     * The e.shiftKey && e.key === 'I' was taken from a suggestion provided by chat gpt.
+     */
     bindIKey() {
         document.addEventListener("keydown", (e) => {
             if (e.shiftKey && e.key === "I") {
@@ -160,6 +199,9 @@ export class DeckDOM extends DeckCreator {
         });
     }
 
+    /**
+     * Same as above.
+     */
     bindEnterKey() {
         document.addEventListener("keydown", (e) => {
             if (e.shiftKey && e.key === "Enter") {
@@ -172,12 +214,19 @@ export class DeckDOM extends DeckCreator {
         });
     }
 
+    /**
+     * I wrote this method to handle deleting the image. It renders the card and then removes the
+     * remove image button or the x which deletes the image from the dom and the card.
+     */
     deleteImg() {
         this.handleDeleteImg();
         this.renderCard();
         this.removeRemoveImgButton();
     }
 
+    /**
+     * I wrote this method to handle displaying the remove image butotn.
+     */
     removeRemoveImgButton() {
         let removeImg = document.getElementById("removeImage");
         if (removeImg) {
@@ -185,6 +234,11 @@ export class DeckDOM extends DeckCreator {
         }
     }
 
+    /**
+     * I needed acute access to either remove or show the button. I wrote thie method to
+     * handle showing the remove image button or the x for an image. This function and the one above
+     * both dynamically allow me to control the display of the button depending on the user.
+     */
     showRemoveImgButton() {
         let removeImg = document.getElementById("removeImage");
         if (removeImg) {
@@ -195,8 +249,15 @@ export class DeckDOM extends DeckCreator {
         }
     }
 
+    /**
+     * I wrote this to handle showing the image depending on whether or not the image exists already
+     * inside the imagePossible div element. If an image is already present, remove it as the current child
+     * of the div element. Then create a new image element and
+     * if the current index has a blob to display (not an empty string),
+     * then create a blob url to display and show the remove image button. Append the new
+     * image element to the imagePossible div element.
+     */
     displayImage() {
-        console.log("first");
         const imagePossible = document.getElementById("imagePossible");
         const first_image = imagePossible.childNodes[0];
         if (first_image) {
@@ -213,23 +274,45 @@ export class DeckDOM extends DeckCreator {
         }
     }
 
+    /**
+     * I wrote this simply to check the file type.
+     * I needed a way to adjust the mime type of multiple image types
+     */
     detectMIMEType(file) {
         return file.type;
     }
 
+    /**
+     * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
+     * With the help of chat gpt, I modified this function to take an array buffer
+     * and it's associated mimetype upon showing the image.
+     */
     getBlob(arrayBuffer, mimeType) {
         const blob = new Blob([arrayBuffer], { type: mimeType });
-        console.log(blob);
         return blob;
     }
+
+    /**
+     * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
+     * Chat gpt provided the URL.createObjectURL() method.
+     */
     getBlobUrl(blob) {
         if (!blob) {
             return null;
         }
-        console.log(URL.createObjectURL(blob));
         return URL.createObjectURL(blob);
     }
 
+    /**
+     * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
+     * Chat gpt suggested that in order to open the default file explorer I use a div element
+     * and a simulated click on that div which would then wait (async function) for some file to be selected.
+     *
+     * I added included the mimetype detector and the getblob function from above and then
+     * if a url is truthy pass the blob to the Current.Front.Blob field.
+     *
+     * I added fileInput.value as to reset the value and fix any duplicate image renders.
+     */
     bindFileInput() {
         const fileInput = document.getElementById("fileInput");
         const openFileImage = document.getElementById("uploadImage");
@@ -258,6 +341,9 @@ export class DeckDOM extends DeckCreator {
         return fileInput;
     }
 
+    /**
+     * I wrote this method to inject the event listeners and relevant callbacks into the document upon loading.
+     */
     inject() {
         this.bindNameField();
         this.bindCardCreators();

@@ -1,9 +1,12 @@
 import axios from "axios";
 import DECK_SERVICES from "../services/deckServices.mjs";
+/**
+ * I wrote this class to export for general utility purposes.
+ */
 export class UtilityCenter {
     constructor() {}
     /**
-     * Binds a simple style change to the button element.
+     * I wrote this method to bind a simple style change to the button element.
      */
     static bindArrowStyleChange() {
         var button = document.querySelector(".generalInstructions button");
@@ -26,7 +29,7 @@ export class UtilityCenter {
     }
 
     /**
-     * Capitalizes the first letter of a string.
+     * I wrote this method which capitalizes the first letter of a string.
      *
      * @param {string} str - The string to capitalize the first letter of.
      * @return {string} The capitalized string.
@@ -36,7 +39,7 @@ export class UtilityCenter {
     }
 
     /**
-     * Sets the URI from the environment variable.
+     * I wrote this method which sets the URI from the environment variable.
      *
      * @param {type} paramName - description of parameter
      * @return {type} description of return value
@@ -53,6 +56,9 @@ export class UtilityCenter {
         DECK_SERVICES.addDeckSuffix();
     }
 
+    /**
+     * I wrote this method to get the uri from the database which accepts different routes.
+     */
     static get_uri_from_env() {
         axios
             .get("/get-env-variable")
@@ -64,7 +70,7 @@ export class UtilityCenter {
             });
     }
     /**
-     * Fills the deck with data from the DECK_SERVICES API.
+     * I wrote this method which fills the deck with data from the DECK_SERVICES API.
      *
      * @return {Promise<void>} A promise that resolves when the deck is filled.
      */
@@ -115,7 +121,7 @@ export class UtilityCenter {
     }
 
     /**
-     * Event handler for the delete action on the home page.
+     * I wrote this method to bind an event handler for the delete action on the home page.
      * This function is responsible for deleting selected decks.
      *
      * @param {type} paramName - description of parameter
@@ -128,7 +134,6 @@ export class UtilityCenter {
             for (let deck of decks_inputs) {
                 console.log(deck);
                 if (deck.checked) {
-                    console.log("Is checked: ", deck.id);
                     DECK_SERVICES.deleteDeckById(deck.id);
                 }
             }
@@ -137,7 +142,7 @@ export class UtilityCenter {
     }
 
     /**
-     * Binds the search functionality to the input field.
+     * I wrote this method which binds the search functionality to the input field.
      *
      * @param {Event} e - The input event.
      * @return {void}
@@ -162,10 +167,19 @@ export class UtilityCenter {
         });
     }
 
+    /**
+     * I wrote this function to fetch a deck by its inherent uuid.
+     *
+     * @param {*} deck_id
+     * @returns
+     */
     static async fett(deck_id) {
         return await DECK_SERVICES.getDeckById(deck_id);
     }
 
+    /**
+     *
+     */
     static bindEdit() {
         let edit_button = document.querySelector(".edit-button");
         edit_button.addEventListener("click", () => {
@@ -188,6 +202,9 @@ export class UtilityCenter {
         });
     }
 
+    /**
+     * I wrote this function to c
+     */
     static async fill_catolog() {
         let array = await DECK_SERVICES.getDecks();
 

@@ -142,7 +142,7 @@ export class DeckDOM extends DeckCreator {
     }
 
     /**
-     * I wrote this method to first check if the name exist. If not, alert the user.
+     * I wrote this method to first check if the name exists. If not, alert the user.
      * It has a variety of checks to make sure that the deck actually has a card added and
      * also to check that if the last card is just a blank card. If the last card is blank,
      * then it will remove the card from the deck array.
@@ -308,10 +308,10 @@ export class DeckDOM extends DeckCreator {
      * Chat gpt suggested that in order to open the default file explorer I use a div element
      * and a simulated click on that div which would then wait (async function) for some file to be selected.
      *
-     * I added included the mimetype detector and the getblob function from above and then
+     * I included the mimetype detector and the getblob function from above and then
      * if a url is truthy pass the blob to the Current.Front.Blob field.
      *
-     * I added fileInput.value as to reset the value and fix any duplicate image renders.
+     * I added fileInput.value = null as to reset the value and fix any duplicate image renders.
      */
     bindFileInput() {
         const fileInput = document.getElementById("fileInput");

@@ -1,8 +1,9 @@
 import axios from "axios";
-import easytimer from "easytimer.js";
-import { UtilityCenter } from "../utility/utility.mjs";
 import CountdownTimer from "./countDown.mjs";
 
+/**
+ * I wrote this class to handle session logic.
+ */
 class Session {
     #env_url;
     #front_url_array;
@@ -60,7 +61,7 @@ class Session {
     }
 
     /**
-     * Returns the singleton instance of the Session class.
+     * I wrote this method which returns the singleton instance of the Session class.
      *
      * @return {Session} The singleton instance of the Session class.
      */
@@ -72,7 +73,7 @@ class Session {
     }
 
     /**
-     * Set the parameters for starting a session.
+     * I wrote this method which sets the parameters for starting a session.
      *
      * @param {type} deck_id - the ID of the deck
      * @param {type} front_url_array - an array of front URLs
@@ -83,6 +84,12 @@ class Session {
         this.#session_url = this.get_session_url_from_deck_id(this.#deck_id);
     }
 
+    /**
+     * I wrote this method which binds session and round spans to their respective toggle containers.
+     *
+     * @param {type} paramName - description of parameter
+     * @return {type} description of return value
+     */
     bind_session_and_round_spans() {
         let session_Time_Toggle_Container =
             document.querySelector(".toggleSessionTime");
@@ -126,7 +133,7 @@ class Session {
     }
 
     /**
-     * Asynchronously retrieves the session URL from a given deck ID.
+     * I wrote this method asynchronously retrieves the session URL from a given deck ID.
      *
      * @param {type} deck_id - The ID of the deck.
      * @return {type} The result of the session URL retrieval.
@@ -136,7 +143,7 @@ class Session {
     }
 
     /**
-     * Retrieves a request for the specified deck ID.
+     * I wrote this method which retrieves a request for the specified deck ID.
      *
      * @param {type} deck_id - The ID of the deck to retrieve the request for.
      * @return {Promise} A promise that resolves to the URL of the request.
@@ -161,7 +168,7 @@ class Session {
     }
 
     /**
-     * Binds event listeners and sets up session settings for rendering.
+     * I wrote thie method which binds event listeners and sets up session settings for rendering.
      *
      * @param {type} paramName - description of parameter
      * @return {type} description of return value
@@ -183,7 +190,10 @@ class Session {
             };
 
             /**
-             * Binds a listener to an element specified by the selector.
+             * [2] Codeium · Free AI Code Completion &amp; Chat, codeium.com/.
+             *
+             * This method originally bound every listener to the above property of the
+             * session settings object. It was refactored for simplicity.
              *
              * @param {string} selector - The CSS selector of the element.
              * @param {string} property - The name of the property to be updated in the session settings.
@@ -236,6 +246,11 @@ class Session {
         });
     }
 
+    /**
+     * I wrote this method which creates front buttons for the UI.
+     *
+     * @return {void}
+     */
     create_front_buttons() {
         this.delete_buttons();
         let flipandskip = document.querySelector(".flipAndSkip");
@@ -257,6 +272,9 @@ class Session {
         this.bind_front_buttons();
     }
 
+    /**
+     * I wrote this method which create back buttons for the UI.
+     */
     create_back_buttons() {
         this.delete_buttons();
         let flipandskip = document.querySelector(".flipAndSkip");
@@ -277,6 +295,16 @@ class Session {
         this.bind_back_buttons();
     }
 
+    /**
+     * I wrote this method to handle the below functinality.
+     * Binds event listeners to the front buttons.
+     *
+     * The click event on the "skip" button adds the current URL to the "skipped_array_manual" array, increments the
+     * index, calls the "next_front" function, and resets the round timer if applicable. It then creates the front
+     * buttons.
+     *
+     * The click event on the "flip" button calls the "next_back" function and creates the back buttons.
+     */
     bind_front_buttons() {
         let skip = document.querySelector(".skipButton");
         skip.addEventListener("click", () => {
@@ -303,6 +331,16 @@ class Session {
         });
     }
 
+    /**
+     * I wrote this method to bind different callbacks to the incorrect and correct buttons.
+     *
+     * The click event for the incorrect button pushes the current url onto the incorrect
+     * array. It then increments the index, renders the next front, resets the round timer,
+     * and then create the front buttons again.
+     *
+     * The click event for the correct button does the same thing
+     * but with the correct array.
+     */
     bind_back_buttons() {
         let incorrect = document.querySelector(".incorrectButton");
         incorrect.addEventListener("click", () => {
@@ -336,11 +374,18 @@ class Session {
         });
     }
 
+    /**
+     * I wrote this asynchronous method to return the first cards front uuid
+     * It generated the first card upon loading.
+     */
     async first_card() {
         let string = await this.get_next_front(this.#url_array[0][0].id);
         this.create_front_of_card(string);
     }
 
+    /**
+     * I wrote this asynchronous method to return the next front card from the url array.
+     */
     async next_front() {
         if (this.#idx > this.#url_array.length - 1) {
             return;
@@ -353,11 +398,18 @@ class Session {
         this.create_front_of_card(string);
     }
 
+    /**
+     * I wrote this method to grab the next back_card.html from the server with the
+     * back url.
+     */
     async next_back() {
         let string = await this.get_next_back(this.#url_array[this.#idx][1].id);
         this.create_front_of_card(string);
     }
 
+    /**
+     * I wrote this method to grab the next front_card from the url string.
+     */
     async get_next_front(string) {
         return new Promise((resolve, reject) => {
             axios
@@ -372,6 +424,9 @@ class Session {
         });
     }
 
+    /**
+     * Same as above.
+     */
     async get_next_back(string) {
         return new Promise((resolve, reject) => {
             axios
@@ -386,11 +441,18 @@ class Session {
         });
     }
 
+    /**
+     * I wrote this method to create the front of the card. It actively renders the
+     * content with the input html string.
+     */
     create_front_of_card(string) {
         let front_of_card = document.querySelector(".frontOfCard");
         front_of_card.innerHTML = string;
     }
 
+    /**
+     * This deletes the buttons from the viewport. It isn't used anywhere in the code.
+     */
     delete_buttons() {
         let flipandskip = document.querySelector(".flipAndSkip");
         flipandskip.innerHTML = "";
@@ -399,9 +461,6 @@ class Session {
     /**
      * This function checks the arrays.
      * and returns them from the database.
-     *
-     * @param {} - No parameters.
-     * @return {} - No return value.
      */
     grab_url_arrays_and_timers_then_merge_and_start_session() {
         document.addEventListener("DOMContentLoaded", () => {

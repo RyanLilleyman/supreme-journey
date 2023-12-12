@@ -108,7 +108,7 @@ class CountdownTimer {
      * I wrote this callback whih starts the round timer.
      * If the this.roundTime is truthy, it sets the this.roundEndTime to
      * the current time (performance.now()) plus the current roundTime in ms.
-     * The round time id is then set to change at an interval of 10 every 10ms and then
+     * The round time id is then set to change at an interval of 10ms as
      * the roundTick callback is called implicitly within the arrow function.
      */
     start_round_timer() {
@@ -127,7 +127,7 @@ class CountdownTimer {
     }
 
     /**
-     * I wrote this method to stop the current round manuually by setting the clearing
+     * I wrote this method to stop the current round by clearing
      * the timer id and then setting it to null.
      */
     stop_current_round() {
@@ -136,7 +136,7 @@ class CountdownTimer {
     }
 
     /**
-     * I wrote this method ot to start many rounds that have concurrent round starts.
+     * I wrote this method to to start many rounds that have concurrent round starts.
      * It includes an onStart callback.
      */
     start_with_many_rounds() {
@@ -172,7 +172,6 @@ class CountdownTimer {
      * or if the remaining round is less than or equal zero.
      * If so, then the roundTime interval is cleared ot and is restarted immediately.
      * Otherwise, it passes the remaining round time to the onRoundTick callback.
-     *
      */
     roundTick() {
         this.remainingRound = this.roundEndTime - performance.now();

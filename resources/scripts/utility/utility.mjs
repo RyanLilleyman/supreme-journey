@@ -1,7 +1,7 @@
 import axios from "axios";
 import DECK_SERVICES from "../services/deckServices.mjs";
 /**
- * I wrote this class to export for general utility purposes.
+ * I wrote this class for general utility purposes.
  */
 export class UtilityCenter {
     constructor() {}

@@ -1,5 +1,16 @@
+/**
+ * I wrote this class to allow the below DECK_GLOBALS import granting access to various methods to the hash map within
+ * the DECK_GLOBALS module.
+ *
+ * The DeckCreator superclass is responsible for creating and manipulating the Deck.Cards array.
+ */
 import DECK_GLOBALS from "../global/globalDecks.mjs";
 import { DeckCreator } from "./deck_creator.mjs";
+
+/**
+ * I wrote the below sub class as an exportable class, following ES6 conventions, that
+ * manipulates the DOM elements on the page and binds callbacks to their respective events.
+ */
 export class DeckDOM extends DeckCreator {
     constructor() {
         super();
@@ -7,6 +18,9 @@ export class DeckDOM extends DeckCreator {
         this.inject();
     }
 
+    /**
+     * I wrote this method as an
+     */
     renderCard() {
         this.clearCardOnDOM();
         this.innerBackTextArea();

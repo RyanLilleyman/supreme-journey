@@ -612,5 +612,8 @@ class Session {
     }
 }
 
+/**
+ * I wrote the below assignment statement to generate a SESSION singleton.
+ */
 const SESSION = Session.getInstance();
 export default SESSION;

@@ -11,7 +11,7 @@ class Card {
     }
 
     /**
-     * [2] “Codeium · Free AI Code Completion &amp; Chat.” Codeium · Free AI Code Completion &amp; Chat, codeium.com/.
+     * [2] Codeium · Free AI Code Completion &amp; Chat, codeium.com/.
      * Accessed 6 Oct, 2023.
      *
      * The following method was initially implemented as getFront() and was refactored to
@@ -22,7 +22,7 @@ class Card {
     }
 
     /**
-     * [2] “Codeium · Free AI Code Completion &amp; Chat.” Codeium · Free AI Code Completion &amp; Chat, codeium.com/.
+     * [2] Codeium · Free AI Code Completion &amp; Chat, codeium.com/.
      * Accessed 6 Oct, 2023.
      *
      * The following methd was initially implemented as getBack() and refactored to get Back()

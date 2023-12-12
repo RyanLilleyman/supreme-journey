@@ -180,13 +180,7 @@
 .backCardCreate{
     height:17rem;
 }
-/* .deckSettings {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  min-width: 10rem;
-  max-width: 11rem;
-} */
+
 
 .deckSettings div {
   font-size: 1.05rem;

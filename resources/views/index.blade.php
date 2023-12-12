@@ -19,9 +19,10 @@
 </head>
 
 <body>
-    <nav class="navbar"> <!--The main structure of this nav bar came from https://codepen.io/sanketbodke/pen/LYyzzYb
-    --?> <!--I added classes to the list items below, added a new name for the webapp inside the h1 tag, and added a
-    custom image for the branding.-->
+    <nav class="navbar">
+        <!-- [6] Responsive navbar (HTML and CSS) - codepen, https://codepen.io/sanketbodke/pen/LYyzzYb?anon=true&amp;view=pen (accessed Dec. 12, 2023).
+        I note where modifications were made to the navbar styling and overall structure.
+        -->
         <div class="navbar-container container"> <input type="checkbox" name="" id="" />
             <div class="hamburger-lines">
                 <span id="line1" class="line line1"></span>

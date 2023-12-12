@@ -19,7 +19,9 @@
 
 <body>
     <nav class="navbar">
-        <!--The main structure of this nav bar came from https://codepen.io/sanketbodke/pen/LYyzzYb -->
+        <!-- [6] Responsive navbar (HTML and CSS) - codepen, https://codepen.io/sanketbodke/pen/LYyzzYb?anon=true&amp;view=pen (accessed Dec. 12, 2023).
+        I note where modifications were made to the navbar styling and overall structure.
+        -->
         <div class="navbar-container container">
             <input type="checkbox" name="" id="" />
             <div class="hamburger-lines">
@@ -53,6 +55,32 @@
         {{-- <h1 class="referenceHeader">References List</h1> --}}
         <h1></h1>
         <ul>
+            <li>
+                [1] “Chatgpt,” ChatGPT, <a href="https://openai.com/chatgpt">https://openai.com/chatgpt</a> (accessed
+                Dec. 12, 2023).
+            </li>
+            <li>
+                [2] Codeium · Free AI Code Completion &amp; Chat, <a
+                    href="https://codeium.com/">https://codeium.com/</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [3] JavaScript array methods, <a
+                    href="https://www.w3schools.com/js/js_array_methods.asp">https://www.w3schools.com/js/js_array_methods.asp</a>
+                (accessed Dec. 11, 2023).
+            </li>
+            <li>
+                [4] MozDevNet, “Using FormData objects - web apis: MDN,” MDN Web Docs, <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects">
+                    https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects</a>
+                (accessed
+                Dec. 11, 2023).
+            </li>
+            <li>
+                [5] “Getting started,” Getting Started |&nbsp;Axios Docs, <a
+                    href="https://axios-http.com/docs/intro">https://axios-http.com/docs/intro</a> (accessed Dec. 11,
+                2023).
+            </li>
             <li>
                 Bodke, S. (n.d.).
                 <a href="https://codepen.io/sanketbodke/pen/LYyzzYb">Responsive Navigation Bar Design</a>. Retrieved

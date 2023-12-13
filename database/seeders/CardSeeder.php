@@ -25,7 +25,7 @@ class CardSeeder extends Seeder
         $deck_count = rand(10,15);
         $decks = Deck::factory()->count($deck_count)->create();
         $decks->each(function ($deck) {
-            $cardCount = rand(10, 30);
+            $cardCount = rand(10, 20);
             Card::factory()->count($cardCount)->create(['deck_id' => $deck->id]);
         });
     }

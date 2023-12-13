@@ -19,6 +19,12 @@ use App\Http\Controllers\FileFromStorage;
 |
 */
 
+/**
+ * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
+ * [12] “The PHP framework for web artisans,” Laravel, https://laravel.com/docs/10.x/routing#route-parameters (accessed
+ * Dec. 12, 2023).
+ * All relevant below syntax for routing comes from the above documentation.
+ */
 // General routes
 Route::get('/', function(){
     Fession::delete_session_files();
@@ -32,7 +38,6 @@ Route::view('/results', 'results');
 Route::view('/references', 'references');
 Route::view('/about', 'about');
 
-//
 // Route::get('/',[Fession::class,'delete_session_files']);
 
 // Deck Route handler

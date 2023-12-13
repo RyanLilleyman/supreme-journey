@@ -1,6 +1,7 @@
 /*chat gpt for reference typography suggestions*/
 .references {
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin: 1rem;
 }
@@ -17,14 +18,52 @@
   list-style-type: none;
   padding-left: 0;
   display: flex;
+  gap:1rem;
+  /* max-height:500px; */
+  /* overflow-y:auto; */
   flex-direction: column;
-  gap: 1rem;
+  word-wrap: break-word;
   background-color: #ffffff;
   border-radius: 0.5rem;
   border: 1px solid #004477;
   box-shadow: 2px 2px 0px 0px #004477;
   padding: 2rem 2rem;
 }
+
+/* .references ul::-webkit-scrollbar {
+    width: 12px;
+}
+
+.references ul::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+
+}
+
+.references ul::-webkit-scrollbar-thumb {
+    background: #004477;
+    border:0.5px solid #fff;
+    border-radius: 10px;
+}
+
+.references ul::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    cursor:pointer;
+
+}
+
+.references ul::-webkit-scrollbar-thumb:active {
+    background: #444;
+    cursor:pointer;
+
+} */
+
+
+
+
+
+
+
 .references li {
   margin-bottom: 20px;
   padding-left: 1.5rem;

@@ -54,8 +54,7 @@
 
     <!-- references -->
     <main class="references">
-        {{-- <h1 class="referenceHeader">References List</h1> --}}
-        <h1></h1>
+        <h1 class="referenceHeader">References List</h1>
         <ul>
             <li>
                 [1] “Chatgpt,” ChatGPT, <a href="https://openai.com/chatgpt">https://openai.com/chatgpt</a> (accessed
@@ -111,11 +110,72 @@
                 2023).
             </li>
             <li>
-                Western Michigan University, (n.d.).
+                [11] “Hugo Curiel,” Western Michigan University, <a
+                    href="https://wmich.edu/psychology/directory/curiel-0#:~:text=and%20intellectual%20disabilities.-,Dr.,preference%20and%20reinforcer%20assessment%20procedures.">https://wmich.edu/psychologydirectory/curiel-0#:~:text=and%20intellectual%20disabilities.-,Dr.,preference%20and%20reinforcer%20assessment%20procedures.</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [12] “The PHP framework for web artisans,” Laravel, <a
+                    href="https://laravel.com/docs/10.x/routing#route-parameters">https://laravel.com/docs/10.x/routing#route-parameters</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [13] “File Storage,” Laravel, <a
+                    href="https://laravel.com/docs/10.x/filesystem#automatic-streaming">https://laravel.com/docs/10.x/filesystem#automatic-streaming</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [14] “Delete A Directory,” Laravel, <a
+                    href="https://laravel.com/docs/10.x/filesystem#delete-a-directory">https://laravel.com/docs/10.x/filesystem#delete-a-directory</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [15] “Get All Files Within A Directory,” Laravel,
                 <a
-                    href="https://wmich.edu/psychology/directory/curiel-0#:~:text=and%20intellectual%20disabilities.-,Dr.,preference%20and%20reinforcer%20assessment%20procedures.">For
-                    information on Dr. Curiel.</a>
-                . Retreived from WMU's contact page.
+                    href="https://laravel.com/docs/10.x/filesystem#get-all-files-within-a-directory">https://laravel.com/docs/10.x/filesystem#get-all-files-within-a-directory</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [16] “Deleting An Existing Model By Its Primary Key,” Laravel,
+                <a
+                    href="https://laravel.com/docs/10.x/eloquent#deleting-an-existing-model-by-its-primary-key">https://laravel.com/docs/10.x/eloquent#deleting-an-existing-model-by-its-primary-key</a>
+                (accessed Dec. 12,
+                2023).
+            </li>
+            <li>
+                [17] “Nested View Directories,” Laravel, <a
+                    href="https://laravel.com/docs/10.x/views#nested-view-directories">https://laravel.com/docs/10.x/views#nested-view-directories</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [18] “Eager Loading Multiple Relationships,” Laravel,
+                <a
+                    href="https://laravel.com/docs/10.x/eloquent-relationships#eager-loading-multiple-relationships">https://laravel.com/docs/10.x/eloquent-relationships#eager-loading-multiple-relationships</a>
+                (accessed Dec.
+                12, 2023).
+            </li>
+            <li>
+                [19] “Retrieving An Input Value,” Laravel,
+                <a
+                    href="https://laravel.com/docs/10.x/requests#retrieving-an-input-value">https://laravel.com/docs/10.x/requests#retrieving-an-input-value</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [20] “The create Method,” Laravel,
+                <a
+                    href="https://laravel.com/docs/10.x/eloquent-relationships#the-create-method">https://laravel.com/docs/10.x/eloquent-relationships#the-create-method</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [21] “Single Action Controllers,” Laravel,
+                <a
+                    href="https://laravel.com/docs/10.x/controllers#single-action-controllers">https://laravel.com/docs/10.x/controllers#single-action-controllers</a>
+                (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [22] “env(),” Laravel, <a
+                    href="https://laravel.com/docs/10.x/helpers#method-env">https://laravel.com/docs/10.x/helpers#method-env</a>
+                (accessed Dec. 12, 2023).
             </li>
         </ul>
     </main>

@@ -17,6 +17,11 @@
   border: 1px solid #004477;
   box-shadow: 2px 2px 0px 0px #004477;
 }
+
+.aboutCuriel h4{
+    margin-top:0;
+}
+
 .aboutApplication {
   margin-bottom: 1rem;
 }

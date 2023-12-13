@@ -45,7 +45,6 @@ class Card {
      */
     setFrontImage(blob = "") {
         this.front.blob = blob;
-        console.log(this.front.blob);
         return this.front.image;
     }
 

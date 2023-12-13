@@ -228,8 +228,9 @@
                                 <option value="300">300 sec.</option>
                             </select>
                         </span>
-                        <span class = 'Session_Holder_Span'>Time Per Card/Item
+                        <span class = 'Session_Holder_Span'>Time Round Time:
                             <select class="timePerRoundSelect" name="seconds">
+                                <option value="0">No Timer</option>
                                 <option value="5">5 sec.</option>
                                 <option value="6">6 sec.</option>
                                 <option value="7">7 sec.</option>

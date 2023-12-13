@@ -65,7 +65,8 @@ class DeckServices {
         axios
             .post(this.uri, deck)
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
+                return response;
             })
             .catch((error) => {
                 console.log(error);
@@ -79,7 +80,8 @@ class DeckServices {
         axios
             .put(this.uri)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
+                return response;
             })
             .catch((error) => {
                 console.log(error);
@@ -93,7 +95,8 @@ class DeckServices {
         axios
             .patch(this.uri)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
+                return response;
             })
             .catch((error) => {
                 console.log(error);
@@ -108,7 +111,8 @@ class DeckServices {
         axios
             .delete(this.uri + "/" + deck_id)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
+                return response;
             })
             .catch((error) => {
                 console.log(error);
@@ -123,7 +127,7 @@ class DeckServices {
             axios
                 .get(this.uri + "/" + deck_id)
                 .then((r) => {
-                    console.log(r);
+                    // console.log(r);
                     resolve(r);
                 })
                 .catch((e) => {

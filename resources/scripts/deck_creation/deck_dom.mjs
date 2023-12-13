@@ -168,8 +168,6 @@ export class DeckDOM extends DeckCreator {
                     const name = this.Deck.Name;
                     const cards = this.Deck.Cards;
                     alert("Deck added!");
-
-                    console.log("to deck globals");
                     DECK_GLOBALS.addDeck(name, cards);
                     this.clearCardOnDOM();
                     window.location.href = "/";
@@ -177,7 +175,6 @@ export class DeckDOM extends DeckCreator {
                     const name = this.Deck.Name;
                     const cards = this.Deck.Cards;
                     alert("Deck added!");
-                    console.log("to deck globals.");
                     DECK_GLOBALS.addDeck(name, cards);
                     this.clearCardOnDOM();
                     window.location.href = "/";
@@ -193,7 +190,6 @@ export class DeckDOM extends DeckCreator {
     bindIKey() {
         document.addEventListener("keydown", (e) => {
             if (e.shiftKey && e.key === "I") {
-                console.log("I pressed");
                 this.bindFileInput();
             }
         });

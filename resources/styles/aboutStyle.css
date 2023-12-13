@@ -47,6 +47,7 @@
 .educationContainer {
   display: flex;
   justify-content: space-between;
+  max-height:240px;
 }
 .imageContainer {
   width: 12rem;

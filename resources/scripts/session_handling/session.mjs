@@ -117,14 +117,18 @@ class Session {
         });
 
         round_Time_Span.addEventListener("click", (event) => {
-            if (round_Time_Span.className == "togglerBoxOFF") {
-                round_Time_Span.className = "togglerBoxON";
-                round_Time_Span.textContent = "ON";
-                this.#session_settings.showRoundTimer = true;
+            if (this.#session_settings.roundTimer > 0) {
+                if (round_Time_Span.className == "togglerBoxOFF") {
+                    round_Time_Span.className = "togglerBoxON";
+                    round_Time_Span.textContent = "ON";
+                    this.#session_settings.showRoundTimer = true;
+                } else {
+                    round_Time_Span.className = "togglerBoxOFF";
+                    round_Time_Span.textContent = "OFF";
+                    this.#session_settings.showRoundTimer = false;
+                }
             } else {
-                round_Time_Span.className = "togglerBoxOFF";
-                round_Time_Span.textContent = "OFF";
-                this.#session_settings.showRoundTimer = false;
+                alert("Please select a round time.");
             }
         });
 
@@ -158,7 +162,7 @@ class Session {
                 })
                 .then((response) => {
                     window.location.href = response.data.url;
-                    console.log(response);
+                    // console.log(response);
                     resolve(response);
                 })
                 .catch((error) => {
@@ -415,7 +419,7 @@ class Session {
             axios
                 .get("/fetch_front/" + string)
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     resolve(response.data);
                 })
                 .catch((error) => {
@@ -432,7 +436,6 @@ class Session {
             axios
                 .get("/fetch_back/" + string)
                 .then((response) => {
-                    console.log(response);
                     resolve(response.data);
                 })
                 .catch((error) => {
@@ -467,7 +470,6 @@ class Session {
             axios
                 .get("/fetch_arrays")
                 .then((response) => {
-                    console.log(response);
                     this.#back_url_array = response.data.backs;
                     this.#front_url_array = response.data.fronts;
                     this.#session_time = response.data.session_timer;
@@ -495,7 +497,12 @@ class Session {
             card.push(this.#back_url_array[i]);
             this.#url_array.push(card);
         }
-        this.session_main_loop();
+
+        if (this.#round_time) {
+            this.session_main_loop();
+        } else {
+            this.session_no_round_main_loop();
+        }
     }
 
     /**
@@ -551,7 +558,7 @@ class Session {
     }
 
     /**
-     * I wrote this method to import the instantiate a new instance of the CountdownTimer
+     * I wrote this method to instantiate a new instance of the CountdownTimer
      * and then set the various properties of the timer from the session setting. It handles
      * all necessary timing events. It also displays the current round time and session time
      * if the show boolean is truthy.
@@ -576,7 +583,6 @@ class Session {
                     }
                 }
             },
-
             () => {
                 this.#results.skipped_array_latency.push(
                     this.#url_array[this.#idx]
@@ -605,6 +611,37 @@ class Session {
         );
         this.first_card();
         this.#session_timer.start_with_many_rounds();
+        this.create_front_buttons();
+    }
+    /**
+     * This method is for no round time.
+     */
+    session_no_round_main_loop() {
+        this.#session_timer = new CountdownTimer(
+            this.#session_time * 1000,
+            0,
+            () => {},
+            () => {},
+            () => {},
+            (timeLeft) => {
+                if (this.#session_settings.showSessionTimer) {
+                    let sessionTimeSpan = document.querySelector(".totalTime");
+                    sessionTimeSpan.innerHTML =
+                        "<span>Session: " +
+                        Math.trunc(timeLeft / 1000) +
+                        " seconds</span>";
+                }
+                if (this.#idx == this.#url_array.length) {
+                    this.#session_timer.stop();
+                    this.grab_results();
+                }
+            },
+            () => {
+                this.grab_results();
+            }
+        );
+        this.first_card();
+        this.#session_timer.start_just_total_timer();
         this.create_front_buttons();
     }
 }

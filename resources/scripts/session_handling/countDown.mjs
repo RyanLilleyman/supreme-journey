@@ -52,7 +52,6 @@ class CountdownTimer {
      * @param {number} duration
      */
     set_duration(duration) {
-        console.log("set duration");
         this.duration = duration;
     }
 

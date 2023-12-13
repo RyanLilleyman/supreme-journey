@@ -11,6 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
+        /**
+         * I wrote this method to migrate the front content of a session to the database.
+         */
         Schema::create('fronts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sess_id');

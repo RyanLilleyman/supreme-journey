@@ -17,11 +17,22 @@ class Fession extends Controller
 {
     public function show_settings(Request $request)
     {
+        /**
+         * [1] “Retrieving Input From The Query String,” Laravel, https://laravel.com/docs/10.x/requests#retrieving-input-from-the-query-string (accessed Dec. 12, 2023).
+         * The below query() method pulls the deck uuid from the request query string.
+         */
         $deck_id = $request->query('deck');
+        /**
+         * I wrote this to eager load the deck based on the uuid.
+         */
         $deck = Deck::with('cards')->find($deck_id);
         $this->delete_session_files();
 
         if($deck){
+            /**
+             * [24] “shuffle(),” Laravel, https://laravel.com/docs/10.x/collections#method-shuffle (accessed Dec. 12, 2023).
+             * The below shuffle() method shuffles the deck cards and then creates an associative array with toArray()
+             */
             $shuffledCardsArray = $deck->cards->shuffle()->toArray();
         }
 
@@ -29,6 +40,11 @@ class Fession extends Controller
         $front_urls = array();
         $back_urls = array();
 
+        /**
+         * [25] “Creating &amp; Rendering Views,” Laravel, https://laravel.com/docs/10.x/views#creating-and-rendering-views (accessed Dec. 12, 2023).
+         * The following make method creates a new view and injects the keys  into the similar named
+         * variables within the access identifier of the blade.php file. It then renders the html...
+         */
         $session_view =  View::make('front_session', [
             'deck'=>$deck_id,
             'card_color'=>$request->query('cardColor'),
@@ -38,6 +54,10 @@ class Fession extends Controller
             'font_color'=>$request->query('fontColor'),
             ])->render();
 
+        /**
+         * [26] “Storing Files,” Laravel, https://laravel.com/docs/10.x/filesystem#storing-files (accessed Dec. 12, 2023).
+         * The below method puts the newly created session view into the local file system.
+         */
         Storage::put('cardsView/'.$deck_id.'.html', $session_view);
         $showSessionTimer = $request->query('showSessionTimer');
         $showSessionTimer = $showSessionTimer == 'true' ? 1 : 0;
@@ -85,6 +105,9 @@ class Fession extends Controller
     }
 
     public static function delete_session_files(){
+        /**
+         * [27] “Get All Files Within A Directory,” Laravel, https://laravel.com/docs/10.x/filesystem#get-all-files-within-a-directory (accessed Dec. 12, 2023).
+         */
         $cardViews = Storage::files('cardsView');
         foreach($cardViews as $cardView){
             Storage::delete($cardView);
@@ -106,11 +129,6 @@ class Fession extends Controller
         }
 
     }
-
-    // public function show_session($id){
-    //     $viewContent = Storage::get("cardsView/{$id}.html");
-    //     return response($viewContent)->header('Content-Type', 'text/html');
-    // }
 
     public function generate_session_url(Request $request){
         $session_id = $request->query('deck_id');

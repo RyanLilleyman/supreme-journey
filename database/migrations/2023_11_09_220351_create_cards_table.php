@@ -11,6 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
+        /**
+         * I wrote thie method to migrate the cards to the database
+         */
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->uuid('deck_id');

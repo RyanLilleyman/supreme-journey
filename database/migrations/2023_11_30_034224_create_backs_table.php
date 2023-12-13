@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        /**
+         * I wrote this method to migrate the back content of the cards and of the current session
+         *  to the database.
+         */
         Schema::create('backs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sess_id');

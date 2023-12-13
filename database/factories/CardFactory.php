@@ -11,7 +11,9 @@ use App\Models\Deck;
 class CardFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
+     * I wrote this with the help of chat gpt to configure the faker library correctly and set up the
+     * fake uuids and paragraphs.
      *
      * @return array<string, mixed>
      */

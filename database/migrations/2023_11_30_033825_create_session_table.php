@@ -11,6 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
+        /**
+         * I wrote this method to migrate the session settings to the database
+         */
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
             $table->string('session_url');

@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class FileFromStorage extends Controller
 {
+    /**
+     * I wrote this method to grab the session view based on the deck uuid from the
+     * server file system.
+     */
     public function show($id){
         $file_content = Storage::get("cardsView/{$id}.html");
         $mime_type = Storage::mimeType("cardsView/{$id}.html");
@@ -17,12 +21,13 @@ class FileFromStorage extends Controller
             'Content-Type' => $mime_type,
             'Content-Disposition' => "inline; filename={$id}.html",
         ]);
-        // $res->header('Access-Control-Allow-Origin', '*');
-        // $res->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        // $res->header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
         return $res;
     }
 
+    /**
+     * I wrote this method to search in the fronts table the specific front based on the uuid of the
+     * front of the card.
+     */
     public function show_front($id){
         $front = fronts::find($id);
         $front_url = $front->front_url;
@@ -37,6 +42,9 @@ class FileFromStorage extends Controller
         return $res;
     }
 
+    /**
+     * Same as above but for the back of the cards.
+     */
     public function show_back($id){
         $back = backs::find($id);
         $back_url = $back->back_url;
@@ -51,6 +59,9 @@ class FileFromStorage extends Controller
         return $res;
     }
 
+    /**
+     * Same as above for the results.
+     */
     public function show_results(){
         $file_content = Storage::get("cardsView/results.html");
         $mime_type = Storage::mimeType("cardsView/results.html");

@@ -16,11 +16,15 @@ class CardSeeder extends Seeder
      */
     public function run(): void
     {
-
+        /**
+         * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
+         * With the help of chat gpt it was suggested to create a single seeder file that would
+         * create a random number of decks and then a random number of cards for each deck and associate each new
+         * card with the deck uuid.
+         */
         $deck_count = rand(10,15);
         $decks = Deck::factory()->count($deck_count)->create();
         $decks->each(function ($deck) {
-            dump('Deck ID: ' . $deck->id); // Output the deck ID
             $cardCount = rand(10, 30);
             Card::factory()->count($cardCount)->create(['deck_id' => $deck->id]);
         });

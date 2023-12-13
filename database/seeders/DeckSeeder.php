@@ -14,6 +14,9 @@ class DeckSeeder extends Seeder
      */
     public function run(): void
     {
+        /**
+         * I wrote this method to call the static methods on the cardseeder sub class.
+         */
         $this->call(CardSeeder::class);
     }
 }

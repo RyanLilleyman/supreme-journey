@@ -177,6 +177,26 @@
                     href="https://laravel.com/docs/10.x/helpers#method-env">https://laravel.com/docs/10.x/helpers#method-env</a>
                 (accessed Dec. 12, 2023).
             </li>
+            <li>
+                [23] “Retrieving Input From The Query String,” Laravel,
+                https://laravel.com/docs/10.x/requests#retrieving-input-from-the-query-string (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [24] “shuffle(),” Laravel, https://laravel.com/docs/10.x/collections#method-shuffle (accessed Dec. 12,
+                2023).
+            </li>
+            <li>
+                [25] “Creating &amp; Rendering Views,” Laravel,
+                https://laravel.com/docs/10.x/views#creating-and-rendering-views (accessed Dec. 12, 2023).
+            </li>
+            <li>
+                [26] “Storing Files,” Laravel, https://laravel.com/docs/10.x/filesystem#storing-files (accessed Dec. 12,
+                2023).
+            </li>
+            <li>
+                [27] “Get All Files Within A Directory,” Laravel,
+                https://laravel.com/docs/10.x/filesystem#get-all-files-within-a-directory (accessed Dec. 12, 2023).
+            </li>
         </ul>
     </main>
     <footer class="footer">&copy; Something Copyright</footer>

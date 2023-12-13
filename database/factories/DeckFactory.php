@@ -12,7 +12,8 @@ use App\Models\Card;
 class DeckFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * I wrote this method to create a uuid and then set the deck name to
+     * a random unique word concatenated with .' '.'Deck'
      *
      * @return array<string, mixed>
      */

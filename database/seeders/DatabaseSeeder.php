@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        /**
+         * I wrote this to call the static method on the deck seeder subclass.
+         */
        $this->call(DeckSeeder::class);
     }
 }

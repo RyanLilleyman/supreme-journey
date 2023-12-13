@@ -29,12 +29,32 @@ class FileFromStorage extends Controller
      * front of the card.
      */
     public function show_front($id){
+
+        // Finds the front model by the id.
         $front = fronts::find($id);
+
+        // Finds the front_url of the model
         $front_url = $front->front_url;
+
+        // Grabs the 'fronts' substring at the first index within the
+        // $front_url
         $pos = strpos($front_url, 'fronts');
+
+        // Returns a new url from the above position and through the rest
+        // of the $front_url.
         $front_dest = substr($front_url, $pos);
+
+        // Grabs the file from the stripped url.
         $file_content = Storage::get($front_dest);
+
+        // Grabs the mimetype of the file front the url.
         $mime_type = Storage::mimeType($front->front_url);
+
+        /**
+         * [28] “HTTP headers: Content-disposition,” GeeksforGeeks, https://www.geeksforgeeks.org/http-headers-content-disposition/ (accessed Dec. 13, 2023).
+         * Creates a response object from the file content, sets a status code, and
+         * relevant headers.
+         */
         $res = Response::make($file_content, 200, [
             'Content-Type' => $mime_type,
             'Content-Disposition' => "inline; filename={$id}.html",
@@ -65,6 +85,9 @@ class FileFromStorage extends Controller
     public function show_results(){
         $file_content = Storage::get("cardsView/results.html");
         $mime_type = Storage::mimeType("cardsView/results.html");
+        /**
+         * The only difference is the results.html to save locally.
+         */
         $res = Response::make($file_content, 200, [
             'Content-Type' => $mime_type,
             'Content-Disposition' => "inline; filename=results.html",

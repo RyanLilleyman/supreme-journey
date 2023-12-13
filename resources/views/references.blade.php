@@ -207,6 +207,14 @@
                     href="https://laravel.com/docs/10.x/filesystem#get-all-files-within-a-directory">https://laravel.com/docs/10.x/filesystem#get-all-files-within-a-directory</a>
                 (accessed Dec. 12, 2023).
             </li>
+            <li>
+                [28] “HTTP headers: Content-disposition,” GeeksforGeeks,
+                https://www.geeksforgeeks.org/http-headers-content-disposition/ (accessed Dec. 13, 2023).
+            </li>
+            <li>
+                [29] “Boot Method Dependency Injection,” Laravel,
+                https://laravel.com/docs/10.x/providers#boot-method-dependency-injection (accessed Dec. 13, 2023).
+            </li>
         </ul>
     </main>
     <footer class="footer">&copy; Something Copyright</footer>

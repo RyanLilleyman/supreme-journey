@@ -16,6 +16,7 @@ class EnvironmentController extends Controller
          * The below env method grabs the specified environment variable or a default version.
          */
         $value = env('APP_URL','default');
+        // Returns the environment variable in the response object.
         return response()->json(['value' => $value]);
     }
 }

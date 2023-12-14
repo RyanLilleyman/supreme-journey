@@ -67,7 +67,7 @@ mkdir <repositories/directory> | cd <repositories/directory>
    ```bash
    php artisan key:generate
    ```
-7. Ensure the database credentials you noted down earlier insdie the .env file.
+7. Ensure the database credentials you noted down earlier inside the .env file.
 
 8. Migrate to the database.
    ```bash

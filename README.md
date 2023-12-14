@@ -15,6 +15,7 @@ I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-p
 - [Prerequisites](#prerequisites)
 - [Installation](#installation-local)
 - [Usage](#usage)
+- [Current Features](#current-features)
 - [Future Features and Bugs](#future-features-bugs)
 - [Credits](#credits)
 - [Contributing](#contributing)
@@ -109,9 +110,13 @@ mkdir <repositories/directory> | cd <repositories/directory>
    ./start.sh
    ```
 
+## Current Features
+
+
 ## Future Features/ Bugs
 - I have yet to finish edit functionality for the decks.
 - I have to finish the downloading for a pdf and the subsequent. This includes updating the main results page with which cards were missed specifically and rendering them inside the results blade.php.
+- I have yet to implement user accounts and authentication. 
 
 ## Credits
 - [1] “Chatgpt,” ChatGPT, https://openai.com/chatgpt (accessed Dec. 12, 2023).

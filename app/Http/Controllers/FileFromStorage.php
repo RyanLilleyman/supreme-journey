@@ -99,12 +99,17 @@ class FileFromStorage extends Controller
     }
 
     /**
+     * [1] Solomon Eseme, “Everything you need to know about Laravel caching,” Kinsta®, https://kinsta.com/blog/laravel-caching/ (accessed Dec. 14, 2023).
      * I wrote this function to Cache the id for a specific duration.
      */
     public function post_cache_id($id){
         $deck = Deck::with('cards')->find($id);
         Cache::put('deck', $deck, 120);
     }
+
+    /**
+     * I wrote this function to grab the cached deck.
+     */
     public function grab_cache_id(){
         $deck = Cache::get('deck');
         return response()->json(['deck'=>$deck]);

@@ -18,7 +18,7 @@
     <meta name="msapplication-config" content="~/Repos/IWT/midterm/src/favicons/browserconfig.xml" />
     <meta name="theme-color" content="#ffffff" />
 
-    @vite(['resources/styles/mainStyle.css', 'resources/styles/createDeck.css', 'resources/styles/navStyle.css', 'resources/scripts/deck_creation/inject_dom.mjs'])
+    @vite(['resources/styles/mainStyle.css', 'resources/styles/createDeck.css', 'resources/styles/navStyle.css', 'resources/scripts/deck_creation/inject_dom.mjs', 'resources/scripts/deck_editing/inject_test.mjs'])
 </head>
 
 <body>
@@ -60,9 +60,6 @@
             </a>
             <h1 class="createHeader">Create Deck</h1>
         </div> --}}
-
-
-
         <section class="createCard">
             <div class="topContainer">
                 <div class="frontContainer">

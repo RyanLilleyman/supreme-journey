@@ -22,6 +22,7 @@ export default defineConfig({
                 "resources/scripts/utility/catalog_fill.mjs",
                 "resources/scripts/results_handling/inject_results.mjs",
                 "resources/scripts/results_handling/results.mjs",
+                "resources/scripts/deck_editing/inject_test.mjs",
             ],
             refresh: true,
         }),

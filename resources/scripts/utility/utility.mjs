@@ -168,21 +168,11 @@ export class UtilityCenter {
     }
 
     /**
-     * I wrote this function to fetch a deck by its inherent uuid.
-     *
-     * @param {*} deck_id
-     * @returns
-     */
-    static async fett(deck_id) {
-        return await DECK_SERVICES.getDeckById(deck_id);
-    }
-
-    /**
      * I wrote this for the edit button.
      */
-    static bindEdit() {
+    static async bindEdit() {
         let edit_button = document.querySelector(".edit-button");
-        edit_button.addEventListener("click", () => {
+        edit_button.addEventListener("click", async () => {
             const empty = [];
             let decks_inputs = document.querySelectorAll(".radios_inner");
             for (let deck of decks_inputs) {
@@ -197,8 +187,12 @@ export class UtilityCenter {
             } else if (empty.length == 0) {
                 alert("Please select at least one deck to edit.");
                 return;
+            } else {
+                let result = await DECK_SERVICES.cacheDeckById(empty[0]);
+                console.log(result);
+                window.location.href = "/edit-deck";
+                return result;
             }
-            this.fett(empty[0]);
         });
     }
 

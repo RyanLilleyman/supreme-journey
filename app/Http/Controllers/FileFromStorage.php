@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Cache;
+
 use App\Models\fronts;
 use App\Models\backs;
+use App\Models\Deck;
 
 use Illuminate\Http\Request;
 
@@ -93,5 +96,17 @@ class FileFromStorage extends Controller
             'Content-Disposition' => "inline; filename=results.html",
         ]);
         return $res;
+    }
+
+    /**
+     * I wrote this function to Cache the id for a specific duration.
+     */
+    public function post_cache_id($id){
+        $deck = Deck::with('cards')->find($id);
+        Cache::put('deck', $deck, 120);
+    }
+    public function grab_cache_id(){
+        $deck = Cache::get('deck');
+        return response()->json(['deck'=>$deck]);
     }
 }

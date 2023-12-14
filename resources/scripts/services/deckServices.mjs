@@ -122,16 +122,43 @@ class DeckServices {
     /**
      * I wrote this function to get a deck by a specific uuid.
      */
-    async getDeckById(deck_id) {
+    getDeckById(deck_id) {
         return new Promise((resolve, reject) => {
             axios
                 .get(this.uri + "/" + deck_id)
+                .then((response) => {
+                    resolve(response.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
+    cacheDeckById(deck_id) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post("/cache/" + deck_id)
                 .then((r) => {
-                    // console.log(r);
+                    resolve(r);
+                })
+                .catch((e) => {
+                    reject(e);
+                });
+        });
+    }
+
+    grabCachedDeck() {
+        return new Promise((resolve, reject) => {
+            axios
+                .get("/cache")
+                .then((r) => {
+                    console.log(r);
                     resolve(r);
                 })
                 .catch((e) => {
                     console.log(e);
+                    reject(e);
                 });
         });
     }

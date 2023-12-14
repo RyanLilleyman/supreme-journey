@@ -69,6 +69,13 @@ Route::get('fetch_back/{id}', [FileFromStorage::class, 'show_back'])->name('file
 
 Route::post('cardsView/save-results', [Fession::class, 'save_results']);
 
+// Caches the deck id
+Route::post('cache/{id}', [FileFromStorage::class,'post_cache_id']);
+
+Route::get('cache/', [FileFromStorage::class, 'grab_cache_id']);
+
+
+
 // Grabs CSRF token
 Route::get('/csrf-token', function () {
     return csrf_token();

@@ -13,14 +13,14 @@ I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-p
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
-- [Installation](#installation (local))
+- [Installation](#installation-(local))
 - [Usage](#usage)
 - [Bugs](#bugs)
 - [Credits](#credits)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Prerequisites ( You need these installed for Laravel to work. )
+## Prerequisites
 - You need to have a webserver installed. Either [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/) or [Apache2](https://httpd.apache.org/).
 - You need [php](https://www.php.net/manual/en/install.php).
 - You need the latest version of [NodeJs](https://nodejs.org/en).

@@ -105,14 +105,18 @@ class Session {
         round_Time_Span.textContent = "OFF";
 
         session_Time_Span.addEventListener("click", (event) => {
-            if (session_Time_Span.className === "togglerBoxOFF") {
-                session_Time_Span.className = "togglerBoxON";
-                session_Time_Span.textContent = "ON";
-                this.#session_settings.showSessionTimer = true;
+            if (this.#session_settings.sessionTimer > 0) {
+                if (session_Time_Span.className === "togglerBoxOFF") {
+                    session_Time_Span.className = "togglerBoxON";
+                    session_Time_Span.textContent = "ON";
+                    this.#session_settings.showSessionTimer = true;
+                } else {
+                    session_Time_Span.className = "togglerBoxOFF";
+                    session_Time_Span.textContent = "OFF";
+                    this.#session_settings.showSessionTimer = false;
+                }
             } else {
-                session_Time_Span.className = "togglerBoxOFF";
-                session_Time_Span.textContent = "OFF";
-                this.#session_settings.showSessionTimer = false;
+                alert("Please select a session time.");
             }
         });
 
@@ -352,11 +356,18 @@ class Session {
                 this.#results.incorrect_array.push(this.#url_array[this.#idx]);
                 this.#idx++;
                 this.next_front();
-                this.#session_timer.reset_round_timer();
+                // Checking if session timer is CountDown instance
+                if (this.#session_timer instanceof CountdownTimer) {
+                    this.#session_timer.reset_round_timer();
+                }
                 this.create_front_buttons();
 
                 if (this.#idx == this.#url_array.length) {
-                    this.#session_timer.reset_round_timer();
+                    // Checking if session timer is CountDown instance
+                    if (this.#session_timer instanceof CountdownTimer) {
+                        this.#session_timer.reset_round_timer();
+                    }
+
                     this.grab_results();
                 }
             }
@@ -367,11 +378,16 @@ class Session {
                 this.#results.correct_array.push(this.#url_array[this.#idx]);
                 this.#idx++;
                 this.next_front();
-                this.#session_timer.reset_round_timer();
+                if (this.#session_timer instanceof CountdownTimer) {
+                    this.#session_timer.reset_round_timer();
+                }
                 this.create_front_buttons();
 
                 if (this.#idx == this.#url_array.length) {
-                    this.#session_timer.reset_round_timer();
+                    // Checking if session timer is CountDown instance
+                    if (this.#session_timer instanceof CountdownTimer) {
+                        this.#session_timer.reset_round_timer();
+                    }
                     this.grab_results();
                 }
             }
@@ -498,10 +514,14 @@ class Session {
             this.#url_array.push(card);
         }
 
-        if (this.#round_time) {
+        console.log(this.#round_time);
+        console.log(this.#session_time);
+        if (this.#round_time > 0 && this.#session_time > 0) {
             this.session_main_loop();
-        } else {
+        } else if (this.#session_time > 0 && this.#round_time == 0) {
             this.session_no_round_main_loop();
+        } else {
+            this.session_indefinite();
         }
     }
 
@@ -642,6 +662,11 @@ class Session {
         );
         this.first_card();
         this.#session_timer.start_just_total_timer();
+        this.create_front_buttons();
+    }
+
+    session_indefinite() {
+        this.first_card();
         this.create_front_buttons();
     }
 }

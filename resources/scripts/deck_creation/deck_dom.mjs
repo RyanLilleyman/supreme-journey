@@ -14,6 +14,7 @@ import { DeckCreator } from "./deck_creator.mjs";
 export class DeckDOM extends DeckCreator {
     constructor() {
         super();
+        this.isFileHandleClickBound = false;
         this.clearCardOnDOM();
         this.inject();
     }
@@ -182,18 +183,6 @@ export class DeckDOM extends DeckCreator {
             }
         });
     }
-    /**
-     * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
-     * I needed a way to bind the shift + I key such that the bindFileInput() method was called.
-     * The e.shiftKey && e.key === 'I' was taken from a suggestion provided by chat gpt.
-     */
-    bindIKey() {
-        document.addEventListener("keydown", (e) => {
-            if (e.shiftKey && e.key === "I") {
-                this.bindFileInput();
-            }
-        });
-    }
 
     /**
      * Same as above.
@@ -283,7 +272,7 @@ export class DeckDOM extends DeckCreator {
      * With the help of chat gpt, I modified this function to take an array buffer
      * and it's associated mimetype upon showing the image.
      */
-    getBlob(arrayBuffer, mimeType) {
+    async getBlob(arrayBuffer, mimeType) {
         const blob = new Blob([arrayBuffer], { type: mimeType });
         return blob;
     }
@@ -313,18 +302,28 @@ export class DeckDOM extends DeckCreator {
         const fileInput = document.getElementById("fileInput");
         const openFileImage = document.getElementById("uploadImage");
 
-        //manage events
-        openFileImage.addEventListener("click", () => {
+        const rebindClickListener = () => {
+            openFileImage.addEventListener("click", handleClick);
+        };
+
+        const handleClick = (e) => {
+            openFileImage.removeEventListener("click", handleClick);
+
+            fileInput.addEventListener("change", handleChange);
             fileInput.click();
-        });
-        fileInput.addEventListener("change", async () => {
+            rebindClickListener();
+        };
+
+        const handleChange = async (e) => {
+            console.log(e);
+
             const selectedFiles = fileInput.files;
             if (selectedFiles && selectedFiles.length > 0) {
                 const selectedFile = selectedFiles[0];
                 const mimeType = this.detectMIMEType(selectedFile);
 
                 const arrayBuffer = await selectedFile.arrayBuffer();
-                const blob = this.getBlob(arrayBuffer, mimeType);
+                const blob = await this.getBlob(arrayBuffer, mimeType);
                 const object_url = this.getBlobUrl(blob);
 
                 if (object_url) {
@@ -333,12 +332,16 @@ export class DeckDOM extends DeckCreator {
                 }
             }
             fileInput.value = null;
-        });
+            rebindClickListener();
+        };
+
+        openFileImage.addEventListener("click", handleClick);
+
         return fileInput;
     }
 
     /**
-     * I wrote this method to inject the event listeners and relevant callbacks into the document upon loading.
+     * I wrote this method to inject the event listeners and relevant callbacks into the create_deck document upon loading.
      */
     inject() {
         this.bindNameField();
@@ -351,6 +354,6 @@ export class DeckDOM extends DeckCreator {
         this.bindDestroy();
         this.bindFinish();
         this.bindEnterKey();
-        this.bindIKey();
+        // this.bindIKey();
     }
 }

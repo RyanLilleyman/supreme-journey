@@ -31,6 +31,8 @@
   padding: 2rem 2rem;
 }
 
+/*[31] MozDevNet, ::“-webkit-scrollbar - CSS: Cascading style sheets: MDN,” MDN Web Docs, https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar (accessed Dec. 14, 2023).
+I wrote the background, width, borders, cursors, and border-radius for these selectors.*/
 .references ul::-webkit-scrollbar {
     width: 14px;
 }
@@ -58,12 +60,6 @@
     cursor:pointer;
 
 }
-
-
-
-
-
-
 
 .references li {
   margin-bottom: 20px;

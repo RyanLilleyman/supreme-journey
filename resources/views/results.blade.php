@@ -82,7 +82,7 @@
                 </ol>
             </div> --}}
         </div>
-        <!--[1] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
+        <!--[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
         I modified the class names and the relevant text content within the below buttons.-->
         <div class="flipAndSkip">
             <button type="submit" class="downloadButton">

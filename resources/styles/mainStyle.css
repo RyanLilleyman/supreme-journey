@@ -107,6 +107,8 @@ h3 {
   box-shadow: inset 0 0 2px #004477;
   border-radius: 0.5rem;
 }
+/*[31] MozDevNet, ::“-webkit-scrollbar - CSS: Cascading style sheets: MDN,” MDN Web Docs, https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar (accessed Dec. 14, 2023).
+I wrote the background, width, and border-radius for these selectors.*/
 .dl::-webkit-scrollbar {
     width: 12px;
 }
@@ -332,7 +334,9 @@ input:focus {
   transition: filter 0.3s;
 }
 
-/*Main Button styling for 3d effects came from https://www.joshwcomeau.com/animation/3d-button/*/
+/*[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023)
+I modified the various names, added padding, margins, borders, font-size changes, and specific positioning.
+*/
 .createButtonShadow {
   position: absolute;
   top: 0;

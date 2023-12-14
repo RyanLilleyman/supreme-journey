@@ -251,6 +251,9 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
+/*[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023)
+I modified the various names and added padding, margins, borders, font-size changes, and specific positioning.
+*/
 .nextButton,
 .clearButton,
 .previousButton,

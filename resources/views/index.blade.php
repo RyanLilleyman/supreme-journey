@@ -61,7 +61,7 @@
                     <input type="text" class = 'search'name="searchDecks" id="searchDecks" placeholder="Search...">
                     <div class="createButtonContainer">
                         <div class="editAndDestroy">
-                            <!--[1] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
+                            <!--[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
                         I modified the class names and the inner content of these buttons.-->
                             <button type=" submit" class="createButton">
                                 <a href="{{ url('/decks/create') }}" title='Create a Deck'>
@@ -248,7 +248,7 @@
                         <span class='Session_Holder_Span'>Show Round Time:<span
                                 class = 'toggleRoundTime'></span></span>
                     </div>
-                    <!--[1] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
+                    <!--[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
                         I modified the class names and the inner content of these buttons.-->
                     <button type="submit" class="indexButton startSessButton">
                         <a title="Start Session">

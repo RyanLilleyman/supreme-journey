@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="deckSettings">
-                        <!--[1] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
+                        <!--[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
                         I modified the class names and the inner content of these buttons.-->
                         <button type="submit" class="createButton" title="Add Card">
                             <span class="createButtonShadow"></span>
@@ -121,7 +121,7 @@
 
                 <div class="buttonContainer">
                     <div class="buttonsForCreating">
-                        <!--[1] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
+                        <!--[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
                         I modified the class names and the inner content of these buttons.-->
                         <button type="submit" class="previousButton" title='Previous'>
                             <span class="previousShadow"></span>
@@ -137,7 +137,7 @@
                         </button>
                     </div>
                     <div class="buttonsForCreating">
-                        <!--[1] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
+                        <!--[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).
                         I modified the class names and the inner content of these buttons.-->
                         <button type="submit" class="clearButton" title='Clear'>
                             <span class="clearShadow"></span>

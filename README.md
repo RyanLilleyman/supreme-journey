@@ -26,12 +26,20 @@ I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-p
 - You need the latest version of [NodeJs](https://nodejs.org/en).
 - This project uses Vite and Vite Mix to compile the frontend assets. You will need either [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
 - You need a database. I recommend either [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/) or [MariaDB](https://www.tutorialspoint.com/mariadb/mariadb_installation.htm).
+- You also need [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ## Installation (Local)
 If you wish to download SAFMEDS locally, follow the below steps only after installing the above prerequisites.
+1. Create a repositories directory.
 ```bash
 mkdir <repositories/directory> | cd <repositories/directory>
 ```
+
+2. Clone this repository.
+```bash
+git c
+```
+
 
 ## Usage
 ## Credits

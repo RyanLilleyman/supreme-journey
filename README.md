@@ -108,6 +108,9 @@ mkdir <repositories/directory> | cd <repositories/directory>
    ```bash
    ./start.sh
    ```
+
+## Future Features/ Bugs
+- I have yet to finish 
 ## Credits
 - [1] “Chatgpt,” ChatGPT, https://openai.com/chatgpt (accessed Dec. 12, 2023).
 - [2] Codeium · Free AI Code Completion & Chat, https://codeium.com/ (accessed Dec. 12, 2023).

@@ -226,7 +226,9 @@
             </li>
             <li>
                 [31] MozDevNet, ::“-webkit-scrollbar - CSS: Cascading style sheets: MDN,” MDN Web Docs,
-                https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar (accessed Dec. 14, 2023).
+                <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar">https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar</a>
+                (accessed Dec. 14, 2023).
             </li>
         </ul>
     </main>

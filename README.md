@@ -23,7 +23,7 @@ I learned alot, including but not liimited to, Routing inside [Laravel](https://
 - You need to have a webserver installed. Either [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/) or [Apache2](https://httpd.apache.org/).
 - You need [php](https://www.php.net/manual/en/install.php).
 - You need the latest version of [NodeJs](https://nodejs.org/en).
-- This project uses Vite, Vite Mix to manage building the frontend assets. You will need either [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
+- This project uses Vite adn Vite Mix to compile the frontend assets. You will need either [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
 - 
 
 ## Installation (Local)

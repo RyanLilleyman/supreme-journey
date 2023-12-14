@@ -30,7 +30,7 @@ I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-p
 ## Installation (Local)
 If you wish to download SAFMEDS locally, follow the below steps only after installing the above prerequisites.
 ```bash
-mkdir <repositories/directory> || cd <repositories/directory>
+mkdir <repositories/directory> | cd <repositories/directory>
 ```
 
 ## Usage

@@ -5,7 +5,7 @@
 SAFMEDS is a humble flashcard application.
 Its use is intended for research and general knowledge building. 
 
-It was initially built with HTML 5, CSS, Javascript, and Php. 
+It was initially built with HTML 5, CSS, JavaScript, and Php. 
 It was ported over to the Laravel framework for server-side rendering and other capabilities.
 
 I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-parameters), semantic structuring of elements in [HTML 5](https://www.w3schools.com/html/html5_semantic_elements.asp), the inline-block layout in [CSS](https://www.w3schools.com/css/css_inline-block.asp), useful array methods in [Javascript](https://www.w3schools.com/js/js_array_methods.asp), and much more.

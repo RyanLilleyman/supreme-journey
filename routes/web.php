@@ -67,11 +67,13 @@ Route::get('fetch_front/{id}', [FileFromStorage::class, 'show_front'])->name('fi
 // Serving the back html
 Route::get('fetch_back/{id}', [FileFromStorage::class, 'show_back'])->name('file.show_back');
 
+// Saves the results.html
 Route::post('cardsView/save-results', [Fession::class, 'save_results']);
 
-// Caches the deck id
+// Caches the deck based on the deck_id
 Route::post('cache/{id}', [FileFromStorage::class,'post_cache_id']);
 
+// Grabs the deck based on the deck_id
 Route::get('cache/', [FileFromStorage::class, 'grab_cache_id']);
 
 

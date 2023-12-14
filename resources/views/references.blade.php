@@ -220,8 +220,7 @@
                 (accessed Dec. 13, 2023).
             </li>
             <li>
-                [30] Solomon Eseme&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; “Everything you need to know about Laravel caching,” Kinsta®,
+                [30] Solomon Eseme, “Everything you need to know about Laravel caching,” Kinsta®,
                 <a href="https://kinsta.com/blog/laravel-caching/">https://kinsta.com/blog/laravel-caching/</a>
                 (accessed Dec. 14, 2023).
             </li>

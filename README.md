@@ -12,17 +12,21 @@ I learned alot, including but not liimited to, Routing inside [Laravel](https://
 
 
 ## Table of Contents
-
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [Contributing](#contributing)
 - [License](#license)
 
-# Installation (Local)
-1.
-# Usage
-# Credits
+## Prerequisites ( You need these installed for Laravel to work. )
+- You need to have a webserver installed. Either [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/) or [Apache2](https://httpd.apache.org/). Follow your specific os installation instructions for the open source versions.
+
+## Installation (Local)
+If you wish to download SAFMEDS locally, follow the below steps. 
+
+## Usage
+## Credits
 
 ## Contributing
 

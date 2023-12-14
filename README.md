@@ -139,6 +139,8 @@ mkdir <repositories/directory> | cd <repositories/directory>
 - [28] “HTTP headers: Content-disposition,” GeeksforGeeks, https://www.geeksforgeeks.org/http-headers-content-disposition/ (accessed Dec. 13, 2023).
 - [29] “Boot Method Dependency Injection,” Laravel, https://laravel.com/docs/10.x/providers#boot-method-dependency-injection (accessed Dec. 13, 2023).
 - [30] Solomon Eseme, “Everything you need to know about Laravel caching,” Kinsta®, https://kinsta.com/blog/laravel-caching/ (accessed Dec. 14, 2023).
+- [31] MozDevNet, ::“-webkit-scrollbar - CSS: Cascading style sheets: MDN,” MDN Web Docs,
+https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar (accessed Dec. 14, 2023).
 
 ## Contributing
 Email me @ LilleymanRyan2020@gmail.com

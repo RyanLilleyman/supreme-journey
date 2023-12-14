@@ -3,8 +3,9 @@
 ## About SAFMEDS
 
 SAFMEDS is a humble flashcard application.
-I built this project with the help of several technologies as part of a school intro web development class.
 Its use is intended for research and general knowledge building. 
+
+I built this project with the help of several technologies as part of a university intro web development class.
 It was initially built with HTML 5, CSS, Javascript, and Php. 
 It was ported over to the Laravel framework for server-side rendering and other capabilities.
 

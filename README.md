@@ -20,7 +20,11 @@ I learned alot, including but not liimited to, Routing inside [Laravel](https://
 - [License](#license)
 
 ## Prerequisites ( You need these installed for Laravel to work. )
-- You need to have a webserver installed. Either [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/) or [Apache2](https://httpd.apache.org/). Follow your specific os installation instructions for the open source versions.
+- You need to have a webserver installed. Either [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/) or [Apache2](https://httpd.apache.org/).
+- You need [php](https://www.php.net/manual/en/install.php).
+- You need the latest version of [NodeJs](https://nodejs.org/en).
+- This project uses Vite, Vite Mix to manage building the frontend assets. You will need either [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
+- 
 
 ## Installation (Local)
 If you wish to download SAFMEDS locally, follow the below steps. 

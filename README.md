@@ -13,7 +13,7 @@ I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-p
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
-- [Installation](#installation)
+- [Installation](#installation (local))
 - [Usage](#usage)
 - [Bugs](#bugs)
 - [Credits](#credits)

@@ -76,7 +76,6 @@ export class UtilityCenter {
      */
     static async fill_Deck() {
         let array = await DECK_SERVICES.getDecks();
-        console.log(array);
 
         const deckL = document.querySelector(".dl");
         deckL.innerHTML = "";
@@ -132,7 +131,6 @@ export class UtilityCenter {
         del.addEventListener("click", () => {
             let decks_inputs = document.querySelectorAll(".radios_inner");
             for (let deck of decks_inputs) {
-                console.log(deck);
                 if (deck.checked) {
                     DECK_SERVICES.deleteDeckById(deck.id);
                 }
@@ -178,7 +176,6 @@ export class UtilityCenter {
             for (let deck of decks_inputs) {
                 if (deck.checked) {
                     empty.push(deck.id);
-                    console.log(deck.id);
                 }
             }
             if (empty.length > 1) {
@@ -189,7 +186,6 @@ export class UtilityCenter {
                 return;
             } else {
                 let result = await DECK_SERVICES.cacheDeckById(empty[0]);
-                console.log(result);
                 window.location.href = "/edit-deck";
                 return result;
             }

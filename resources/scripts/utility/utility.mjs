@@ -126,13 +126,13 @@ export class UtilityCenter {
      * @param {type} paramName - description of parameter
      * @return {type} description of return value
      */
-    static onHomeDelete() {
+    static async onHomeDelete() {
         const del = document.querySelector(".destroyButton");
-        del.addEventListener("click", () => {
+        del.addEventListener("click", async () => {
             let decks_inputs = document.querySelectorAll(".radios_inner");
             for (let deck of decks_inputs) {
                 if (deck.checked) {
-                    DECK_SERVICES.deleteDeckById(deck.id);
+                    await DECK_SERVICES.deleteDeckById(deck.id);
                 }
             }
             this.fill_Deck();

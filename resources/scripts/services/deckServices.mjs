@@ -106,17 +106,17 @@ class DeckServices {
     /**
      * I wrote thie function to delete decks by their uuid.
      */
-    deleteDeckById(deck_id) {
-        console.log(this.uri + "/" + deck_id);
-        axios
-            .delete(this.uri + "/" + deck_id)
-            .then((response) => {
-                // console.log(response);
-                return response;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    async deleteDeckById(deck_id) {
+        return new Promise((resolve, reject) => {
+            axios
+                .delete(this.uri + "/" + deck_id)
+                .then((r) => {
+                    resolve(r);
+                })
+                .catch((e) => {
+                    reject(e);
+                });
+        });
     }
 
     /**

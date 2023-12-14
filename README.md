@@ -54,12 +54,7 @@ mkdir <repositories/directory> | cd <repositories/directory>
    ```bash
    cp .env.example .env
    ```
-5. Create the base key for your project.
-   ```bash
-   php artisan key:generate
-   ```
-6. Ensure the database credentials you noted down earlier insdie the .env file.
-7. Install dependecies
+5. Install dependecies
    First,
    ```bash
    composer install
@@ -68,6 +63,12 @@ mkdir <repositories/directory> | cd <repositories/directory>
    ```bash
    npm install
    ```
+6. Create the base key for your project.
+   ```bash
+   php artisan key:generate
+   ```
+7. Ensure the database credentials you noted down earlier insdie the .env file.
+
 8. Migrate to the database.
    ```bash
    php artisan migrate --force

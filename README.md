@@ -93,6 +93,17 @@ mkdir <repositories/directory> | cd <repositories/directory>
     ```
 
 ## Usage
+1. For optimizing the php development server,
+   ```bash
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   ```
+2. Create a symbolic link between storage/public and storage/app/public
+   ```bash
+   php artisan storage:link
+   ```
+3. 
 ## Credits
 
 ## Contributing

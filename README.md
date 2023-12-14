@@ -30,6 +30,7 @@ I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-p
 
 ## Installation (Local)
 If you wish to download SAFMEDS locally, follow the below steps only after installing the above prerequisites.
+This will ONLY cover local development and not configuration for either the Nginx or Apache2 servers. I included them if you wish to continue on your own.
 1. Create a repositories directory.
 ```bash
 mkdir <repositories/directory> | cd <repositories/directory>
@@ -75,6 +76,17 @@ mkdir <repositories/directory> | cd <repositories/directory>
    ```bash
    php artisan db:seed --force
    ```
+10. (Optional) You may need to check file permissions and ownership for Nginx or Apache2.
+    Both the storage and bootstrap/cache need specific permissions for Laravel to bootstrap.
+    For documentation, [chmod](https://en.wikipedia.org/wiki/Chmod) and [chown](https://www.geeksforgeeks.org/chown-command-in-linux-with-examples/).
+    As an example of setting ownership,
+    ```bash
+    sudo chown -R www-data:www-data storage bootstrap/cache
+    ```
+    As an example of setting permissions
+    ```bash
+    sudo chmod -R 775 storage bootstrap/cache
+    ```
 
 ## Usage
 ## Credits

@@ -35,7 +35,7 @@ class GlobalDecks {
     }
 
     /**
-     * I wrote thie method to grab a deck by name. I don't use this method in the code.
+     * I wrote this method to grab a deck by name. I don't use this method in the code.
      */
     getDeckByName(name) {
         return this.decks.get(name);
@@ -45,10 +45,8 @@ class GlobalDecks {
      * [4] [1] MozDevNet, “Using FormData objects - web apis: MDN,”
      * MDN Web Docs, https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects.
      *
-     * In conjunction with the above source, I wrote this method to append for each card
-     * in the cards array a collection based on the index of the card and then by breaking the card into
-     * its constituent parts.
-     *
+     * In conjunction with the above source, I wrote this method to first check if the card exists with all necessary
+     * fields. If it does exist, it adds the card into the correct format for appending to the formData.
      * This method then uses the formData.entries method which exposes the collection
      * and logs them to the console. I commented this function out.
      *
@@ -58,12 +56,18 @@ class GlobalDecks {
     async addDeck(name, cards) {
         let formData = new FormData();
         formData.append("name", name);
-        cards.forEach((card, index) => {
-            formData.append(`cards[${index}][front][text]`, card.front.text);
-            formData.append(`cards[${index}][front][blob]`, card.front.blob);
-            formData.append(`cards[${index}][back]`, card.back);
-        });
 
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i];
+
+            if (!card.front.text && !card.front.blob && !card.back) {
+                continue;
+            }
+
+            formData.append(`cards[${i}][front][text]`, card.front.text);
+            formData.append(`cards[${i}][front][blob]`, card.front.blob);
+            formData.append(`cards[${i}][back]`, card.back);
+        }
         return await DECK_SERVICES.postDecks(formData);
     }
 

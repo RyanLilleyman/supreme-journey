@@ -86,7 +86,7 @@ class DeckController extends Controller
             // Save to the current deck and add a new card with the same models (relationships) as above.
             $deck->cards()->save($to_add);
         }
-        return response()->json(['message' => 'Deck created successfully', 'deck'=>$cards_test_array]);
+        return response()->json(['message' => 'Deck created successfully', 'deck'=>$deck]);
     }
 
     /**

@@ -71,9 +71,9 @@ class Fession extends Controller
         $session = Sess::create(['session_url'=>url('cardsView/'.$deck_id.'.html'), 'session_timer'=>$request->query('sessionTimer'), 'round_timer'=>$request->query('roundTimer'),
         'show_session_timer'=>$showSessionTimer, 'show_round_timer'=>$showRoundTimer]);
         // Simply put, for each card in the shuffled array. if the card has an imgUrl
-        // then set make a front html page based on the 'front_card_with_image' inside the resources/view directory.
-        // Otherwise, use the default template. Then use the defalut back template.
-        // This loop also stores each card in the local file system under the storage/app/fronts and storage/app/backs respectively.
+        // then make a front html page based on the 'front_card_with_image' blade template inside the resources/view directory.
+        // Otherwise, use the default template. Then use the default back template.
+        // This loop also stores each card in the local file system under storage/app/fronts and storage/app/backs respectively.
         foreach ($shuffledCardsArray as $card){
 
             if ($card['imgUrl']!='') {

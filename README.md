@@ -81,11 +81,15 @@ mkdir <repositories/directory> | cd <repositories/directory>
     For documentation, [chmod](https://en.wikipedia.org/wiki/Chmod) and [chown](https://www.geeksforgeeks.org/chown-command-in-linux-with-examples/).
     As an example of setting ownership,
     ```bash
-    sudo chown -R www-data:www-data storage bootstrap/cache
+    sudo chown -R <relevant-group>:<relevant-group> storage bootstrap/cache
     ```
     As an example of setting permissions
     ```bash
     sudo chmod -R 775 storage bootstrap/cache
+    ```
+    You may need to set permissions for .env.
+    ```bash
+    chmod 600 .env
     ```
 
 ## Usage

@@ -111,12 +111,26 @@ mkdir <repositories/directory> | cd <repositories/directory>
    ```
 
 ## Current Features
+- You can create a deck. Images are stored in the server file system and urls are stored as references in the database.
+- Dynamically provides support for near all static image extensions, .jpeg, .png, .webm, .jpg, and webp.
+- You can delete a deck or multiple decks at once.
+- Provides a convenient search feature for finding decks within the library.
+- You can choose deck rendering parameters on the Home page. These include, deck font, deck color, and deck font-size to name a few.
+- You can choose deck timing parameters and whether or not to display them within a session.
+- You can view session statistics after the session. 
+- You can preview the first cards of each deck through the catalog. 
+- Content within a session is rendered dynamically upon deck creation and shows cards as either with or without images.
+- Sessions are dynamically rendered as any files will be deleted upon returning to the Home page from the results page. 
+- Ensures the user cannot make unauthorized requests from outside the env APP_URL. 
+- Provides a convenient references list for further customization and contribution.
+ 
 
 
 ## Future Features/ Bugs
 - I have yet to finish edit functionality for the decks.
-- I have to finish the downloading for a pdf and the subsequent. This includes updating the main results page with which cards were missed specifically and rendering them inside the results blade.php.
+- I have to finish the downloading feature into a pdf. This includes updating the main results page with which cards were missed specifically and rendering them inside the results blade.php.
 - I have yet to implement user accounts and authentication. 
+- There are some bugs that need ironing out. Chief among these, is the double click on adding a card to the deck array.
 
 ## Credits
 - [1] “Chatgpt,” ChatGPT, https://openai.com/chatgpt (accessed Dec. 12, 2023).

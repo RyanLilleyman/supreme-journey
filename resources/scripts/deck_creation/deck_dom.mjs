@@ -155,7 +155,7 @@ export class DeckDOM extends DeckCreator {
      */
     bindFinish() {
         const finishButton = document.querySelector(".finishButton");
-        finishButton.addEventListener("click", () => {
+        finishButton.addEventListener("click", async () => {
             if (!this.Deck.Name) {
                 alert("Deck must have a name!");
             } else {
@@ -169,14 +169,14 @@ export class DeckDOM extends DeckCreator {
                     const name = this.Deck.Name;
                     const cards = this.Deck.Cards;
                     alert("Deck added!");
-                    DECK_GLOBALS.addDeck(name, cards);
+                    await DECK_GLOBALS.addDeck(name, cards);
                     this.clearCardOnDOM();
                     window.location.href = "/";
                 } else {
                     const name = this.Deck.Name;
                     const cards = this.Deck.Cards;
                     alert("Deck added!");
-                    DECK_GLOBALS.addDeck(name, cards);
+                    await DECK_GLOBALS.addDeck(name, cards);
                     this.clearCardOnDOM();
                     window.location.href = "/";
                 }
@@ -308,7 +308,6 @@ export class DeckDOM extends DeckCreator {
 
         const handleClick = (e) => {
             openFileImage.removeEventListener("click", handleClick);
-
             fileInput.addEventListener("change", handleChange);
             fileInput.click();
             rebindClickListener();

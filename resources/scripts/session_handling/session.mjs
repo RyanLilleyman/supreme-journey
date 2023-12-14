@@ -367,7 +367,6 @@ class Session {
                     if (this.#session_timer instanceof CountdownTimer) {
                         this.#session_timer.reset_round_timer();
                     }
-
                     this.grab_results();
                 }
             }

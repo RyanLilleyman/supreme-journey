@@ -55,7 +55,7 @@ class GlobalDecks {
      * It then calls the post method of the DECK_SERVICES singleton to make a request to the backend
      * server.
      */
-    addDeck(name, cards) {
+    async addDeck(name, cards) {
         let formData = new FormData();
         formData.append("name", name);
         cards.forEach((card, index) => {
@@ -64,10 +64,7 @@ class GlobalDecks {
             formData.append(`cards[${index}][back]`, card.back);
         });
 
-        // for (let [key, value] of formData.entries()) {
-        //     console.log(key, value);
-        // }
-        DECK_SERVICES.postDecks(formData);
+        return await DECK_SERVICES.postDecks(formData);
     }
 
     /**

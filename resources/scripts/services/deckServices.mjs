@@ -43,7 +43,7 @@ class DeckServices {
     /**
      * I wrote this function to grab the current array of deck objects from the database.
      */
-    getDecks() {
+    async getDecks() {
         return new Promise((resolve, reject) => {
             axios
                 .get(this.uri)
@@ -60,17 +60,17 @@ class DeckServices {
     /**
      * I wrote this function to post the decks to the database.
      */
-    postDecks(deck) {
-        console.log(deck);
-        axios
-            .post(this.uri, deck)
-            .then((response) => {
-                // console.log(response.data);
-                return response;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    async postDecks(deck) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post(this.uri, deck)
+                .then((r) => {
+                    resolve(r);
+                })
+                .catch((e) => {
+                    reject(e);
+                });
+        });
     }
 
     /**

@@ -2,22 +2,49 @@
 
 ## About SAFMEDS
 
-SAFMEDS is a humble flashcard application that you can use at your leisure. It was initially built with HTML 5, CSS, Javascript, and Php. 
+SAFMEDS is a humble flashcard application.
+Its use is intended for research and general knowledge building. 
+
+It was initially built with HTML 5, CSS, JavaScript, and Php. 
 It was ported over to the Laravel framework for server-side rendering and other capabilities.
+
+I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-parameters), semantic structuring of elements in [HTML 5](https://www.w3schools.com/html/html5_semantic_elements.asp), the inline-block layout in [CSS](https://www.w3schools.com/css/css_inline-block.asp), useful array methods in [Javascript](https://www.w3schools.com/js/js_array_methods.asp), and much more.
 
 
 ## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Bugs](#bugs)
+- [Credits](#credits)
+- [Contributing](#contributing)
+- [License](#license)
 
-[Installation](#installation)
+## Prerequisites ( You need these installed for Laravel to work. )
+- You need to have a webserver installed. Either [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/) or [Apache2](https://httpd.apache.org/).
+- You need [php](https://www.php.net/manual/en/install.php).
+- You need the latest version of [NodeJs](https://nodejs.org/en).
+- This project uses Vite and Vite Mix to compile the frontend assets. You will need either [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
+- You need a database. I recommend either [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/) or [MariaDB](https://www.tutorialspoint.com/mariadb/mariadb_installation.htm).
+- You also need [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-# Installation (Local)
+## Installation (Local)
+If you wish to download SAFMEDS locally, follow the below steps only after installing the above prerequisites.
+1. Create a repositories directory.
+```bash
+mkdir <repositories/directory> | cd <repositories/directory>
+```
+
+2. Clone this repository.
+```bash
+git c
+```
+
+
+## Usage
+## Credits
 
 ## Contributing
-
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
 
 ## License

@@ -5,7 +5,6 @@
     <title>About This Project.</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="../styles/navStyle.css" rel="stylesheet" />
     <!--[7] “W3Schools online HTML editor,” W3Schools Tryit Editor, https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select (accessed Dec. 12, 2023).
     I imported a modified image to make relevant flaticons for the webpage.-->
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
@@ -55,14 +54,14 @@
         </div>
     </nav>
     <div class="aboutContainer">
-        <h3>About Application</h3>
+        {{-- <h3>About Application</h3>
         <div class="aboutApplication">
             <p>
                 SAFMEDS is a humble flash card app. Perfect for studying languages,
                 preparing for exams, or expanding your knowledge. Efficient, and
                 effective.
             </p>
-        </div>
+        </div> --}}
         <!--[1] “Hugo Curiel,” Western Michigan University, https://wmich.edu/psychology/directory/curiel-0#:~:text=and%20intellectual%20disabilities.-,Dr.,preference%20and%20reinforcer%20assessment%20procedures. (accessed Dec. 12, 2023).
         All below information on Dr. Curiel is straight from the above link. -->
         <h3>About Dr. Curiel</h3>

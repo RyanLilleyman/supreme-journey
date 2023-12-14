@@ -36,9 +36,14 @@ mkdir <repositories/directory> | cd <repositories/directory>
 ```
 
 2. Clone this repository.
-```bash
-git c
-```
+   For https:
+   ```bash
+   git clone https://github.com/RyanLilleyman/supreme-journey.git
+   ```
+   For ssh:
+   ```bash
+   git clone git@github.com:RyanLilleyman/supreme-journey.git
+   ```
 
 
 ## Usage

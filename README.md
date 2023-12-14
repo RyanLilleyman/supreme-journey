@@ -15,6 +15,7 @@ I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-p
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Bugs](#bugs)
 - [Credits](#credits)
 - [Contributing](#contributing)
 - [License](#license)
@@ -23,11 +24,14 @@ I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-p
 - You need to have a webserver installed. Either [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/) or [Apache2](https://httpd.apache.org/).
 - You need [php](https://www.php.net/manual/en/install.php).
 - You need the latest version of [NodeJs](https://nodejs.org/en).
-- This project uses Vite adn Vite Mix to compile the frontend assets. You will need either [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
-- 
+- This project uses Vite and Vite Mix to compile the frontend assets. You will need either [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
+- You need a database. I recommend either [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/) or [MariaDB](https://www.tutorialspoint.com/mariadb/mariadb_installation.htm).
 
 ## Installation (Local)
-If you wish to download SAFMEDS locally, follow the below steps. 
+If you wish to download SAFMEDS locally, follow the below steps only after installing the above prerequisites.
+```bash
+mkdir <repositories/directory> || cd <repositories/directory>
+```
 
 ## Usage
 ## Credits

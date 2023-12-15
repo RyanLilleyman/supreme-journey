@@ -17,7 +17,8 @@ I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-p
 - [Prerequisites](#prerequisites)
 - [Installation](#installation-local)
 - [Usage](#usage)
-- [Current Features](#current-features)
+- [General Features](#current-features)
+- [Security Features](#security-features)
 - [Future Features and Bugs](#future-features-bugs)
 - [Credits](#credits)
 - [Contributing](#contributing)
@@ -113,7 +114,6 @@ mkdir <repositories/directory> | cd <repositories/directory>
    ```
 
 ## Current Features
-1. General Features
 - You can create a deck. Images are stored in the server file system and urls are stored as references in the database.
   ![Link](https://github.com/RyanLilleyman/supreme-journey/blob/main/create_deck.gif)
 - Dynamically provides support for near all static image extensions, .jpeg, .png, .webm, .jpg, and webp.
@@ -124,7 +124,7 @@ mkdir <repositories/directory> | cd <repositories/directory>
 - You can view session statistics after the session. 
 - You can preview the first cards of each deck through the catalog.
 
-2. Security Features
+## Security Features
 - HTTPS is enabled on the site.
 - Content within a session is rendered dynamically upon deck creation and shows cards as either with or without images.
 - Sessions are deleted upon returning to the Home page from the results page ensuring minimal leak of session data. 

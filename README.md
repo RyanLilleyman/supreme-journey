@@ -1,6 +1,6 @@
 # SAFMEDS
 
-![]()
+![Project Banner](https://github.com/RyanLilleyman/supreme-journey/blob/main/banner.gif)
 
 ## About SAFMEDS
 
@@ -12,12 +12,15 @@ It was ported over to the Laravel framework for server-side rendering and other 
 
 I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-parameters), semantic structuring of elements in [HTML 5](https://www.w3schools.com/html/html5_semantic_elements.asp), the inline-block layout in [CSS](https://www.w3schools.com/css/css_inline-block.asp), useful array methods in [Javascript](https://www.w3schools.com/js/js_array_methods.asp), and much more.
 
+And yes, I wrote this documentation without assistance.
+
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Installation](#installation-local)
 - [Usage](#usage)
-- [Current Features](#current-features)
+- [General Features](#current-features)
+- [Security Features](#security-features)
 - [Future Features and Bugs](#future-features-bugs)
 - [Credits](#credits)
 - [Contributing](#contributing)
@@ -121,11 +124,18 @@ mkdir <repositories/directory> | cd <repositories/directory>
 - You can choose deck rendering parameters on the Home page. These include, deck font, deck color, and deck font-size to name a few.
 - You can choose deck timing parameters and whether or not to display them within a session.
 - You can view session statistics after the session. 
-- You can preview the first cards of each deck through the catalog. 
-- Content within a session is rendered dynamically upon deck creation and shows cards as either with or without images.
-- Sessions are dynamically rendered as any files will be deleted upon returning to the Home page from the results page. 
-- Ensures the user cannot make unauthorized requests from outside the env APP_URL. 
+- You can preview the first cards of each deck through the catalog.
 - Provides a convenient references list for further customization and contribution.
+
+
+## Security Features
+- HTTPS is enabled on the site.
+- Content within a session is rendered dynamically upon deck creation and shows cards as either with or without images.
+- Photos are stored on the server and are only served when accessed via url reference. It is not possible to grab sensitive images unless you start a session.
+- Sessions are deleted upon returning to the Home page ensuring minimal leak of session data. 
+- Ensures the user cannot make unauthorized requests from outside the env APP_URL. 
+- You must mave a valid CSRF token in all headers provided by the server to make valid requests.
+
  
 
 

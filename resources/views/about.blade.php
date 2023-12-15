@@ -62,7 +62,7 @@
                 effective.
             </p>
         </div> --}}
-        <!--[1] “Hugo Curiel,” Western Michigan University, https://wmich.edu/psychology/directory/curiel-0#:~:text=and%20intellectual%20disabilities.-,Dr.,preference%20and%20reinforcer%20assessment%20procedures. (accessed Dec. 12, 2023).
+        <!--[11] “Hugo Curiel,” Western Michigan University, https://wmich.edu/psychology/directory/curiel-0#:~:text=and%20intellectual%20disabilities.-,Dr.,preference%20and%20reinforcer%20assessment%20procedures. (accessed Dec. 12, 2023).
         All below information on Dr. Curiel is straight from the above link. -->
         <h3>About Dr. Curiel</h3>
         <div class="aboutCuriel">

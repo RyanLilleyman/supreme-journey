@@ -113,6 +113,7 @@ mkdir <repositories/directory> | cd <repositories/directory>
    ```
 
 ## Current Features
+1. General Features
 - You can create a deck. Images are stored in the server file system and urls are stored as references in the database.
   ![Link](https://github.com/RyanLilleyman/supreme-journey/blob/main/create_deck.gif)
 - Dynamically provides support for near all static image extensions, .jpeg, .png, .webm, .jpg, and webp.
@@ -121,11 +122,16 @@ mkdir <repositories/directory> | cd <repositories/directory>
 - You can choose deck rendering parameters on the Home page. These include, deck font, deck color, and deck font-size to name a few.
 - You can choose deck timing parameters and whether or not to display them within a session.
 - You can view session statistics after the session. 
-- You can preview the first cards of each deck through the catalog. 
+- You can preview the first cards of each deck through the catalog.
+
+2. Security Features
+- HTTPS is enabled on the site.
 - Content within a session is rendered dynamically upon deck creation and shows cards as either with or without images.
-- Sessions are dynamically rendered as any files will be deleted upon returning to the Home page from the results page. 
+- Sessions are deleted upon returning to the Home page from the results page ensuring minimal leak of session data. 
 - Ensures the user cannot make unauthorized requests from outside the env APP_URL. 
 - Provides a convenient references list for further customization and contribution.
+- You must mave a valid CSRF token in all headers provided by the server to make any valid requests.
+- Photos are stored on the server and are only served when accessed via url reference. It is not possible to grab sensitive images unless you start a session.
  
 
 

@@ -1,5 +1,7 @@
 # SAFMEDS
 
+![]()
+
 ## About SAFMEDS
 
 SAFMEDS is a humble flashcard application.
@@ -112,6 +114,7 @@ mkdir <repositories/directory> | cd <repositories/directory>
 
 ## Current Features
 - You can create a deck. Images are stored in the server file system and urls are stored as references in the database.
+  ![Link](https://github.com/RyanLilleyman/supreme-journey/blob/main/create_deck.gif)
 - Dynamically provides support for near all static image extensions, .jpeg, .png, .webm, .jpg, and webp.
 - You can delete a deck or multiple decks at once.
 - Provides a convenient search feature for finding decks within the library.

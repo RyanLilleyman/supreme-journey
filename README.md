@@ -1,6 +1,6 @@
 # SAFMEDS
 
-![]()
+![Project Banner](https://github.com/RyanLilleyman/supreme-journey/blob/main/banner.gif)
 
 ## About SAFMEDS
 

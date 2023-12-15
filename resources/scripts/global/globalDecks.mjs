@@ -72,7 +72,7 @@ class GlobalDecks {
         });
         return await DECK_SERVICES.postDecks(formData).then(() => {
             alert("Deck added!");
-            window.location.href = "/";
+            // window.location.href = "/";
         });
     }
 

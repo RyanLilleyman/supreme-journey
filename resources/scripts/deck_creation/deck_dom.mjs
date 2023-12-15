@@ -162,9 +162,14 @@ export class DeckDOM extends DeckCreator {
                 const name = this.Deck.Name;
                 const cards = this.Deck.Cards;
                 console.log(cards);
+                this.removeLastCard();
                 await DECK_GLOBALS.addDeck(name, cards);
             }
         });
+    }
+
+    removeLastCard() {
+        this.Deck.Cards.splice(this.Deck.Cards.length - 1, 1);
     }
 
     /**

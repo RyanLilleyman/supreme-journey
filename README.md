@@ -130,7 +130,8 @@ mkdir <repositories/directory> | cd <repositories/directory>
 - I have yet to finish edit functionality for the decks.
 - I have to finish the downloading feature into a pdf. This includes updating the main results page with which cards were missed specifically and rendering them inside the results blade.php.
 - I have yet to implement user accounts and authentication. 
-- There are some bugs that need ironing out. Chief among these, is the double click on adding a card to the deck array.
+- I have to fix the blank cards rendering for no reason.
+- --There are some bugs that need ironing out. Chief among these, is the double click on adding a card to the deck array.--
 
 ## Credits
 - [1] “Chatgpt,” ChatGPT, https://openai.com/chatgpt (accessed Dec. 12, 2023).

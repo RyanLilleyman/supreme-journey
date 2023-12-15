@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class EnvironmentController extends Controller
 {
     /**
-     * [1] “Single Action Controllers,” Laravel, https://laravel.com/docs/10.x/controllers#single-action-controllers (accessed Dec. 12, 2023).
+     * [21] “Single Action Controllers,” Laravel, https://laravel.com/docs/10.x/controllers#single-action-controllers (accessed Dec. 12, 2023).
      * The below single action controller comes from the above documentation.
      */
     public function __invoke(Request $request){

@@ -12,6 +12,8 @@ It was ported over to the Laravel framework for server-side rendering and other 
 
 I learned routing inside [Laravel](https://laravel.com/docs/10.x/routing#route-parameters), semantic structuring of elements in [HTML 5](https://www.w3schools.com/html/html5_semantic_elements.asp), the inline-block layout in [CSS](https://www.w3schools.com/css/css_inline-block.asp), useful array methods in [Javascript](https://www.w3schools.com/js/js_array_methods.asp), and much more.
 
+And yes, I wrote this documentation without assistance.
+
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)

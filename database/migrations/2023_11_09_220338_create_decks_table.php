@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         /**
-         * I wrote this method to create a new table upon migration foor the decks table.
+         * I wrote this method to create a new table upon migration for the decks table.
          */
         Schema::create('decks', function (Blueprint $table) {
             $table->uuid('id')->primary();

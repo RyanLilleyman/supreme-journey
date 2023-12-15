@@ -70,7 +70,10 @@ class GlobalDecks {
             formData.append(`cards[${i}][front][blob]`, element.front.blob);
             formData.append(`cards[${i}][back]`, element.back);
         });
-        return await DECK_SERVICES.postDecks(formData);
+        return await DECK_SERVICES.postDecks(formData).then(() => {
+            alert("Deck added!");
+            window.location.href = "/";
+        });
     }
 
     /**

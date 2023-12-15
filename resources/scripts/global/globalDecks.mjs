@@ -42,7 +42,7 @@ class GlobalDecks {
     }
 
     /**
-     * [4] [1] MozDevNet, “Using FormData objects - web apis: MDN,”
+     * [4] MozDevNet, “Using FormData objects - web apis: MDN,”
      * MDN Web Docs, https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects.
      *
      * In conjunction with the above source, I wrote this method to first check if the card exists with all necessary

@@ -162,10 +162,10 @@ export class DeckDOM extends DeckCreator {
                 const name = this.Deck.Name;
                 const cards = this.Deck.Cards;
                 console.log(cards);
-                await DECK_GLOBALS.addDeck(name, cards);
-                alert("Deck added!");
-                this.clearCardOnDOM();
-                window.location.href = "/";
+                await DECK_GLOBALS.addDeck(name, cards).then(() => {
+                    alert("Deck added!");
+                    window.location.href = "/";
+                });
             }
         });
     }

@@ -136,6 +136,9 @@ class DeckServices {
         });
     }
 
+    /**
+     * I wrote this to cache the deck_id
+     */
     cacheDeckById(deck_id) {
         return new Promise((resolve, reject) => {
             axios
@@ -149,6 +152,9 @@ class DeckServices {
         });
     }
 
+    /**
+     * I wrote this to grab the cached deck from the server. 
+     */
     grabCachedDeck() {
         return new Promise((resolve, reject) => {
             axios

@@ -315,13 +315,13 @@ class Session {
      */
     bind_front_buttons() {
         let skip = document.querySelector(".skipButton");
-        skip.addEventListener("click", () => {
+        skip.addEventListener("click", async () => {
             if (this.#idx < this.#url_array.length) {
                 this.#results.skipped_array_manual.push(
                     this.#url_array[this.#idx]
                 );
                 this.#idx++;
-                this.next_front();
+                await this.next_front();
 
                 // Checking if session timer is CountDown instance
                 if (this.#session_timer instanceof CountdownTimer) {
@@ -333,8 +333,8 @@ class Session {
             }
         });
         let flip = document.querySelector(".flipButton");
-        flip.addEventListener("click", () => {
-            this.next_back();
+        flip.addEventListener("click", async () => {
+            await this.next_back();
             this.create_back_buttons();
         });
     }
@@ -351,11 +351,11 @@ class Session {
      */
     bind_back_buttons() {
         let incorrect = document.querySelector(".incorrectButton");
-        incorrect.addEventListener("click", () => {
+        incorrect.addEventListener("click", async () => {
             if (this.#idx < this.#url_array.length) {
                 this.#results.incorrect_array.push(this.#url_array[this.#idx]);
                 this.#idx++;
-                this.next_front();
+                await this.next_front();
                 // Checking if session timer is CountDown instance
                 if (this.#session_timer instanceof CountdownTimer) {
                     this.#session_timer.reset_round_timer();
@@ -372,11 +372,11 @@ class Session {
             }
         });
         let correct = document.querySelector(".correctButton");
-        correct.addEventListener("click", () => {
+        correct.addEventListener("click", async () => {
             if (this.#idx < this.#url_array.length) {
                 this.#results.correct_array.push(this.#url_array[this.#idx]);
                 this.#idx++;
-                this.next_front();
+                await this.next_front();
                 if (this.#session_timer instanceof CountdownTimer) {
                     this.#session_timer.reset_round_timer();
                 }
@@ -434,7 +434,7 @@ class Session {
             axios
                 .get("/fetch_front/" + string)
                 .then((response) => {
-                    // console.log(response);
+                    console.log(response);
                     resolve(response.data);
                 })
                 .catch((error) => {
@@ -451,6 +451,7 @@ class Session {
             axios
                 .get("/fetch_back/" + string)
                 .then((response) => {
+                    console.log(response.data);
                     resolve(response.data);
                 })
                 .catch((error) => {

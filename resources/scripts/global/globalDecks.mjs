@@ -57,17 +57,19 @@ class GlobalDecks {
         let formData = new FormData();
         formData.append("name", name);
 
-        for (let i = 0; i < cards.length; i++) {
-            const card = cards[i];
-
-            if (!card.front.text && !card.front.blob && !card.back) {
-                continue;
+        let ne = [];
+        cards.forEach((card) => {
+            if (card.front.text || card.back || card.front.blob) {
+                ne.push(card);
             }
+        });
+        console.log(ne);
 
-            formData.append(`cards[${i}][front][text]`, card.front.text);
-            formData.append(`cards[${i}][front][blob]`, card.front.blob);
-            formData.append(`cards[${i}][back]`, card.back);
-        }
+        ne.forEach((element, i) => {
+            formData.append(`cards[${i}][front][text]`, element.front.text);
+            formData.append(`cards[${i}][front][blob]`, element.front.blob);
+            formData.append(`cards[${i}][back]`, element.back);
+        });
         return await DECK_SERVICES.postDecks(formData);
     }
 

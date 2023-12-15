@@ -159,27 +159,13 @@ export class DeckDOM extends DeckCreator {
             if (!this.Deck.Name) {
                 alert("Deck must have a name!");
             } else {
-                if (
-                    this.Deck.Cards.length > 1 &&
-                    !this.Deck.Cards[this.Deck.Cards.length - 1].Front.image &&
-                    !this.Deck.Cards[this.Deck.Cards.length - 1].Front.text &&
-                    !this.Deck.Cards[this.Deck.Cards.length - 1].Back
-                ) {
-                    this.Deck.removeLastCard();
-                    const name = this.Deck.Name;
-                    const cards = this.Deck.Cards;
-                    alert("Deck added!");
-                    await DECK_GLOBALS.addDeck(name, cards);
-                    this.clearCardOnDOM();
-                    window.location.href = "/";
-                } else {
-                    const name = this.Deck.Name;
-                    const cards = this.Deck.Cards;
-                    alert("Deck added!");
-                    await DECK_GLOBALS.addDeck(name, cards);
-                    this.clearCardOnDOM();
-                    window.location.href = "/";
-                }
+                const name = this.Deck.Name;
+                const cards = this.Deck.Cards;
+                console.log(cards);
+                await DECK_GLOBALS.addDeck(name, cards);
+                alert("Deck added!");
+                this.clearCardOnDOM();
+                window.location.href = "/";
             }
         });
     }
@@ -250,7 +236,7 @@ export class DeckDOM extends DeckCreator {
         }
         const imgElement = document.createElement("img");
 
-        const img = this.Deck.Cards[this.Index].Front.blob;
+        const img = this.Deck.Cards[this.Index].front.blob;
 
         if (img) {
             imgElement.src = this.getBlobUrl(img);
@@ -273,8 +259,10 @@ export class DeckDOM extends DeckCreator {
      * and it's associated mimetype upon showing the image.
      */
     async getBlob(arrayBuffer, mimeType) {
-        const blob = new Blob([arrayBuffer], { type: mimeType });
-        return blob;
+        return new Promise((res, rej) => {
+            const blob = new Blob([arrayBuffer], { type: mimeType });
+            res(blob);
+        });
     }
 
     /**
@@ -283,7 +271,7 @@ export class DeckDOM extends DeckCreator {
      */
     getBlobUrl(blob) {
         if (!blob) {
-            return null;
+            return "";
         }
         return URL.createObjectURL(blob);
     }

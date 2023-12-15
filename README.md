@@ -125,15 +125,17 @@ mkdir <repositories/directory> | cd <repositories/directory>
 - You can choose deck timing parameters and whether or not to display them within a session.
 - You can view session statistics after the session. 
 - You can preview the first cards of each deck through the catalog.
+- Provides a convenient references list for further customization and contribution.
+
 
 ## Security Features
 - HTTPS is enabled on the site.
 - Content within a session is rendered dynamically upon deck creation and shows cards as either with or without images.
-- Sessions are deleted upon returning to the Home page from the results page ensuring minimal leak of session data. 
-- Ensures the user cannot make unauthorized requests from outside the env APP_URL. 
-- Provides a convenient references list for further customization and contribution.
-- You must mave a valid CSRF token in all headers provided by the server to make any valid requests.
 - Photos are stored on the server and are only served when accessed via url reference. It is not possible to grab sensitive images unless you start a session.
+- Sessions are deleted upon returning to the Home page ensuring minimal leak of session data. 
+- Ensures the user cannot make unauthorized requests from outside the env APP_URL. 
+- You must mave a valid CSRF token in all headers provided by the server to make valid requests.
+
  
 
 

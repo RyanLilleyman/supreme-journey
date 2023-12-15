@@ -164,7 +164,7 @@ export class DeckDOM extends DeckCreator {
                 console.log(cards);
                 await DECK_GLOBALS.addDeck(name, cards).then(() => {
                     alert("Deck added!");
-                    window.location.href = "/";
+                    // window.location.href = "/";
                 });
             }
         });

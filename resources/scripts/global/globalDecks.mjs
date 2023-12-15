@@ -63,7 +63,6 @@ class GlobalDecks {
                 ne.push(card);
             }
         });
-        console.log(ne);
 
         ne.forEach((element, i) => {
             formData.append(`cards[${i}][front][text]`, element.front.text);
@@ -72,7 +71,7 @@ class GlobalDecks {
         });
         return await DECK_SERVICES.postDecks(formData).then(() => {
             alert("Deck added!");
-            // window.location.href = "/";
+            window.location.href = "/";
         });
     }
 

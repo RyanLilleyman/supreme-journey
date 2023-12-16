@@ -21,24 +21,31 @@
 
 
 .aboutCuriel{
-    display:flex;
-    flex-direction:column;
-    gap:0.5rem;
+    margin-left: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 
 }
 
 .leftEdu{
     overflow:auto;
+    padding:1rem;
 
 }
+/*[31] MozDevNet, ::“-webkit-scrollbar - CSS: Cascading style sheets: MDN,” MDN Web Docs, https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar (accessed Dec. 14, 2023).
+I wrote the background, width, borders, cursors, and border-radius for these selectors.*/
 .leftEdu::-webkit-scrollbar {
-    width: 14px;
+    width: 4px;
+    box-sizing: border-box;
+
 }
 
 .leftEdu::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 10px;
-
 }
 
 .leftEdu::-webkit-scrollbar-thumb {
@@ -88,18 +95,33 @@
 }
 .aboutCuriel h4{
     flex:1;
-    margin-top:1rem;
+    margin-top:0;
+    margin-bottom:0;
 }
 .aboutCuriel p{
     flex:1;
 }
 .imageContainer {
-  width: 12rem;
-  height: 17rem;
+  display:flex;
+  /* width: 12rem; */
+  height: 15rem;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  border-radius: 0.5rem;
+}
+
+.imageContainer img{
+    border-radius:0.5rem;
+}
+
+body{
+    display:flex;
+    background: #f7f9fc;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    color: #2c3e50;
 }
 
 *{

@@ -19,8 +19,8 @@
   padding-left: 0;
   display: flex;
   gap:1rem;
-  max-height:500px;
-  overflow-y:auto;
+  /* max-height:500px; */
+  /* overflow-y:auto; */
   flex-direction: column;
   word-wrap: break-word;
   background-color: #ffffff;

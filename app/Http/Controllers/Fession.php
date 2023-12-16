@@ -18,7 +18,7 @@ class Fession extends Controller
     public function show_settings(Request $request)
     {
         /**
-         * [1] “Retrieving Input From The Query String,” Laravel, https://laravel.com/docs/10.x/requests#retrieving-input-from-the-query-string (accessed Dec. 12, 2023).
+         * [23] “Retrieving Input From The Query String,” Laravel, https://laravel.com/docs/10.x/requests#retrieving-input-from-the-query-string (accessed Dec. 12, 2023).
          * The below query() method pulls the deck uuid from the request query string.
          */
         $deck_id = $request->query('deck');

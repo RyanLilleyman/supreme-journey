@@ -17,7 +17,7 @@ class DeckController extends Controller
     public function index()
     {
         /**
-         * [1] “Eager Loading Multiple Relationships,” Laravel, https://laravel.com/docs/10.x/eloquent-relationships#eager-loading-multiple-relationships (accessed Dec. 12, 2023).
+         * [18] “Eager Loading Multiple Relationships,” Laravel, https://laravel.com/docs/10.x/eloquent-relationships#eager-loading-multiple-relationships (accessed Dec. 12, 2023).
          * This eager loads all decks with cards.
          */
         return Deck::with('cards')->get();
@@ -96,7 +96,7 @@ class DeckController extends Controller
     public function show(string $id)
     {
         /**
-         * [1] “Eager Loading Multiple Relationships,” Laravel, https://laravel.com/docs/10.x/eloquent-relationships#eager-loading-multiple-relationships (accessed Dec. 12, 2023).
+         * [18] “Eager Loading Multiple Relationships,” Laravel, https://laravel.com/docs/10.x/eloquent-relationships#eager-loading-multiple-relationships (accessed Dec. 12, 2023).
          * This eager loads all cards for a specific card from a uuid.
          */
         return Deck::with('cards')->find($id);

@@ -77,8 +77,7 @@
 }
 
 .backCardCreate,
-.frontCardCreation,
-.deckSettings {
+.frontCardCreation{
   border-radius: 0.5rem;
   border: 1px solid #004477;
   box-shadow: 2px 2px 0px 0px #004477;
@@ -181,19 +180,6 @@
     height:17rem;
 }
 
-
-.deckSettings div {
-  font-size: 1.05rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.deckSettings select {
-  min-width: 5rem;
-}
-
 .frontCardCreate::placeholder,
 .backCardCreate::placeholder {
   font-family: "Roboto", sans-serif;
@@ -203,40 +189,53 @@
   vertical-align: center;
   line-height: 16rem;
 }
+
 .frontCardCreate::placeholder {
   line-height: 11rem;
 }
 
 .deckContainer {
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
 }
 
-.deckSettings {
-  padding: 1rem;
-  font-size: 0.8em;
-  overflow: hidden;
-  padding: 1rem;
-  justify-content: center;
-}
 
-.deckSettings:nth-of-type(2) {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
-}
+
 .deckSettings input {
   padding: 1rem;
   font-size: 0.9rem;
 }
 
+.deckSettings select {
+    min-width: 5rem;
+  }
+
+
 .buttonContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:1rem;
 }
 
-.buttonsForCreating {
+.deckSettings{
+    padding: 1rem;
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
+  grid-gap: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #004477;
+  box-shadow: 2px 2px 0px 0px #004477;
+  min-width: 25rem;
+  max-height:82px;
+}
+.buttonsForCreating,
+.deckSettings:nth-of-type(2) {
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -245,8 +244,16 @@
   border-radius: 0.5rem;
   border: 1px solid #004477;
   box-shadow: 2px 2px 0px 0px #004477;
-  min-width: 20rem;
+  min-width: 25rem;
+  max-height:82px;
 }
+
+.deckName{
+    display: flex;
+    align-items: center;
+    gap: 7rem;
+}
+
 .buttonsForCreating:nth-of-type(2) {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -278,7 +285,7 @@ I modified the various names and added padding, margins, borders, font-size chan
   border-radius: 0.5rem;
 }
 
-.clearButton::after {
+.destroyButton::after {
   content: "";
   position: absolute;
   top: 0.5rem;
@@ -528,6 +535,87 @@ I modified the various names and added padding, margins, borders, font-size chan
 .destroyButton:focus:not(:focus-visible),
 .startSessButton:focus:not(:focus-visible) {
   outline: none;
+}
+
+@media (max-width:450px) {
+    .frontCardCreate, .backCardCreate {
+        width: 21rem;
+        font-family: "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        color: #333;
+        background-color: #fff;
+        padding: 8px;
+        resize: vertical;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        border-radius: 0.5rem;
+    }
+    .backCardCreate{
+        height:13rem;
+    }
+    .frontCardCreate {
+        height: 9.2rem;
+    }
+
+    .frontCardCreate::placeholder,
+    .backCardCreate::placeholder {
+        font-family: "Roboto", sans-serif;
+        font-size: 1.1rem;
+        color: #aaa;
+        text-align: center;
+        vertical-align: center;
+        line-height: 11.75rem;
+    }
+
+    .frontCardCreate::placeholder {
+        line-height: 8rem;
+    }
+    .deckSettings{
+        padding: 1rem;
+      /* display: grid;
+      grid-template-columns: repeat(2, 1fr); */
+      grid-gap: 2rem;
+      background-color: #ffffff;
+      border-radius: 0.5rem;
+      border: 1px solid #004477;
+      box-shadow: 2px 2px 0px 0px #004477;
+      min-width: 10rem;
+      max-width:19rem;
+      max-height:82px;
+    }
+    .buttonsForCreating,
+    .deckSettings:nth-of-type(2) {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem;
+      background-color: #ffffff;
+      border-radius: 0.5rem;
+      border: 1px solid #004477;
+      box-shadow: 2px 2px 0px 0px #004477;
+      min-width: 19rem;
+      max-height:82px;
+    }
+
+    .deckName{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .buttonsForCreating:nth-of-type(2) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* .previousButton,
+    .nextButton,
+    .createButton,
+    .clearButton,
+    .indexButton,
+    .finishButton{
+        max-width:rem;
+    } */
 }
 
 

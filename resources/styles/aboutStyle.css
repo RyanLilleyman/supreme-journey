@@ -4,8 +4,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem 3rem;
-  max-width: 800px;
+  /* padding: 2rem 3rem; */
+  max-width: 600px;
+  margin:0.5rem;
 }
 
 .aboutCuriel,
@@ -18,10 +19,45 @@
   box-shadow: 2px 2px 0px 0px #004477;
 }
 
-.aboutCuriel h4{
-    margin-top:0;
+
+.aboutCuriel{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+
 }
 
+.leftEdu{
+    overflow:auto;
+
+}
+.leftEdu::-webkit-scrollbar {
+    width: 14px;
+}
+
+.leftEdu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+
+}
+
+.leftEdu::-webkit-scrollbar-thumb {
+    background: #888;
+    border:1px solid #fff;
+    border-radius: 10px;
+}
+
+.leftEdu::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    cursor:pointer;
+
+}
+
+.leftEdu::-webkit-scrollbar-thumb:active {
+    background: #444;
+    cursor:pointer;
+
+}
 
 .aboutApplication p,
 .aboutCuriel p {
@@ -34,7 +70,7 @@
   margin-bottom: 20px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
-  margin-top:0;
+  margin-top:1rem;
   margin-right: auto;
   margin-left: auto;
   display: inline-block;
@@ -44,9 +80,18 @@
   width: 4em;
 }
 .educationContainer {
+  flex:1;
   display: flex;
   justify-content: space-between;
   max-height:240px;
+  gap:0.5rem;
+}
+.aboutCuriel h4{
+    flex:1;
+    margin-top:1rem;
+}
+.aboutCuriel p{
+    flex:1;
 }
 .imageContainer {
   width: 12rem;

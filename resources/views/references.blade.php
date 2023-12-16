@@ -5,7 +5,7 @@
     <title>References</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[7] “W3Schools online HTML editor,” W3Schools Tryit Editor, https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select (accessed Dec. 12, 2023).
+    <!--[8] “Free icons and stickers - millions of images to download,” Flaticon, https://www.flaticon.com/ (accessed Dec. 12, 2023).
     I imported a modified image to make relevant flaticons for the webpage.-->
     <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png" />
@@ -53,11 +53,14 @@
     </nav>
 
     <!-- references -->
+
     <main class="references">
+        {{-- <div class='referencesContainer'> --}}
         <h1 class="referenceHeader">References List</h1>
         <ul>
             <li>
-                [1] “Chatgpt,” ChatGPT, <a href="https://openai.com/chatgpt">https://openai.com/chatgpt</a> (accessed
+                [1] “Chatgpt,” ChatGPT, <a href="https://openai.com/chatgpt">https://openai.com/chatgpt</a>
+                (accessed
                 Dec. 12, 2023).
             </li>
             <li>
@@ -79,7 +82,8 @@
             </li>
             <li>
                 [5] “Getting started,” Getting Started |&nbsp;Axios Docs, <a
-                    href="https://axios-http.com/docs/intro">https://axios-http.com/docs/intro</a> (accessed Dec. 11,
+                    href="https://axios-http.com/docs/intro">https://axios-http.com/docs/intro</a> (accessed Dec.
+                11,
                 2023).
             </li>
             <li>
@@ -231,6 +235,8 @@
                 (accessed Dec. 14, 2023).
             </li>
         </ul>
+        {{-- </div> --}}
+
     </main>
     <footer class="footer">&copy; Something Copyright</footer>
 </body>

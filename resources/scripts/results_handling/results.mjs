@@ -24,11 +24,12 @@ class Results {
                 .then((blob) => {
                     console.log(blob);
                     const pdfUrl = URL.createObjectURL(blob);
+                    /**
+                     * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.
+                     * For the below method.
+                     */
                     window.open(pdfUrl, "_blank");
                 })
-                // .then((blob) => {
-                //
-                // })
                 .catch((e) => {
                     console.log(e);
                     rej(e);
@@ -36,6 +37,9 @@ class Results {
         });
     }
 
+    /**
+     * I wrote this method to bind listeners to the statistics spans.
+     */
     bindListeners() {
         document.addEventListener("DOMContentLoaded", () => {
             this.results.totalSessionTime =

@@ -102,7 +102,6 @@ class Fession extends Controller
             array_push($back_urls, url('backs/'.$card['id'].'.html'));
 
             // Make a new front and back model with the urls pointing to the relevant files in the storage/app directory
-
             $front_model = new fronts(['front_url'=>url('fronts/'.$card['id'].'.html')]);
             $back_model = new backs(['back_url'=>url('backs/'.$card['id'].'.html')]);
 

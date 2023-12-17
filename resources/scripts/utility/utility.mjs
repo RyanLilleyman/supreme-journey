@@ -234,9 +234,6 @@ export class UtilityCenter {
         }
         let decks = document.getElementsByClassName("deckholder");
         for (let deck of decks) {
-            // deck.addEventListener("click", function (e) {
-            //     console.log(e);
-            // });
             deck.addEventListener("mouseenter", (e) => {
                 e.target.lastChild.classList.add("front-show");
                 setTimeout(

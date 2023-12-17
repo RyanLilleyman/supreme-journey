@@ -1,4 +1,11 @@
 import axios from "axios";
+/**
+ * [33]“Generate a UUID in JavaScript,” www.uuidgenerator.net.
+ *  https://www.uuidgenerator.net/dev-corner/javascript#:~:text=The%20JavaScript%20library%20we%20recommend
+ *  (accessed Dec. 17, 2023).
+ * For the below import.
+ */
+import { v4 as uuidv4 } from "uuid";
 import CountdownTimer from "./countDown.mjs";
 
 /**
@@ -17,6 +24,7 @@ class Session {
     #session_url;
     #session_timer;
     #results;
+    #results_uuid_set;
 
     /**
      * Initializes the instance of the class.
@@ -58,6 +66,7 @@ class Session {
         this.#round_time = "";
         this.#deck_id = "";
         this.#session_timer = "";
+        this.#results_uuid_set = false;
     }
 
     /**
@@ -546,7 +555,17 @@ class Session {
             this.#results.skipped_total;
         this.#results.totalRoundTime = parseInt(this.#round_time);
         this.#results.totalSessionTime = parseInt(this.#session_time);
+        /**
+         * [33]“Generate a UUID in JavaScript,” www.uuidgenerator.net. https://www.uuidgenerator.net/dev-corner/javascript#:~:text=The%20JavaScript%20library%20we%20recommend (accessed Dec. 17, 2023).
+         * Used to generate the below uuid.
+         */
+        if (!this.#results_uuid_set) {
+            let results_uuid = uuidv4();
+            this.#results_uuid_set = true;
+        }
+        console.log("results_uuid", results_uuid);
         let results = {
+            results_id: results_uuid,
             sessTime: this.#results.totalSessionTime,
             roundTime: this.#results.totalRoundTime,
             correct: this.#results.correct,
@@ -556,6 +575,10 @@ class Session {
             skipped_total: this.#results.skipped_total,
             number_of_cards_viewed: this.#results.number_of_cards_viewed,
             number_of_cards_in_deck: this.#results.number_of_cards_in_deck,
+            skipped_array_latency: this.#results.skipped_array_latency,
+            skipped_array_manual: this.#results.skipped_array_manual,
+            correct_array: this.#results.correct_array,
+            incrrect_array: this.#results.incorrect_array,
         };
 
         let rel = await this.results_request(results);
@@ -570,7 +593,7 @@ class Session {
             axios
                 .post("save-results", results)
                 .then((response) => {
-                    window.location.href = response.data.url;
+                    // window.location.href = response.data.url;
                     console.log(response);
                     resolve(response);
                 })

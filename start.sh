@@ -14,7 +14,7 @@ php artisan view:cache
 composer install
 
 npm run build
-npm run dev
+# npm run dev
 
 sleep 5
 

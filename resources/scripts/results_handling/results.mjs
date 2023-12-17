@@ -1,3 +1,4 @@
+import { UtilityCenter } from "../utility/utility.mjs";
 /**
  * I wrote this class to return results.
  */
@@ -16,9 +17,22 @@ class Results {
         };
     }
 
-    fetch_results() {
-        axios.get("/fetch-results").then((response) => {
-            console.log(response);
+    async fetch_results() {
+        return new Promise((res, rej) => {
+            fetch("/fetch-results")
+                .then((r) => r.blob())
+                .then((blob) => {
+                    console.log(blob);
+                    const pdfUrl = URL.createObjectURL(blob);
+                    window.open(pdfUrl, "_blank");
+                })
+                // .then((blob) => {
+                //
+                // })
+                .catch((e) => {
+                    console.log(e);
+                    rej(e);
+                });
         });
     }
 
@@ -49,11 +63,12 @@ class Results {
     }
 
     bindDownload() {
-        document.querySelector("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
             console.log("binding download ");
             let download_button = document.querySelector(".downloadButton");
             download_button.addEventListener("click", () => {
                 console.log("download button clicked");
+                this.fetch_results();
             });
         });
     }

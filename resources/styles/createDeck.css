@@ -173,11 +173,11 @@
 }
 
 .frontCardCreate{
-  height:12.2rem;
+  height:10.2rem;
 }
 
 .backCardCreate{
-    height:17rem;
+    height:15rem;
 }
 
 .frontCardCreate::placeholder,
@@ -187,11 +187,11 @@
   color: #aaa;
   text-align: center;
   vertical-align: center;
-  line-height: 16rem;
+  line-height: 14rem;
 }
 
 .frontCardCreate::placeholder {
-  line-height: 11rem;
+  line-height: 9rem;
 }
 
 .deckContainer {

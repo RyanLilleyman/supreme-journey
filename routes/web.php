@@ -77,7 +77,11 @@ Route::post('cache/{id}', [FileFromStorage::class,'post_cache_id']);
 // Grabs the deck based on the deck_id
 Route::get('cache/', [FileFromStorage::class, 'grab_cache_id']);
 
-
+// Redirects to the correct api route for fetching results
+Route::get('/fetch-results', function () {
+    // return 'hello world';
+    return redirect('/api/fetch-results');
+});
 
 // Grabs CSRF token
 Route::get('/csrf-token', function () {

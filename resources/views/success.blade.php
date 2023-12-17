@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Sucessful deck creation.</h1>
+    <h1>Sucessful pdf creation.</h1>
 </body>
 
 </html>

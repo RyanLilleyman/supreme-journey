@@ -24,6 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Grabs blobs
 Route::get('/grab-blob', [FileFromStorage::class, 'grab_blob_from_url']);
 
+
+
 // Grabs results.pdf files
-Route::get('/results-pdf', GrabResultsController::class);
+Route::get('/fetch-results', GrabResultsController::class);
 

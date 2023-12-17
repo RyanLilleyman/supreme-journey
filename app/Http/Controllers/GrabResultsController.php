@@ -12,8 +12,11 @@ class GrabResultsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
+        /**
+         * [32]“Laravel and DomPDF: Generate Simple Invoice PDF with Images and CSS,” Laravel Daily. https://laraveldaily.com/post/laravel-dompdf-generate-simple-invoice-pdf-with-images-css (accessed Dec. 17, 2023).
+‌
+         */
+        $pdf = Pdf::loadView('success');
+        return $pdf->download();
     }
 }

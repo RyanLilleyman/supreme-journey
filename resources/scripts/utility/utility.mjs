@@ -234,7 +234,6 @@ export class UtilityCenter {
         }
         let decks = document.getElementsByClassName("deckholder");
         for (let deck of decks) {
-            console.log(deck);
             // deck.addEventListener("click", function (e) {
             //     console.log(e);
             // });
@@ -267,6 +266,11 @@ export class UtilityCenter {
         }
     }
 
+    /**
+     * I wrote this file to grab the blob from of an imgUrl from the server.
+     * @param {} imgUrl
+     * @returns
+     */
     static async grabBlobFromUrl(imgUrl) {
         return new Promise((res, rej) => {
             fetch("api/grab-blob/?param1=" + imgUrl)

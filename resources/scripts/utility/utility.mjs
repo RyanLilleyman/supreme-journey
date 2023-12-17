@@ -270,7 +270,7 @@ export class UtilityCenter {
     static async grabBlobFromUrl(imgUrl) {
         return new Promise((res, rej) => {
             axios
-                .get("api/grab-blob/" + imgUrl)
+                .get("api/grab-blob/", { params: { imgUrl: imgUrl } })
                 .then((r) => {
                     console.log(r);
                     res(r);

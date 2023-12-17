@@ -115,7 +115,14 @@ class FileFromStorage extends Controller
         return response()->json(['deck'=>$deck]);
     }
 
-    public function grab_blob_from_id($url){
-        return Storage::download($url);
+    public function grab_blob_from_url(Request $request){
+        $url = $request->query('imgUrl');
+        $path = Storage::disk('public')->path($url);
+        $fileContents = file_get_contents($path);
+        $mimeType = Storage::disk('public')->mimeType($url);
+        return response($fileContents,200,[
+            'Content-Type' => $mimeType,
+            'Content-Disposition' => 'attachment; filename="' . basename($path)
+        ]);
     }
 }

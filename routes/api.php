@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/grab-blob/{url}', [FileFromStorage::class, 'grab_blob_from_url']);
+Route::get('/grab-blob', [FileFromStorage::class, 'grab_blob_from_url']);

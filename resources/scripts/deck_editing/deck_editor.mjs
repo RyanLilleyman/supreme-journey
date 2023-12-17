@@ -6,12 +6,13 @@ export class DeckEditor {
         deck = new Deck(),
         idx = 0,
         currentCard = this.setBlank(),
-        oldDeck = null
+        deck_id = ""
     ) {
+        s;
         this.deck = deck;
         this.idx = idx;
         this.currentCard = currentCard;
-        this.oldDeck = oldDeck;
+        this.deck_id = deck_id;
     }
 
     /**

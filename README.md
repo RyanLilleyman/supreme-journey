@@ -117,7 +117,12 @@ mkdir <repositories/directory> | cd <repositories/directory>
 
 ## Current Features
 - You can create a deck. Images are stored in the server file system and urls are stored as references in the database.
+- 
+
   ![Link](https://github.com/RyanLilleyman/supreme-journey/blob/main/create_deck.gif)
+- You can now edit decks.
+- I fixed the blanks cards rendering by filtering out the empty fields.
+- I fixed duplicate clicks by removing the inner listeners and rebinding them after files are selected.
 - Dynamically provides support for near all static image extensions, .jpeg, .png, .webm, .jpg, and webp.
 - You can delete a deck or multiple decks at once.
 - Provides a convenient search feature for finding decks within the library.
@@ -140,11 +145,8 @@ mkdir <repositories/directory> | cd <repositories/directory>
 
 
 ## Future Features/ Bugs
-- I have yet to finish edit functionality for the decks.
 - I have to finish the downloading feature into a pdf. This includes updating the main results page with which cards were missed specifically and rendering them inside the results blade.php.
 - I have yet to implement user accounts and authentication. 
-- I have to fix the blank cards rendering for no reason.
-- --There are some bugs that need ironing out. Chief among these, is the double click on adding a card to the deck array.--
 
 ## Credits
 - [1] “Chatgpt,” ChatGPT, https://openai.com/chatgpt (accessed Dec. 12, 2023).

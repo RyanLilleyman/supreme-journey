@@ -7,9 +7,9 @@
 
 .outcomes{
     display: flex;
-    gap: 1rem;
-    width: 20rem;
-    padding: 3rem;
+    gap: 0.5rem;
+    width: 17rem;
+    padding: 2rem;
     border: 1px solid #004477;
     box-shadow: 2px 2px #047;
     border-radius: 0.5rem;

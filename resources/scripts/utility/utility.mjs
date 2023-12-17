@@ -266,4 +266,19 @@ export class UtilityCenter {
             });
         }
     }
+
+    static async grabBlobFromUrl(imgUrl) {
+        return new Promise((res, rej) => {
+            axios
+                .get("api/grab-blob/" + imgUrl)
+                .then((r) => {
+                    console.log(r);
+                    res(r);
+                })
+                .catch((e) => {
+                    console.log(e);
+                    rej(e);
+                });
+        });
+    }
 }

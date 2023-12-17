@@ -104,7 +104,7 @@ class FileFromStorage extends Controller
      */
     public function post_cache_id($id){
         $deck = Deck::with('cards')->find($id);
-        Cache::put('deck', $deck, 120);
+        Cache::put('deck', $deck, 3600);
     }
 
     /**
@@ -113,5 +113,9 @@ class FileFromStorage extends Controller
     public function grab_cache_id(){
         $deck = Cache::get('deck');
         return response()->json(['deck'=>$deck]);
+    }
+
+    public function grab_blob_from_id($url){
+        return Storage::download($url);
     }
 }

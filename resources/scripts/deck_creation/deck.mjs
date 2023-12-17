@@ -2,9 +2,9 @@
  * I wrote this class to encapsulate the functionality of a deck.
  */
 export default class Deck {
-    constructor() {
-        this.name = "";
-        this.cards = [];
+    constructor(name = "", cards = []) {
+        this.name = name;
+        this.cards = cards;
     }
 
     /**

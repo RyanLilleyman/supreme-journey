@@ -44,7 +44,7 @@ Route::view('/about', 'about');
 Route::resource('/decks',DeckController::class);
 
 
-// Grabbing environment variable from the .env file and setting it client side
+// Grabbing environment app url from the .env file and setting it client side
 Route::get('get-env-variable', EnvironmentController::class);
 
 // Session starter

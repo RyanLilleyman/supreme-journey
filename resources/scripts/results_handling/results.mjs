@@ -1,5 +1,5 @@
 /**
- * I wrote this class to
+ * I wrote this class to return results.
  */
 class Results {
     constructor() {
@@ -45,6 +45,16 @@ class Results {
                 document.querySelector(".cardsViewed span").innerText;
             this.results.number_of_cards_in_deck =
                 document.querySelector(".cardsInDeck span").innerText;
+        });
+    }
+
+    bindDownload() {
+        document.querySelector("DOMContentLoaded", () => {
+            console.log("binding download ");
+            let download_button = document.querySelector(".downloadButton");
+            download_button.addEventListener("click", () => {
+                console.log("download button clicked");
+            });
         });
     }
 }

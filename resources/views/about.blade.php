@@ -54,14 +54,14 @@
         </div>
     </nav>
     <div class="aboutContainer">
-        {{-- <h3>About Application</h3>
+        <h3>About Application</h3>
         <div class="aboutApplication">
             <p>
                 SAFMEDS is a humble flash card app. Perfect for studying languages,
                 preparing for exams, or expanding your knowledge. Efficient, and
                 effective.
             </p>
-        </div> --}}
+        </div>
         <!--[11] “Hugo Curiel,” Western Michigan University, https://wmich.edu/psychology/directory/curiel-0#:~:text=and%20intellectual%20disabilities.-,Dr.,preference%20and%20reinforcer%20assessment%20procedures. (accessed Dec. 12, 2023).
         All below information on Dr. Curiel is straight from the above link. -->
         <h3>About Dr. Curiel</h3>

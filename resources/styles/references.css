@@ -87,7 +87,55 @@ I wrote the background, width, borders, cursors, and border-radius for these sel
 }
 
 
+
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
+
+@media (max-width:920px) {
+    .references ul{
+        max-width:700px;
+    }
+}
+@media (max-width:818px) {
+    .references ul {
+        max-width:600px;
+        list-style-type: none;
+        padding-left: 0;
+        display: flex;
+        gap:1rem;
+        /* max-height:500px; */
+        /* overflow-y:auto; */
+        flex-direction: column;
+        word-wrap: break-word;
+        background-color: #ffffff;
+        border-radius: 0.5rem;
+        border: 1px solid #004477;
+        box-shadow: 2px 2px 0px 0px #004477, inset 0 0 2px #004477;
+        padding: 2rem 2rem;
+      }
+}
+@media (max-width:718px) {
+    .references ul{
+        max-width:500px;
+    }
+}
+
+@media (max-width: 618px) {
+    .references ul{
+        max-width:400px;
+    }
+}
+@media (max-width:518px) {
+    .references ul{
+        max-width:350px;
+    }
+}
+@media (max-width:418px){
+    .references ul{
+        max-width:300px;
+    }
+}
+
+
 

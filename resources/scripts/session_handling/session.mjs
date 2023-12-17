@@ -571,9 +571,13 @@ class Session {
                 .post("save-results", results)
                 .then((response) => {
                     window.location.href = response.data.url;
+                    console.log(response);
                     resolve(response);
                 })
-                .catch((error) => console.log(error));
+                .catch((error) => {
+                    console.log(error);
+                    reject(error);
+                });
         });
     }
 

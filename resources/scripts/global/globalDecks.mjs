@@ -56,6 +56,33 @@ class GlobalDecks {
     async addDeck(name, cards) {
         let formData = new FormData();
         formData.append("name", name);
+        console.log(cards);
+        let ne = [];
+        cards.forEach((card) => {
+            if (card.front.text || card.back || card.front.blob) {
+                ne.push(card);
+            }
+        });
+
+        ne.forEach((element, i) => {
+            formData.append(`cards[${i}][front][text]`, element.front.text);
+            formData.append(`cards[${i}][front][blob]`, element.front.blob);
+            formData.append(`cards[${i}][back]`, element.back);
+        });
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+
+        return await DECK_SERVICES.postDecks(formData).then(() => {
+            alert("Deck added!");
+            // window.location.href = "/";
+        });
+    }
+
+    async updateDeck(id, name, cards) {
+        console.log(id, name, cards);
+        let formData = new FormData();
+        formData.append("name", name);
 
         let ne = [];
         cards.forEach((card) => {
@@ -69,9 +96,9 @@ class GlobalDecks {
             formData.append(`cards[${i}][front][blob]`, element.front.blob);
             formData.append(`cards[${i}][back]`, element.back);
         });
-        return await DECK_SERVICES.postDecks(formData).then(() => {
-            alert("Deck added!");
-            window.location.href = "/";
+        return await DECK_SERVICES.putDeck(id, formData).then(() => {
+            alert("Deck updated!");
+            // window.location.href = "/";
         });
     }
 

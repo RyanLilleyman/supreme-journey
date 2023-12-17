@@ -8,7 +8,6 @@ export class DeckEditor {
         currentCard = this.setBlank(),
         deck_id = ""
     ) {
-        s;
         this.deck = deck;
         this.idx = idx;
         this.currentCard = currentCard;
@@ -43,6 +42,10 @@ export class DeckEditor {
      */
     get Current() {
         return this.currentCard;
+    }
+
+    get Id() {
+        return this.deck_id;
     }
 
     /**
@@ -82,7 +85,6 @@ export class DeckEditor {
     Next() {
         if (this.Deck.Cards.length - 1 > this.Index) {
             this.idx += 1;
-            // console.log(this.Index);
             this.updateCard();
         }
     }
@@ -95,7 +97,6 @@ export class DeckEditor {
     Previous() {
         if (this.idx > 0) {
             this.idx -= 1;
-            // console.log(this.Index);
             this.updateCard();
         }
     }
@@ -109,6 +110,7 @@ export class DeckEditor {
      */
     bindNameField() {
         const deckName = document.querySelector("input[name=deckName]");
+        deckName.value = this.Deck.Name;
         deckName.addEventListener("input", (e) => {
             const target = e.target;
             this.deck.setName(target.value);
@@ -124,12 +126,14 @@ export class DeckEditor {
      */
     bindCardCreators() {
         const frontCard = document.querySelector(".frontCardCreate");
+        frontCard.value = this.Current.Front.text;
         frontCard.addEventListener("input", (e) => {
             const target = e.target;
             this.Current.setFrontText(target.value);
         });
 
         const backCard = document.querySelector(".backCardCreate");
+        backCard.value = this.Current.Back;
         backCard.addEventListener("input", (e) => {
             const target = e.target;
             this.Current.setBack(target.value);

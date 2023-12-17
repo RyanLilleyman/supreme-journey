@@ -6,7 +6,7 @@
 import axios from "axios";
 class DeckServices {
     constructor() {
-        this.uri = "/decks";
+        this.uri = "api/decks";
         this.map = new Map();
     }
 
@@ -75,33 +75,21 @@ class DeckServices {
     }
 
     /**
-     * I wrote this function for put requests.
-     */
-    putDecks() {
-        axios
-            .put(this.uri)
-            .then((response) => {
-                // console.log(response);
-                return response;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
-
-    /**
      * I wrote this function for patch requests.
      */
-    patchDecks() {
-        axios
-            .patch(this.uri)
-            .then((response) => {
-                // console.log(response);
-                return response;
+    async putDeck(id, formData) {
+        return new Promise((resolve, reject) => {
+            fetch(`${this.uri}/${id}`, {
+                method: "PUT",
+                body: formData,
             })
-            .catch((error) => {
-                console.log(error);
-            });
+                .then((r) => {
+                    console.log(r);
+                })
+                .catch((r) => {
+                    console.log(e);
+                });
+        });
     }
 
     /**
@@ -153,14 +141,13 @@ class DeckServices {
     }
 
     /**
-     * I wrote this to grab the cached deck from the server. 
+     * I wrote this to grab the cached deck from the server.
      */
     grabCachedDeck() {
         return new Promise((resolve, reject) => {
             axios
                 .get("/cache")
                 .then((r) => {
-                    console.log(r);
                     resolve(r);
                 })
                 .catch((e) => {

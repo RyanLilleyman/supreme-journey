@@ -12,8 +12,13 @@ import { DeckEditor } from "./deck_editor.mjs";
  * manipulates the DOM elements on the page and binds callbacks to their respective events.
  */
 export class DeckEDITDOM extends DeckEditor {
-    constructor() {
-        super();
+    constructor(
+        deck = new Deck(),
+        idx = 0,
+        currentCard = this.setBlank(),
+        deck_id = ""
+    ) {
+        super(deck, idx, currentCard, deck_id);
         this.isFileHandleClickBound = false;
         this.clearCardOnDOM();
         this.inject();
@@ -162,7 +167,7 @@ export class DeckEDITDOM extends DeckEditor {
                 const name = this.Deck.Name;
                 const cards = this.Deck.Cards;
                 this.removeLastCard();
-                await DECK_GLOBALS.addDeck(name, cards);
+                await DECK_GLOBALS.updateDeck(this.Id, name, cards);
             }
         });
     }
@@ -243,7 +248,8 @@ export class DeckEDITDOM extends DeckEditor {
         const img = this.Deck.Cards[this.Index].front.blob;
 
         if (img) {
-            imgElement.src = this.getBlobUrl(img);
+            let blob_url = this.getBlobUrl(img);
+            imgElement.src = blob_url;
             this.showRemoveImgButton();
             imagePossible.appendChild(imgElement);
         }
@@ -306,8 +312,6 @@ export class DeckEDITDOM extends DeckEditor {
         };
 
         const handleChange = async (e) => {
-            console.log(e);
-
             const selectedFiles = fileInput.files;
             if (selectedFiles && selectedFiles.length > 0) {
                 const selectedFile = selectedFiles[0];
@@ -345,6 +349,9 @@ export class DeckEDITDOM extends DeckEditor {
         this.bindDestroy();
         this.bindFinish();
         this.bindEnterKey();
+        if (this.Current.Front.blob) {
+            this.displayImage();
+        }
         // this.bindIKey();
     }
 }

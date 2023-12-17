@@ -19,4 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Grabs blobs
 Route::get('/grab-blob', [FileFromStorage::class, 'grab_blob_from_url']);
+
+// Deck Route handler
+Route::resource('decks',DeckController::class);

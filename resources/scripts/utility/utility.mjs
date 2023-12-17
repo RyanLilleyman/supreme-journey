@@ -269,12 +269,8 @@ export class UtilityCenter {
 
     static async grabBlobFromUrl(imgUrl) {
         return new Promise((res, rej) => {
-            axios
-                .get("api/grab-blob/", { params: { imgUrl: imgUrl } })
-                .then((r) => {
-                    console.log(r);
-                    res(r);
-                })
+            fetch("api/grab-blob/?param1=" + imgUrl)
+                .then((r) => res(r.blob()))
                 .catch((e) => {
                     console.log(e);
                     rej(e);

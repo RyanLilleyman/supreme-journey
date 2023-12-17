@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminage\Support\Facades\Log;
+use Illuminate\Support\Facades\Log;
 use App\Models\Deck;
 use App\Models\Card;
 use App\Http\Requests\StoreDeckRequest;
@@ -118,8 +118,11 @@ class DeckController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
+
     {
-        //
+        Log::info($request->all());
+        $deck = $request->input('name');
+        return response()->json(['message' => 'Update', 'cards' =>$deck]);
     }
 
     /**

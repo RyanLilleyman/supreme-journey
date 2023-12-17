@@ -40,7 +40,7 @@ export default class Deck {
      * I wrote this method to set the name.
      */
     setName(name) {
-        this.name = name + " Deck";
+        this.name = name;
         return this.name;
     }
 

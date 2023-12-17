@@ -116,13 +116,12 @@ class FileFromStorage extends Controller
     }
 
     public function grab_blob_from_url(Request $request){
-        $url = $request->query('imgUrl');
-        $path = Storage::disk('public')->path($url);
-        $fileContents = file_get_contents($path);
-        $mimeType = Storage::disk('public')->mimeType($url);
-        return response($fileContents,200,[
-            'Content-Type' => $mimeType,
-            'Content-Disposition' => 'attachment; filename="' . basename($path)
-        ]);
+        $url = $request->query('param1');
+        $file = Storage::disk('public')->get($url);
+        $type = Storage::disk(
+            'public'
+        )->mimeType($url);
+
+        return response($file)->header('Content-Type',$type);
     }
 }

@@ -2,10 +2,10 @@ import Card from "../deck_creation/card.mjs";
 import Deck from "../deck_creation/deck.mjs";
 import DECK_SERVICES from "../services/deckServices.mjs";
 import { UtilityCenter } from "../utility/utility.mjs";
+import { DeckEDITDOM } from "./deck_edit_dom.mjs";
 
 function timepiece() {
     document.addEventListener("DOMContentLoaded", async () => {
-        console.log("testing");
         let {
             data: { deck },
         } = await DECK_SERVICES.grabCachedDeck();
@@ -13,26 +13,29 @@ function timepiece() {
         let id = deck.id;
         let cards = deck.cards;
 
-        // let trimmed_name = name.replace("Deck", "");
-        // let new_deck = new Deck();
-
-        // let cards_array = [];
         let deck_to_edit = new Deck();
+        let trimmed_name = name.replace(" Deck", "");
+        deck_to_edit.setName(trimmed_name);
+
         for (let card of cards) {
-            let res = await UtilityCenter.grabBlobFromUrl(card.imgUrl);
-            let blob = new Blob([res.data], {
-                type: res.headers["content-type"],
-            });
-            let new_card = new Card(
-                { text: card.front, blob: blob },
-                card.back
-            );
+            if (card.imgUrl) {
+                let res = await UtilityCenter.grabBlobFromUrl(card.imgUrl);
 
-            console.log(blob);
-            console.log(new_card);
-
-            // let blob = new Blob(res.data, res.headers["content-type"]);
+                let new_card = new Card(
+                    { text: card.front, blob: res },
+                    card.back
+                );
+                deck_to_edit.addCard(new_card);
+            } else {
+                let new_card = new Card(
+                    { text: card.front, blob: "" },
+                    card.back
+                );
+                deck_to_edit.addCard(new_card);
+            }
         }
+        let firstCard = deck_to_edit.Cards[0];
+        let deckEditor = new DeckEDITDOM(deck_to_edit, 0, firstCard, id);
     });
 }
 timepiece();

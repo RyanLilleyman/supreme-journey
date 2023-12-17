@@ -40,8 +40,8 @@ Route::view('/about', 'about');
 
 // Route::get('/',[Fession::class,'delete_session_files']);
 
-// Deck Route handler
-Route::resource('decks',DeckController::class);
+
+
 
 // Grabbing environment variable from the .env file and setting it client side
 Route::get('get-env-variable', EnvironmentController::class);

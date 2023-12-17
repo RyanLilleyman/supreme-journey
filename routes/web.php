@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\DeckController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\Fession;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\FileFromStorage;
+use App\Http\Controllers\DeckController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +40,8 @@ Route::view('/about', 'about');
 
 // Route::get('/',[Fession::class,'delete_session_files']);
 
-
+// Deck Route handler
+Route::resource('/decks',DeckController::class);
 
 
 // Grabbing environment variable from the .env file and setting it client side

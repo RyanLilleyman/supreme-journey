@@ -6,7 +6,7 @@
 import axios from "axios";
 class DeckServices {
     constructor() {
-        this.uri = "api/decks";
+        this.uri = "/decks";
         this.map = new Map();
     }
 
@@ -75,19 +75,19 @@ class DeckServices {
     }
 
     /**
-     * I wrote this function for patch requests.
+     * I wrote this function for put requests.
      */
     async putDeck(id, formData) {
         return new Promise((resolve, reject) => {
-            fetch(`${this.uri}/${id}`, {
-                method: "PUT",
-                body: formData,
-            })
+            axios
+                .post(`${this.uri}/${id}`, formData)
                 .then((r) => {
                     console.log(r);
+                    resolve(r);
                 })
-                .catch((r) => {
+                .catch((e) => {
                     console.log(e);
+                    reject(e);
                 });
         });
     }

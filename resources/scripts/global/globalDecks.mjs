@@ -75,13 +75,14 @@ class GlobalDecks {
 
         return await DECK_SERVICES.postDecks(formData).then(() => {
             alert("Deck added!");
-            // window.location.href = "/";
+            window.location.href = "/";
         });
     }
 
     async updateDeck(id, name, cards) {
         console.log(id, name, cards);
         let formData = new FormData();
+        formData.append("_method", "PUT");
         formData.append("name", name);
 
         let ne = [];
@@ -98,7 +99,7 @@ class GlobalDecks {
         });
         return await DECK_SERVICES.putDeck(id, formData).then(() => {
             alert("Deck updated!");
-            // window.location.href = "/";
+            window.location.href = "/";
         });
     }
 

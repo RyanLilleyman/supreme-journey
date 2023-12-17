@@ -120,9 +120,55 @@ class DeckController extends Controller
     public function update(Request $request, string $id)
 
     {
-        Log::info($request->all());
-        $deck = $request->input('name');
-        return response()->json(['message' => 'Update', 'cards' =>$deck]);
+        $this->destroy($id);
+        /**
+         * [19] “Retrieving An Input Value,” Laravel, https://laravel.com/docs/10.x/requests#retrieving-an-input-value (accessed Dec. 12, 2023).
+         */
+        $deck_name = $request->input('name');
+
+        /**
+         * [20] “The create Method,” Laravel, https://laravel.com/docs/10.x/eloquent-relationships#the-create-method (accessed Dec. 12, 2023).
+         * This creates a new model with the name as the above deck_name.
+         */
+        $deck = Deck::create([
+            'name' => $deck_name
+        ]);
+
+        // Sets the formdata array to the $cards variable that was inside the request payload.
+        $cards = $request->input('cards');
+        // Self explanatory
+        $length = count($cards);
+
+        $cards_test_array = array();
+        for ($i = 0; $i < $length; $i++) {
+            // Make a new card model.
+            $to_add = new Card();
+            // Add to the front card model the text field specific card from the associative array
+            $to_add->front = $request->input('cards.'.$i.'.front.text');
+            // Add to the back card model the text field specific card from the associative array
+            $to_add->back = $request->input('cards.'.$i.'.back');
+
+
+            $blob = $request->file('cards.'.$i.'.front.blob');
+            if ($blob) {
+                /**
+                * [13] “File Storage,” Laravel, https://laravel.com/docs/10.x/filesystem#automatic-streaming (accessed Dec. 12, 2023).
+                * The specific disk assignment and relevant putFile method can be found in the above documentation.
+                 */
+                $disk = \Illuminate\Support\Facades\Storage::disk('public');
+                // Put the file into the current storage/app/public directory and
+                // set the imgUrl of the card model to the resulting url
+                $to_add->imgUrl = $disk->putFile('images/'.$deck->id, $blob);
+            } else {
+                // Otherwise, set the imgUrl to an empty string.
+                $to_add->imgUrl = '';
+            }
+
+            // Save to the current deck and add a new card with the same models (relationships) as above.
+            $deck->cards()->save($to_add);
+            $deck->load('cards');
+        }
+        return response()->json(['message'=>'Deck updated successfully']);
     }
 
     /**
@@ -147,7 +193,9 @@ class DeckController extends Controller
          * [16] “Deleting An Existing Model By Its Primary Key,” Laravel, https://laravel.com/docs/10.x/eloquent#deleting-an-existing-model-by-its-primary-key (accessed Dec. 12, 2023).
          * The below destroy by id method comes from the above documentation.
          */
-        Deck::destroy($id);
+        $deck = Deck::find($id);
+        $deck->cards()->delete();
+        $deck->delete();
         //Return a new json response with the 'message' as the deck being deleted successfully.
         return response()->json(['message' => 'Deck deleted successfully']);
     }

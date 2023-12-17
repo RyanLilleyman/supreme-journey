@@ -193,7 +193,7 @@ export class UtilityCenter {
     }
 
     /**
-     * I wrote this function to c
+     * I wrote this function to fill the catalog with the decks.
      */
     static async fill_catolog() {
         let array = await DECK_SERVICES.getDecks();
@@ -201,6 +201,9 @@ export class UtilityCenter {
         let catalog = document.querySelector(".catalog");
         for (let { id, name, cards } of array) {
             let outer_div = document.createElement("div");
+            outer_div.className = "deckholder";
+            outer_div.style.width = "20rem";
+            outer_div.style.height = "20rem";
             let deck_preview = document.createElement("div");
             deck_preview.id = id;
             deck_preview.name = name;
@@ -214,19 +217,53 @@ export class UtilityCenter {
             frontSpan.className = "front";
             if (cards[0].imgUrl) {
                 let img = document.createElement("img");
-                img.src = cards[0].imgUrl;
+                img.src = "storage/" + cards[0].imgUrl;
                 frontSpan.appendChild(img);
             }
             frontSpan.textContent = cards[0].front;
             deck_preview.appendChild(frontSpan);
 
             let backSpan = document.createElement("span");
+            backSpan.style.display = "none";
             backSpan.className = "back";
             backSpan.textContent = cards[0].back;
             deck_preview.appendChild(backSpan);
             outer_div.appendChild(deck_preview);
 
             catalog.appendChild(outer_div);
+        }
+        let decks = document.getElementsByClassName("deckholder");
+        for (let deck of decks) {
+            console.log(deck);
+            // deck.addEventListener("click", function (e) {
+            //     console.log(e);
+            // });
+            deck.addEventListener("mouseenter", (e) => {
+                e.target.lastChild.classList.add("front-show");
+                setTimeout(
+                    () => {
+                        e.target.lastChild.firstChild.style.display = "none";
+                        e.target.lastChild.lastChild.style.display = "flex";
+                        e.target.lastChild.lastChild.style.transform =
+                            "rotateY(180deg)";
+                    },
+                    150,
+                    e
+                );
+            });
+
+            deck.addEventListener("mouseleave", (e) => {
+                e.target.lastChild.classList.remove("front-show");
+
+                setTimeout(
+                    () => {
+                        e.target.lastChild.lastChild.style.display = "none";
+                        e.target.lastChild.firstChild.style.display = "flex";
+                    },
+                    150,
+                    e
+                );
+            });
         }
     }
 }

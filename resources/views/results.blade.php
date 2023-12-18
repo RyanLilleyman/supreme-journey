@@ -77,19 +77,19 @@
             </div>
             <div class='outcomes arrays'>
                 <div class="incorrect_array">
-                    <h1>Incorrect:</h1>
+                    <h3>Incorrect:</h3>
                     {!! $incorrect_array !!}
                 </div>
                 <div class='correct_array'>
-                    <h1>Correct:</h1>
+                    <h3>Correct:</h3>
                     {!! $correct_array !!}
                 </div>
                 <div class='skipped_array_manual'>
-                    <h1>Skipped Manually:</h1>
+                    <h3>Skipped Manually:</h3>
                     {!! $skipped_array_manual !!}
                 </div>
                 <div class='skipped_array_latency'>
-                    <h1>Skipped by Latency</h1>
+                    <h3>Skipped by Latency</h3>
                     {!! $skipped_array_latency !!}
                 </div>
             </div>

@@ -228,7 +228,7 @@ class Fession extends Controller
         // Caches the results for later retrieval for an hour
         // Cache::put($results_id,$data,3600);
 
-        return response()->json(['data'=>$data,'results_id'=>$results_id]);
+        return response()->json(['data'=>$data,'results_id'=>$results_id,'url'=>$url]);
     }
 
     public function return_html_string_from_array($array){
@@ -254,7 +254,7 @@ class Fession extends Controller
                 $back_id = $back_info['id'];
                 $back = backs::find($back_id);
                 $back_url = $back->back_url;
-                $pos = strpos($back_url, 'fronts');
+                $pos = strpos($back_url, 'backs');
                 $back_dest = substr($back_url, $pos);
                 $back_file_content = Storage::get($back_dest);
                 $toAppend .= $back_file_content;

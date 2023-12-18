@@ -583,7 +583,7 @@ class Session {
                 skipped_array_latency: this.#results.skipped_array_latency,
                 skipped_array_manual: this.#results.skipped_array_manual,
                 correct_array: this.#results.correct_array,
-                incrrect_array: this.#results.incorrect_array,
+                incorrect_array: this.#results.incorrect_array,
             };
             let rel = await this.results_request(results);
             this.#results_uuid_set = true;
@@ -601,7 +601,8 @@ class Session {
             axios
                 .post("save-results", results)
                 .then((response) => {
-                    window.location.href = response.data.url;
+                    console.log("results", results);
+                    // window.location.href = response.data.url;
                     // localStorage.setItem(
                     //     "results_id",
                     //     response.data.results_id

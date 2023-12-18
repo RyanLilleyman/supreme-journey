@@ -55,43 +55,11 @@
     <main class="mainBar">
         <h2 class="resultHeader">Results</h2>
         <div class="resultsContainer">
-            <div class="outcomes">
-                <div class="correctResponses">Correct Responses: <span
-                        value={{ $correct }}>{{ $correct }}</span></div>
-                <div class="incorrectResponses">Incorrect Reponses: <span
-                        value = "{{ $incorrect }}">{{ $incorrect }}</span></div>
-                <div class="skippedResponses">Skipped Responses: <span
-                        value = '{{ $skipped_manual }}'>{{ $skipped_manual }}</span></div>
-                <div class="skippedLatency">Skipped (Latency): <span
-                        value={{ $skipped_latency }}>{{ $skipped_latency }}</span></div>
-                <div class="divider"></div>
-                <div class="cardsViewed">Number of Cards Viewed: <span
-                        value='{{ $number_of_cards_viewed }}'>{{ $number_of_cards_viewed }}</span></div>
-                <div class="cardsInDeck">Number of Cards in Deck: <span
-                        value='{{ $number_of_cards_in_deck }}'>{{ $number_of_cards_in_deck }}</span></div>
-                <div class="sessionTime">Total Session Time: <span
-                        value={{ $sessionTime }}>{{ $sessionTime }}</span>
-                </div>
-                <div class="timeToRespond">Time to Respond: <span
-                        value = '{{ $roundTime }}'>{{ $roundTime }}</span></div>
+            <div class="down_no_arrays">
+                {!! $download_no_arrays !!}
             </div>
-            <div class='outcomes arrays'>
-                <div class="incorrect_array">
-                    <h3>Incorrect:</h3>
-                    {!! $incorrect_array !!}
-                </div>
-                <div class='correct_array'>
-                    <h3>Correct:</h3>
-                    {!! $correct_array !!}
-                </div>
-                <div class='skipped_array_manual'>
-                    <h3>Skipped Manually:</h3>
-                    {!! $skipped_array_manual !!}
-                </div>
-                <div class='skipped_array_latency'>
-                    <h3>Skipped by Latency</h3>
-                    {!! $skipped_array_latency !!}
-                </div>
+            <div class='down_arrays'>
+                {!! $download_arrays !!}
             </div>
             {{-- <div class="cardResults">
                 <ol class="cards">

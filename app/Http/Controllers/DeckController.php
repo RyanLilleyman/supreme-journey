@@ -63,9 +63,21 @@ class DeckController extends Controller
             // Make a new card model.
             $to_add = new Card();
             // Add to the front card model the text field specific card from the associative array
-            $to_add->front = $request->input('cards.'.$i.'.front.text');
+            $front = $request->input('cards.'.$i.'.front.text');
+            $back = $request->input('cards.'.$i.'.back');
+            if($front){
+                $to_add->front = $front;
+            }else{
+                $to_add->front = ' ';
+            }
+
             // Add to the back card model the text field specific card from the associative array
-            $to_add->back = $request->input('cards.'.$i.'.back');
+            if($back){
+                $to_add->back = $back;
+            }else{
+                $to_add->back = ' ';
+            }
+
 
 
             $blob = $request->file('cards.'.$i.'.front.blob');

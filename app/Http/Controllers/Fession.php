@@ -196,13 +196,7 @@ class Fession extends Controller
         //     $front = Storage::disk
         // }
 
-
-
-        /**
-         * I wrote the below code to create a new view with the results.blade.php inside
-         * resources/views
-         */
-        $results_view = View::make('results',[
+        $download_no_arrays = View::make('download_with_no_arrays',[
             'correct'=>$correct,
             'incorrect'=>$incorrect,
             'number_of_cards_in_deck'=>$number_of_cards_in_deck,
@@ -212,12 +206,26 @@ class Fession extends Controller
             'skipped_latency'=>$skipped_latency,
             'skipped_manual'=>$skipped_manual,
             'skipped_total'=>$skipped_total,
+        ])->render();
+
+        $download_arrays = View::make('download_arrays',[
             'incorrect_array'=>$incorrect_html_string,
             'correct_array'=>$correct_html_string,
             'skipped_array_latency'=>$skipped_latency_html_string,
             'skipped_array_manual'=>$skipped_manual_html_string
         ])->render();
 
+        /**
+         * I wrote the below code to create a new view with the results.blade.php inside
+         * resources/views
+         */
+        $results_view = View::make('results',[
+            'download_arrays'=>$download_arrays,
+            'download_no_arrays'=>$download_no_arrays
+        ])->render();
+
+        Storage::put('cardsView/download_arrays.html',$download_arrays);
+        Storage::put('cardsView/download_no_arrays.html',$download_no_arrays);
         //Puts the new results into the storage/app/cardsView directory
         Storage::put('cardsView/results.html', $results_view);
 
@@ -233,13 +241,13 @@ class Fession extends Controller
 
     public function return_html_string_from_array($array){
         $toReturn = '';
-        $index = 0;
+        $index = 1;
         if ($array){
             foreach ($array as $element){
 
                 $toAppend = '';
-                $toAppend .= '<div>';
-                $toAppend .= '<h4>Front of the '. $index. ' card.</h4>';
+                $toAppend .= '<div class='.'"response"'.'>';
+                $toAppend .= '<h2 class='.'"frontHeader"'.'style='.'"align-self:center;"'.'>Front: </h2>';
                 $front_info = $element[0];
                 $front_id = $front_info['id'];
                 $front = fronts::find($front_id);
@@ -249,7 +257,7 @@ class Fession extends Controller
                 $front_file_content = Storage::get($front_dest);
                 $toAppend .= $front_file_content;
 
-                $toAppend .= '<h4>Back of the '. $index. ' card.</4>';
+                $toAppend .= '<h2 class='.'"backHeader"'.'style='.'"align-self:center;"'.'>Back: </h2>';
                 $back_info = $element[1];
                 $back_id = $back_info['id'];
                 $back = backs::find($back_id);
@@ -259,6 +267,7 @@ class Fession extends Controller
                 $back_file_content = Storage::get($back_dest);
                 $toAppend .= $back_file_content;
                 $toAppend .= '</div>';
+                $toAppend .= '<hr />';
 
                 $toReturn .= $toAppend;
                 $index++;

@@ -26,7 +26,6 @@ class Results {
             fetch("/fetch-results")
                 .then((r) => r.blob())
                 .then((blob) => {
-                    console.log(blob);
                     const pdfUrl = URL.createObjectURL(blob);
                     /**
                      * [1] “Chatgpt.” ChatGPT, openai.com/chatgpt.

@@ -272,6 +272,7 @@ I modified the various names and added padding, margins, borders, font-size chan
   font-size: 1.1rem;
   min-width: 4rem;
   transition: filter 0.3s;
+  border-radius:0.5rem;
 }
 
 .previousButton::after {

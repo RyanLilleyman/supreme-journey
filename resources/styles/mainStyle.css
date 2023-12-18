@@ -325,6 +325,9 @@ input:focus {
   cursor: pointer;
 }
 
+/*[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023)
+I modified the various names, added padding, margins, borders, font-size changes, and specific positioning.
+*/
 .createButton {
   position: relative;
   text-align: center;
@@ -332,11 +335,11 @@ input:focus {
   border: none;
   height: 3rem;
   transition: filter 0.3s;
+  border-radius:0.5rem;
+
 }
 
-/*[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023)
-I modified the various names, added padding, margins, borders, font-size changes, and specific positioning.
-*/
+
 .createButtonShadow {
   position: absolute;
   top: 0;
@@ -465,6 +468,8 @@ I modified the various names, added padding, margins, borders, font-size changes
   font-size: 1.1rem;
   min-width: 5rem;
   transition: filter 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+  border-radius:0.5rem;
+
 }
 
 .startSessButton{

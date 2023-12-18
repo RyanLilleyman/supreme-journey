@@ -66,6 +66,7 @@ I modified the cubic bezier curves as well.
   font-size: 1.1rem;
   min-width: 6rem;
   transition: filter 0.3s;
+  border-radius:0.5rem;
 }
 
 .correctButton,

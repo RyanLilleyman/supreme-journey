@@ -174,18 +174,29 @@ class Fession extends Controller
     public function save_results(Request $request){
         $results_id = $request->input('results_id');
         $correct = $request->input('correct');
-        $correct_array = $request->input('correct_array');
+        $correct_html_string = $this->return_html_string_from_array($request->input('correct_array'));
         $incorrect = $request->input('incorrect');
-        $incorrect_array = $request->input('incorrect_array');
+        $incorrect_html_string = $this->return_html_string_from_array($request->input('incorrect_array'));
         $number_of_cards_in_deck =  $request->input('number_of_cards_in_deck');
         $number_of_cards_viewed = $request->input('number_of_cards_viewed');
         $roundTime = $request->input('roundTime');
         $sessionTime = $request->input('sessTime');
         $skipped_latency = $request->input('skipped_latency');
-        $skipped_array_latency = $request->input('skipped_array_latency');
+        $skipped_latency_html_string =$this->return_html_string_from_array($request->input('skipped_array_latency'));
         $skipped_manual = $request->input('skipped_manual');
-        $skipped_array_manual = $request->input('skipped_array_manual');
+        $skipped_manual_html_string = $this->return_html_string_from_array($request->input('skipped_array_manual'));
         $skipped_total = $request->input('skipped_total');
+
+
+
+
+
+        // $incorrect_array_html_string = '';
+        // for($incorrect_url as $incorrect_array){
+        //     $front = Storage::disk
+        // }
+
+
 
         /**
          * I wrote the below code to create a new view with the results.blade.php inside
@@ -201,21 +212,64 @@ class Fession extends Controller
             'skipped_latency'=>$skipped_latency,
             'skipped_manual'=>$skipped_manual,
             'skipped_total'=>$skipped_total,
+            'incorrect_array'=>$incorrect_html_string,
+            'correct_array'=>$correct_html_string,
+            'skipped_array_latency'=>$skipped_latency_html_string,
+            'skipped_array_manual'=>$skipped_manual_html_string
         ])->render();
 
-        // Puts the new results into the storage/app/cardsView directory
+        //Puts the new results into the storage/app/cardsView directory
         Storage::put('cardsView/results.html', $results_view);
 
         $data = $request->except(['results_id']);
-        // Exposes the url on the server for the frontend to then redirect to.
+        //Exposes the url on the server for the frontend to then redirect to.
         $url = route('file.show_results');
-        // json object return of the data and the newly created url.
 
-        // Caches the results for later retrieval
-        Cache::put($results_id,$data,120);
+        // Caches the results for later retrieval for an hour
+        // Cache::put($results_id,$data,3600);
 
-        return response()->json(['data'=>$data, 'url'=>$url]);
+        return response()->json(['data'=>$data,'results_id'=>$results_id]);
     }
 
+    public function return_html_string_from_array($array){
+        $toReturn = '';
+        $index = 0;
+        if ($array){
+            foreach ($array as $element){
 
+                $toAppend = '';
+                $toAppend .= '<div>';
+                $toAppend .= '<h4>Front of the '. $index. ' card.</h4>';
+                $front_info = $element[0];
+                $front_id = $front_info['id'];
+                $front = fronts::find($front_id);
+                $front_url = $front->front_url;
+                $pos = strpos($front_url, 'fronts');
+                $front_dest = substr($front_url, $pos);
+                $front_file_content = Storage::get($front_dest);
+                $toAppend .= $front_file_content;
+
+                $toAppend .= '<h4>Back of the '. $index. ' card.</4>';
+                $back_info = $element[1];
+                $back_id = $back_info['id'];
+                $back = backs::find($back_id);
+                $back_url = $back->back_url;
+                $pos = strpos($back_url, 'fronts');
+                $back_dest = substr($back_url, $pos);
+                $back_file_content = Storage::get($back_dest);
+                $toAppend .= $back_file_content;
+                $toAppend .= '</div>';
+
+                $toReturn .= $toAppend;
+                $index++;
+            }
+            return $toReturn;
+        }
+    }
+
+    public function grab_cached_results(Request $request){
+        $id = $request->input('request_id');
+        $results = Cache::get($id);
+        return response()->json(['results' => $results]);
+    }
 }

@@ -56,7 +56,6 @@
         <h2 class="resultHeader">Results</h2>
         <div class="resultsContainer">
             <div class="outcomes">
-                <div class='results'></div>
                 <div class="correctResponses">Correct Responses: <span
                         value={{ $correct }}>{{ $correct }}</span></div>
                 <div class="incorrectResponses">Incorrect Reponses: <span
@@ -75,6 +74,24 @@
                 </div>
                 <div class="timeToRespond">Time to Respond: <span
                         value = '{{ $roundTime }}'>{{ $roundTime }}</span></div>
+            </div>
+            <div class='outcomes arrays'>
+                <div class="incorrect_array">
+                    <h1>Incorrect:</h1>
+                    {!! $incorrect_array !!}
+                </div>
+                <div class='correct_array'>
+                    <h1>Correct:</h1>
+                    {!! $correct_array !!}
+                </div>
+                <div class='skipped_array_manual'>
+                    <h1>Skipped Manually:</h1>
+                    {!! $skipped_array_manual !!}
+                </div>
+                <div class='skipped_array_latency'>
+                    <h1>Skipped by Latency</h1>
+                    {!! $skipped_array_latency !!}
+                </div>
             </div>
             {{-- <div class="cardResults">
                 <ol class="cards">

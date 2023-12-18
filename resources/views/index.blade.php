@@ -218,6 +218,7 @@
                             Total Session Time:
                             <select class="sessionTimeSelect" name="seconds">
                                 <option value="0">Indefinite</option>
+                                <option value="5">5 sec.</option>
                                 <option value="60">60 sec.</option>
                                 <option value="90">90 sec.</option>
                                 <option value="120">120 sec.</option>

@@ -9,6 +9,10 @@
 
 <body>
     <h1>Sucessful pdf creation.</h1>
+    <div>Incorrect</div>
+    <div>Skipped(Manual)</div>
+    <div>Skipped(Latency)</div>
+    <div>Correct</div>
 </body>
 
 </html>

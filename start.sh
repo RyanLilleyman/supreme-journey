@@ -11,7 +11,7 @@ php artisan route:cache
 php artisan config:cache
 php artisan view:cache
 
-composer install
+# composer install
 
 npm run build
 trap 'kill $(jobs -p)' SIGINT

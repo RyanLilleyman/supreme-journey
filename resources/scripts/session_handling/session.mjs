@@ -539,6 +539,12 @@ class Session {
      * session and place them into the this.#results object.
      */
     async grab_results() {
+        for (this.#idx; this.#idx < this.#url_array.length; this.#idx++) {
+            this.#results.skipped_array_latency.push(
+                this.#url_array[this.#idx]
+            );
+        }
+
         this.#results.correct = this.#results.correct_array.length;
         this.#results.incorrect = this.#results.incorrect_array.length;
         this.#results.skipped_manual =
@@ -596,6 +602,10 @@ class Session {
                 .post("save-results", results)
                 .then((response) => {
                     // window.location.href = response.data.url;
+                    // localStorage.setItem(
+                    //     "results_id",
+                    //     response.data.results_id
+                    // );
                     console.log(response);
                     resolve(response);
                 })

@@ -12,6 +12,7 @@ use App\Models\Sess;
 use App\Models\fronts;
 use App\Models\backs;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 class Fession extends Controller
 {
@@ -171,14 +172,19 @@ class Fession extends Controller
      * I wrote this method to save statistics and then make a new view based on the results blade template.
      */
     public function save_results(Request $request){
+        $results_id = $request->input('results_id');
         $correct = $request->input('correct');
+        $correct_array = $request->input('correct_array');
         $incorrect = $request->input('incorrect');
+        $incorrect_array = $request->input('incorrect_array');
         $number_of_cards_in_deck =  $request->input('number_of_cards_in_deck');
         $number_of_cards_viewed = $request->input('number_of_cards_viewed');
         $roundTime = $request->input('roundTime');
         $sessionTime = $request->input('sessTime');
         $skipped_latency = $request->input('skipped_latency');
+        $skipped_array_latency = $request->input('skipped_array_latency');
         $skipped_manual = $request->input('skipped_manual');
+        $skipped_array_manual = $request->input('skipped_array_manual');
         $skipped_total = $request->input('skipped_total');
 
         /**
@@ -200,10 +206,14 @@ class Fession extends Controller
         // Puts the new results into the storage/app/cardsView directory
         Storage::put('cardsView/results.html', $results_view);
 
-        $data = $request->all();
+        $data = $request->except(['results_id']);
         // Exposes the url on the server for the frontend to then redirect to.
         $url = route('file.show_results');
         // json object return of the data and the newly created url.
+
+        // Caches the results for later retrieval
+        Cache::put($results_id,$data,120);
+
         return response()->json(['data'=>$data, 'url'=>$url]);
     }
 

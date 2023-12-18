@@ -104,7 +104,7 @@ class FileFromStorage extends Controller
      */
     public function post_cache_id($id){
         $deck = Deck::with('cards')->find($id);
-        Cache::put('deck', $deck, 3600);
+        Cache::put('deck', $deck, 120);
     }
 
     /**

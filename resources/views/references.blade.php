@@ -236,13 +236,16 @@
             </li>
             <li>
                 [32]“Laravel and DomPDF: Generate Simple Invoice PDF with Images and CSS,” Laravel Daily.
-                https://laraveldaily.com/post/laravel-dompdf-generate-simple-invoice-pdf-with-images-css (accessed Dec.
+                <a
+                    href="https://laraveldaily.com/post/laravel-dompdf-generate-simple-invoice-pdf-with-images-css">https://laraveldaily.com/post/laravel-dompdf-generate-simple-invoice-pdf-with-images-css</a>
+                (accessed Dec.
                 17, 2023).
 
             </li>
             <li>
                 [33]“Generate a UUID in JavaScript,” www.uuidgenerator.net.
-                https://www.uuidgenerator.net/dev-corner/javascript#:~:text=The%20JavaScript%20library%20we%20recommend
+                <a
+                    href="https://www.uuidgenerator.net/dev-corner/javascript#:~:text=The%20JavaScript%20library%20we%20recommend">https://www.uuidgenerator.net/dev-corner/javascript#:~:text=The%20JavaScript%20library%20we%20recommend</a>
                 (accessed Dec. 17, 2023).
                 ‌
             </li>

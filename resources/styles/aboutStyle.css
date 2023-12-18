@@ -3,6 +3,7 @@
 .aboutContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   /* padding: 2rem 3rem; */
   max-width: 600px;
@@ -13,7 +14,7 @@
 .aboutApplication {
   background-color: #ffffff;
   /* border: none; */
-  padding: 1rem 1rem;
+  padding:0.5rem;
   border-radius: 0.5rem;
   border: 1px solid #004477;
   box-shadow: 2px 2px 0px 0px #004477;
@@ -27,6 +28,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width:600px;
 
 }
 
@@ -126,5 +128,72 @@ body{
 
 *{
     font-family: Arial, Helvetica, sans-serif;
+}
+@media (max-width:615px) {
+    div.aboutApplication,
+    div.aboutCuriel{
+        max-width:550px;
+    }
+    .aboutContainer h3{
+        margin-right:20px;
+        margin-left:20px;
+    }
+}
+@media (max-width:600px) {
+    div.aboutApplication,
+    div.aboutCuriel{
+        max-width:530px;
+    }
+    .aboutContainer h3{
+        margin-right:20px;
+        margin-left:20px;
+    }
+}
+@media (max-width:560px) {
+    div.aboutApplication,
+    div.aboutCuriel{
+        max-width:500px;
+    }
+    .aboutContainer h3{
+        margin-right:20px;
+        margin-left:20px;
+    }
+}
+@media (max-width:510px) {
+    div.aboutApplication,
+    div.aboutCuriel{
+        max-width:450px;
+    }
+    .aboutContainer h3{
+        margin-right:20px;
+        margin-left:20px;
+    }
+}
+@media (max-width:460px) {
+    div.aboutApplication,
+    div.aboutCuriel{
+        max-width:400px;
+    }
+    .aboutContainer h3{
+        margin-right:20px;
+        margin-left:20px;
+    }
+}
+@media (max-width:415px) {
+    div.aboutApplication,
+    div.aboutCuriel{
+        max-width:375px;
+    }
+    .aboutContainer h3{
+        margin-right:20px;
+        margin-left:20px;
+    }
+}
+
+@media (max-width:386px) {
+    div.aboutApplication,
+    div.aboutCuriel{
+        max-width:350px;
+    }
 }
 

@@ -559,29 +559,31 @@ class Session {
          * [33]“Generate a UUID in JavaScript,” www.uuidgenerator.net. https://www.uuidgenerator.net/dev-corner/javascript#:~:text=The%20JavaScript%20library%20we%20recommend (accessed Dec. 17, 2023).
          * Used to generate the below uuid.
          */
+        let results_uuid = "";
         if (!this.#results_uuid_set) {
-            let results_uuid = uuidv4();
+            results_uuid = uuidv4();
+            console.log("results_uuid", results_uuid);
+            let results = {
+                results_id: results_uuid,
+                sessTime: this.#results.totalSessionTime,
+                roundTime: this.#results.totalRoundTime,
+                correct: this.#results.correct,
+                incorrect: this.#results.incorrect,
+                skipped_manual: this.#results.skipped_manual,
+                skipped_latency: this.#results.skipped_latency,
+                skipped_total: this.#results.skipped_total,
+                number_of_cards_viewed: this.#results.number_of_cards_viewed,
+                number_of_cards_in_deck: this.#results.number_of_cards_in_deck,
+                skipped_array_latency: this.#results.skipped_array_latency,
+                skipped_array_manual: this.#results.skipped_array_manual,
+                correct_array: this.#results.correct_array,
+                incrrect_array: this.#results.incorrect_array,
+            };
+            let rel = await this.results_request(results);
             this.#results_uuid_set = true;
+        } else {
+            alert("Results are being processed.");
         }
-        console.log("results_uuid", results_uuid);
-        let results = {
-            results_id: results_uuid,
-            sessTime: this.#results.totalSessionTime,
-            roundTime: this.#results.totalRoundTime,
-            correct: this.#results.correct,
-            incorrect: this.#results.incorrect,
-            skipped_manual: this.#results.skipped_manual,
-            skipped_latency: this.#results.skipped_latency,
-            skipped_total: this.#results.skipped_total,
-            number_of_cards_viewed: this.#results.number_of_cards_viewed,
-            number_of_cards_in_deck: this.#results.number_of_cards_in_deck,
-            skipped_array_latency: this.#results.skipped_array_latency,
-            skipped_array_manual: this.#results.skipped_array_manual,
-            correct_array: this.#results.correct_array,
-            incrrect_array: this.#results.incorrect_array,
-        };
-
-        let rel = await this.results_request(results);
     }
 
     /**

@@ -14,9 +14,10 @@ php artisan view:cache
 composer install
 
 npm run build
-# npm run dev
+trap 'kill $(jobs -p)' SIGINT
+npm run dev &
 
-sleep 5
+sleep 3
 
 php artisan serve
 

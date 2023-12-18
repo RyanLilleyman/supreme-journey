@@ -56,7 +56,7 @@
         <h2 class="resultHeader">Results</h2>
         <div class="resultsContainer">
             <div class="outcomes">
-
+                <div class='results'></div>
                 <div class="correctResponses">Correct Responses: <span
                         value={{ $correct }}>{{ $correct }}</span></div>
                 <div class="incorrectResponses">Incorrect Reponses: <span

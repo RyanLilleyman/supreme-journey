@@ -247,7 +247,7 @@
                 <a
                     href="https://www.uuidgenerator.net/dev-corner/javascript#:~:text=The%20JavaScript%20library%20we%20recommend">https://www.uuidgenerator.net/dev-corner/javascript#:~:text=The%20JavaScript%20library%20we%20recommend</a>
                 (accessed Dec. 17, 2023).
-                ‌
+
             </li>
         </ul>
         {{-- </div> --}}

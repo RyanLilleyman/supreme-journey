@@ -141,11 +141,12 @@ class DeckServices {
     /**
      * I wrote this to grab the cached deck from the server.
      */
-    grabCachedDeck() {
+    async grabCachedDeck() {
         return new Promise((resolve, reject) => {
             axios
                 .get("/cache")
                 .then((r) => {
+                    console.log("response", r);
                     resolve(r);
                 })
                 .catch((e) => {

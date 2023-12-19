@@ -10,6 +10,7 @@
 <body>
     <h1>Sucessful pdf creation.</h1>
     <div>{!! $noarrays !!}</div>
+    <div>{!! $arrays !!}</div>
 </body>
 
 </html>

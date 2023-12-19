@@ -184,9 +184,14 @@ export class DeckEditor {
      */
     handleCreation() {
         alert("Card added");
-        this.setCurrent(this.setBlank());
-        this.idx++;
-        this.handleCardNumber();
+        if (this.Index == this.Deck.Cards.length - 1) {
+            this.setCurrent(this.setBlank());
+            this.idx++;
+            this.handleCardNumber();
+        } else {
+            this.idx++;
+            this.updateCard();
+        }
     }
 
     /**

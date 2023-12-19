@@ -6,36 +6,40 @@ import { DeckEDITDOM } from "./deck_edit_dom.mjs";
 
 function timepiece() {
     document.addEventListener("DOMContentLoaded", async () => {
-        let {
-            data: { deck },
-        } = await DECK_SERVICES.grabCachedDeck();
-        let name = deck.name;
-        let id = deck.id;
-        let cards = deck.cards;
+        await DECK_SERVICES.grabCachedDeck().then(async (res) => {
+            console.log(res);
+            let deck = res.data.deck;
 
-        let deck_to_edit = new Deck();
-        let trimmed_name = name.replace(" Deck", "");
-        deck_to_edit.setName(trimmed_name);
+            let name = deck.name;
+            let id = deck.id;
+            let cards = deck.cards;
 
-        for (let card of cards) {
-            if (card.imgUrl) {
-                let res = await UtilityCenter.grabBlobFromUrl(card.imgUrl);
+            let deck_to_edit = new Deck();
+            let trimmed_name = name.replace(" Deck", "");
+            deck_to_edit.setName(trimmed_name);
 
-                let new_card = new Card(
-                    { text: card.front, blob: res },
-                    card.back
-                );
-                deck_to_edit.addCard(new_card);
-            } else {
-                let new_card = new Card(
-                    { text: card.front, blob: "" },
-                    card.back
-                );
-                deck_to_edit.addCard(new_card);
+            for (let card of cards) {
+                if (card.imgUrl) {
+                    let res = await UtilityCenter.grabBlobFromUrl(card.imgUrl);
+
+                    let new_card = new Card(
+                        { text: card.front, blob: res },
+                        card.back
+                    );
+                    deck_to_edit.addCard(new_card);
+                } else {
+                    let new_card = new Card(
+                        { text: card.front, blob: "" },
+                        card.back
+                    );
+                    deck_to_edit.addCard(new_card);
+                }
             }
-        }
-        let firstCard = deck_to_edit.Cards[0];
-        let deckEditor = new DeckEDITDOM(deck_to_edit, 0, firstCard, id);
+            let new_blank = new Card();
+            deck_to_edit.addCard(new_blank);
+            let firstCard = deck_to_edit.Cards[0];
+            let deckEditor = new DeckEDITDOM(deck_to_edit, 0, firstCard, id);
+        });
     });
 }
 timepiece();

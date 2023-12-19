@@ -128,7 +128,11 @@ export class DeckEDITDOM extends DeckEditor {
         const createButton = document.querySelector(".createButton");
         createButton.addEventListener("click", () => {
             this.handleCreation();
-            this.clearCardOnDOM();
+            if (this.Index == this.Deck.Cards.length - 1) {
+                this.clearCardOnDOM();
+            } else {
+                this.renderCard();
+            }
         });
         return createButton;
     }
@@ -166,7 +170,15 @@ export class DeckEDITDOM extends DeckEditor {
             } else {
                 const name = this.Deck.Name;
                 const cards = this.Deck.Cards;
-                this.removeLastCard();
+                let last_card = this.Deck.Cards[this.Deck.Cards.length - 1];
+                if (
+                    !last_card.front.text &&
+                    !last_card.back &&
+                    !last_card.front.blob
+                ) {
+                    this.removeLastCard();
+                }
+
                 await DECK_GLOBALS.updateDeck(this.Id, name, cards);
             }
         });
@@ -186,7 +198,11 @@ export class DeckEDITDOM extends DeckEditor {
         document.addEventListener("keydown", (e) => {
             if (e.shiftKey && e.key === "Enter") {
                 this.handleCreation();
-                this.clearCardOnDOM();
+                if (this.Index == this.Deck.Cards.length - 1) {
+                    this.clearCardOnDOM();
+                } else {
+                    this.renderCard();
+                }
             }
             if (e.shiftKey && e.key === "Escape") {
                 this.clearCardOnDOM();

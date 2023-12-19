@@ -185,9 +185,9 @@ export class UtilityCenter {
                 alert("Please select at least one deck to edit.");
                 return;
             } else {
-                let result = await DECK_SERVICES.cacheDeckById(empty[0]);
-                window.location.href = "/edit-deck";
-                return result;
+                await DECK_SERVICES.cacheDeckById(empty[0]).then((res) => {
+                    window.location.href = "/edit-deck";
+                });
             }
         });
     }

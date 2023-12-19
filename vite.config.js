@@ -23,6 +23,7 @@ export default defineConfig({
                 "resources/scripts/results_handling/inject_results.mjs",
                 "resources/scripts/results_handling/results.mjs",
                 "resources/scripts/deck_editing/inject_test.mjs",
+                "resources/scripts/deck_editing/deck_edit_dom",
             ],
             refresh: true,
         }),

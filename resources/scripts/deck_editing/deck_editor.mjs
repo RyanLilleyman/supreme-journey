@@ -187,8 +187,6 @@ export class DeckEditor {
         this.setCurrent(this.setBlank());
         this.idx++;
         this.handleCardNumber();
-        // console.log(this.idx);
-        // console.log(this.Deck.Cards);
     }
 
     /**

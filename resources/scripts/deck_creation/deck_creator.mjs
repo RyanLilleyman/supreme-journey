@@ -83,7 +83,6 @@ export class DeckCreator {
     Next() {
         if (this.Deck.Cards.length - 1 > this.Index) {
             this.idx += 1;
-            // console.log(this.Index);
             this.updateCard();
         }
     }
@@ -96,7 +95,6 @@ export class DeckCreator {
     Previous() {
         if (this.idx > 0) {
             this.idx -= 1;
-            // console.log(this.Index);
             this.updateCard();
         }
     }
@@ -184,8 +182,6 @@ export class DeckCreator {
         this.setCurrent(this.setBlank());
         this.idx++;
         this.handleCardNumber();
-        // console.log(this.idx);
-        // console.log(this.Deck.Cards);
     }
 
     /**

@@ -177,7 +177,6 @@ class Session {
                 })
                 .then((response) => {
                     window.location.href = response.data.url;
-                    // console.log(response);
                     resolve(response);
                 })
                 .catch((error) => {
@@ -446,7 +445,6 @@ class Session {
             axios
                 .get("/fetch_front/" + string)
                 .then((response) => {
-                    console.log(response);
                     resolve(response.data);
                 })
                 .catch((error) => {
@@ -463,7 +461,6 @@ class Session {
             axios
                 .get("/fetch_back/" + string)
                 .then((response) => {
-                    console.log(response.data);
                     resolve(response.data);
                 })
                 .catch((error) => {
@@ -526,8 +523,6 @@ class Session {
             this.#url_array.push(card);
         }
 
-        console.log(this.#round_time);
-        console.log(this.#session_time);
         if (this.#round_time > 0 && this.#session_time > 0) {
             this.session_main_loop();
         } else if (this.#session_time > 0 && this.#round_time == 0) {
@@ -573,7 +568,6 @@ class Session {
         let results_uuid = "";
         if (!this.#results_uuid_set) {
             results_uuid = uuidv4();
-            console.log("results_uuid", results_uuid);
             let results = {
                 results_id: results_uuid,
                 sessTime: this.#results.totalSessionTime,
@@ -606,17 +600,10 @@ class Session {
             axios
                 .post("save-results", results)
                 .then((response) => {
-                    console.log("results", results);
                     window.location.href = response.data.url;
-                    // localStorage.setItem(
-                    //     "results_id",
-                    //     response.data.results_id
-                    // );
-                    console.log(response);
                     resolve(response);
                 })
                 .catch((error) => {
-                    console.log(error);
                     reject(error);
                 });
         });

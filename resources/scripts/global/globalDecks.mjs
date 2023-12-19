@@ -56,7 +56,6 @@ class GlobalDecks {
     async addDeck(name, cards) {
         let formData = new FormData();
         formData.append("name", name);
-        console.log(cards);
         let ne = [];
         cards.forEach((card) => {
             if (card.front.text || card.back || card.front.blob) {
@@ -69,9 +68,6 @@ class GlobalDecks {
             formData.append(`cards[${i}][front][blob]`, element.front.blob);
             formData.append(`cards[${i}][back]`, element.back);
         });
-        for (let [key, value] of formData.entries()) {
-            console.log(key, value);
-        }
 
         return await DECK_SERVICES.postDecks(formData).then(() => {
             alert("Deck added!");
@@ -80,7 +76,6 @@ class GlobalDecks {
     }
 
     async updateDeck(id, name, cards) {
-        console.log(id, name, cards);
         let formData = new FormData();
         formData.append("_method", "PUT");
         formData.append("name", name);

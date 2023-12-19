@@ -69,12 +69,9 @@ class Results {
 
     bindDownload() {
         document.addEventListener("DOMContentLoaded", () => {
-            console.log("binding download ");
             let download_button = document.querySelector(".downloadButton");
             download_button.addEventListener("click", () => {
-                console.log("download button clicked");
                 let results_id = localStorage.getItem("results_id");
-                console.log("inside", results_id);
 
                 this.fetch_results();
             });
@@ -86,7 +83,6 @@ class Results {
             axios
                 .get("/fetch_front/" + string)
                 .then((response) => {
-                    console.log(response);
                     resolve(response.data);
                 })
                 .catch((error) => {
@@ -99,7 +95,6 @@ class Results {
             axios
                 .get("/fetch_back/" + string)
                 .then((response) => {
-                    console.log(response.data);
                     resolve(response.data);
                 })
                 .catch((error) => {

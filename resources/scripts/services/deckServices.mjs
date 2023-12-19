@@ -65,7 +65,6 @@ class DeckServices {
             axios
                 .post(this.uri, deck)
                 .then((r) => {
-                    console.log(r);
                     resolve(r);
                 })
                 .catch((e) => {
@@ -82,7 +81,6 @@ class DeckServices {
             axios
                 .post(`${this.uri}/${id}`, formData)
                 .then((r) => {
-                    console.log(r);
                     resolve(r);
                 })
                 .catch((e) => {

@@ -13,6 +13,7 @@
     <link rel="manifest" href="../favicons/site.webmanifest" />
     <link rel="mask-icon" href="../favicons/safari-pinned-tab.svg" color="#5bbad5" />
     <link rel="shortcut icon" href="../favicons/favicon.ico" />
+    <script src="https://kit.fontawesome.com/c1c8aa52a6.js" crossorigin="anonymous"></script>
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="msapplication-config" content="~/Repos/IWT/midterm/src/favicons/browserconfig.xml" />
     <meta name="theme-color" content="#ffffff" />
@@ -73,13 +74,18 @@
             <button type="submit" class="downloadButton">
                 <span class="downloadShadow"></span>
                 <span class="downloadEdge"></span>
-                <span class="downloadFront">Download</span>
+                <span class="downloadFront"><i class="fa-solid fa-download fa-xs"></i> &nbsp; w/ cards</span>
             </button>
+            {{-- <button type="submit" class="downloadButtonArrays">
+                <span class="downloadShadow"></span>
+                <span class="downloadEdge"></span>
+                <span class="downloadFront"><i class="fa-solid fa-download fa-xs"></i> &nbsp; w/ cards</span>
+            </button> --}}
             <button type="submit" class="mainButton">
                 <a href="{{ url('/') }}">
                     <span class="mainShadow"></span>
                     <span class="mainEdge"></span>
-                    <span class="mainFront">Main Page</span>
+                    <span class="mainFront"><i class="fa-solid fa-house fa-xl" style="color: #004477;"></i></span>
                 </a>
             </button>
         </div>

@@ -25,6 +25,7 @@ class Session {
     #session_timer;
     #results;
     #results_uuid_set;
+    #skip_check;
 
     /**
      * Initializes the instance of the class.
@@ -67,6 +68,7 @@ class Session {
         this.#deck_id = "";
         this.#session_timer = "";
         this.#results_uuid_set = false;
+        this.#skip_check = false;
     }
 
     /**
@@ -329,16 +331,17 @@ class Session {
                 this.#results.skipped_array_manual.push(
                     this.#url_array[this.#idx]
                 );
+                if (this.#idx == this.#url_array.length - 1) {
+                    this.#skip_check = true;
+                    this.grab_results();
+                }
                 this.#idx++;
                 await this.next_front();
-
                 // Checking if session timer is CountDown instance
                 if (this.#session_timer instanceof CountdownTimer) {
                     this.#session_timer.reset_round_timer();
                 }
                 this.create_front_buttons();
-            } else {
-                this.grab_results();
             }
         });
         let flip = document.querySelector(".flipButton");
@@ -540,9 +543,11 @@ class Session {
      */
     async grab_results() {
         for (this.#idx; this.#idx < this.#url_array.length; this.#idx++) {
-            this.#results.skipped_array_latency.push(
-                this.#url_array[this.#idx]
-            );
+            if (!this.#skip_check) {
+                this.#results.skipped_array_latency.push(
+                    this.#url_array[this.#idx]
+                );
+            }
         }
 
         this.#results.correct = this.#results.correct_array.length;
@@ -602,7 +607,7 @@ class Session {
                 .post("save-results", results)
                 .then((response) => {
                     console.log("results", results);
-                    // window.location.href = response.data.url;
+                    window.location.href = response.data.url;
                     // localStorage.setItem(
                     //     "results_id",
                     //     response.data.results_id

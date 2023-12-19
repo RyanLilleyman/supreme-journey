@@ -236,7 +236,7 @@ class Fession extends Controller
         // Caches the results for later retrieval for an hour
         // Cache::put($results_id,$data,3600);
 
-        return response()->json(['data'=>$data,'results_id'=>$results_id,'url'=>$url]);
+        return response()->json(['data'=>$data,'results_id'=>$results_id,'url'=>$url,'ica'=>$incorrect_html_string]);
     }
 
     public function return_html_string_from_array($array){
@@ -247,7 +247,7 @@ class Fession extends Controller
 
                 $toAppend = '';
                 $toAppend .= '<div class='.'"response"'.'>';
-                $toAppend .= '<h2 class='.'"frontHeader"'.'style='.'"align-self:center;"'.'>Front: </h2>';
+                $toAppend .= '<h3 class='.'"frontHeader"'.'style='.'"align-self:center;"'.'>Front: </h3>';
                 $front_info = $element[0];
                 $front_id = $front_info['id'];
                 $front = fronts::find($front_id);
@@ -257,7 +257,7 @@ class Fession extends Controller
                 $front_file_content = Storage::get($front_dest);
                 $toAppend .= $front_file_content;
 
-                $toAppend .= '<h2 class='.'"backHeader"'.'style='.'"align-self:center;"'.'>Back: </h2>';
+                $toAppend .= '<h3 class='.'"backHeader"'.'style='.'"align-self:center;"'.'>Back: </h3>';
                 $back_info = $element[1];
                 $back_id = $back_info['id'];
                 $back = backs::find($back_id);

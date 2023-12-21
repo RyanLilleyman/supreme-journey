@@ -217,6 +217,29 @@ class Session {
              * @param {string} property - The name of the property to be updated in the session settings.
              */
             const bindListener = (selector, property) => {
+                if (selector == ".fontSize") {
+                    document
+                        .querySelector(".fontSizeText")
+                        .addEventListener("change", (e) => {
+                            const outer_key = e.target.value;
+                            const inner_size =
+                                document.querySelector(".fontSize");
+                            inner_size.value = outer_key;
+                        });
+
+                    document
+                        .querySelector(selector)
+                        .addEventListener("change", (event) => {
+                            const outer_size =
+                                document.querySelector(".fontSizeText");
+                            outer_size.value = event.target.value;
+                            this.#session_settings[property] =
+                                event.target.value + "px";
+                            console.log(this.#session_settings[property]);
+                        });
+                    return;
+                }
+
                 document
                     .querySelector(selector)
                     .addEventListener("change", (event) => {

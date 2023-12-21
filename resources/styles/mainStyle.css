@@ -740,8 +740,25 @@ I modified the various names, added padding, margins, borders, font-size changes
     height:2.5rem;
 }
 
-.rangeFinder{
-    width:7rem;
+.fontSizeSpan{
+    display:flex;
+    gap:0.4rem;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width:3.5rem;
+    height:2.5rem;
+    padding:0;
+    border:0;
+    border-radius:0.5rem;
+}
+
+.fontSizeText{
+    width:3rem;
     height:2.5rem;
 }
 

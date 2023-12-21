@@ -1,0 +1,63 @@
+.signInForm{
+    width:15rem;
+    border: 1px solid #004477;
+    box-shadow: 2px 2px #047;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    padding:0.5rem;
+}
+
+.signInForm h4{
+    width:fit-content;
+    margin-bottom:0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.emailContainer,
+.passwordContainer,
+.confirmPasswordContainer{
+    display:flex;
+    flex-direction:column;
+}
+
+.buttonContainer{
+    display:flex;
+    justify-content: center;
+    gap:0.5rem;
+    margin-bottom:0.5rem
+}
+
+.emailContainer input,
+.passwordContainer input{
+    width:100%;
+    align-self: center;
+}
+
+.emailContainer input,
+.passwordContainer input,
+.confirmPasswordContainer input{
+    margin-bottom: 1rem;
+}
+
+.passwordContainer input:valid{
+    background-color: palegreen;
+}
+
+.passwordContainer input:invalid{
+    background-color: lightpink;
+}
+/*
+input:valid {
+    background-color: palegreen;
+  }
+
+  input:invalid {
+    background-color: lightpink;
+  } */
+
+.emailContainer h4,
+.passwordContainer h4,
+.confirmPasswordContainer h4{
+    margin: 0 auto 0.5rem 0.5rem;
+}
+

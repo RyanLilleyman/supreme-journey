@@ -25,11 +25,28 @@ use App\Http\Controllers\DeckController;
  * Dec. 12, 2023).
  * All relevant below syntax for routing comes from the above documentation.
  */
+
 // General routes
 Route::get('/', function(){
-    Fession::delete_session_files();
-    return view('index');
+    return view('welcome');
 });
+Route::get('sign-up',function(){
+    return view('auth.sign-up');
+});
+Route::get('sign-in',function(){
+    return view('auth.sign-in');
+});
+Route::get('home', function(){
+    Fession::delete_session_files();
+    return view('home');
+});
+
+// Handles login form submission
+Route::post('login',function(Request $request){
+    $data = $request::all();
+    return response()->json(['data'=>$data]);
+});
+
 Route::view('/edit-deck', 'edit_deck');
 Route::view('/catalogue', 'catalogue');
 Route::view('/back-session', 'back_session');
@@ -42,7 +59,6 @@ Route::view('/about', 'about');
 
 // Deck Route handler
 Route::resource('/decks',DeckController::class);
-
 
 // Grabbing environment app url from the .env file and setting it client side
 Route::get('get-env-variable', EnvironmentController::class);

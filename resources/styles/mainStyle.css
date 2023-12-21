@@ -746,8 +746,8 @@ I modified the various names, added padding, margins, borders, font-size changes
 }
 
 input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
+    /* -webkit-appearance: none;
+    appearance: none; */
     background: transparent;
     cursor: pointer;
     width:3.5rem;

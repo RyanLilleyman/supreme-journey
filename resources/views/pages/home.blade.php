@@ -172,11 +172,11 @@
                         {{-- <span>
                             <span>34</span> px</span> --}}
                         <span class='fontSizeSpan'>
-                            <input class='fontSizeText' min='1' max='48' type="number" name=""
+                            <input class='fontSizeText' min='12' max='48' type="number" name=""
                                 id="" placeholder="16"
                                 pattern="([0-9]|[12][0-9]|3[0-6])px
                                 ">
-                            <input class= "fontSize" type="range" value="16" min="1" max="48">
+                            <input class= "fontSize" type="range" value="16" min="12" max="48">
                         </span>
                 </div>
             </div>

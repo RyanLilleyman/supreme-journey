@@ -19,7 +19,7 @@ class GrabResultsController extends Controller
 
         $download_no_array = \Storage::get('cardsView/download_no_arrays.html');
         $download_arrays = \Storage::get('cardsView/download_arrays.html');
-        $pdf = Pdf::loadView('success',['noarrays'=>$download_no_array,'arrays'=>$download_arrays]);
+        $pdf = Pdf::loadView('results.success',['noarrays'=>$download_no_array,'arrays'=>$download_arrays]);
         return $pdf->download();
     }
 }

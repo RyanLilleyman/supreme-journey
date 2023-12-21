@@ -48,7 +48,7 @@ class Fession extends Controller
          * The following make method creates a new view and injects the keys  into the similar named
          * variables within the access identifier of the blade.php file. It then renders the html...
          */
-        $session_view =  View::make('front_session', [
+        $session_view =  View::make('pages.front_session', [
             'deck'=>$deck_id,
             'card_color'=>$request->query('cardColor'),
             'card_font'=>$request->query('cardFont'),
@@ -78,14 +78,14 @@ class Fession extends Controller
         foreach ($shuffledCardsArray as $card){
 
             if ($card['imgUrl']!='') {
-                $front_card = View::make('front_card_with_image',[
+                $front_card = View::make('cards.front_card_with_image',[
                     'front'=>$card['front'],
                     'imgUrl'=>$card['imgUrl'],
                 ])->render();
                 Storage::put('fronts/'.$card['id'].'.html', $front_card);
                 array_push($front_urls, url('fronts/'.$card['id'].'.html'));
             } else {
-                $front_card = View::make('front_card', [
+                $front_card = View::make('cards.front_card', [
                     'front'=>$card['front'],
                 ])->render();
                 Storage::put('fronts/'.$card['id'].'.html', $front_card);
@@ -94,7 +94,7 @@ class Fession extends Controller
 
 
 
-            $back_card = View::make('back_card',[
+            $back_card = View::make('cards.back_card',[
                 'deck'=>$deck_id,
                 'back'=>$card['back'],
                 'id' => $card['id'],
@@ -196,7 +196,7 @@ class Fession extends Controller
         //     $front = Storage::disk
         // }
 
-        $download_no_arrays = View::make('download_with_no_arrays',[
+        $download_no_arrays = View::make('results.download_with_no_arrays',[
             'correct'=>$correct,
             'incorrect'=>$incorrect,
             'number_of_cards_in_deck'=>$number_of_cards_in_deck,
@@ -208,7 +208,7 @@ class Fession extends Controller
             'skipped_total'=>$skipped_total,
         ])->render();
 
-        $download_arrays = View::make('download_arrays',[
+        $download_arrays = View::make('results.download_arrays',[
             'incorrect_array'=>$incorrect_html_string,
             'correct_array'=>$correct_html_string,
             'skipped_array_latency'=>$skipped_latency_html_string,
@@ -219,7 +219,7 @@ class Fession extends Controller
          * I wrote the below code to create a new view with the results.blade.php inside
          * resources/views
          */
-        $results_view = View::make('results',[
+        $results_view = View::make('results.results',[
             'download_arrays'=>$download_arrays,
             'download_no_arrays'=>$download_no_arrays
         ])->render();

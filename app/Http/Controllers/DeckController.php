@@ -32,7 +32,7 @@ class DeckController extends Controller
          * [17] “Nested View Directories,” Laravel, https://laravel.com/docs/10.x/views#nested-view-directories (accessed Dec. 12, 2023).
          * The below method returns the create view.
          */
-        return view('create_deck');
+        return view('pages.create_deck');
     }
 
     /**
@@ -123,7 +123,7 @@ class DeckController extends Controller
          * [17] “Nested View Directories,” Laravel, https://laravel.com/docs/10.x/views#nested-view-directories (accessed Dec. 12, 2023).
          * The below view() method returns the view from the resources/views directory.
          */
-        return view('edit_deck');
+        return view('pages.edit_deck');
     }
 
     /**

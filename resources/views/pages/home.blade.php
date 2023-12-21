@@ -119,22 +119,6 @@
                     The below selects took inspiration from the above link. I made many modifications such as the
                     subject type, the values, the classes, the options, etc. -->
                     <span>
-                        Background Color:
-                        <select class="cardColor" required>
-                            <option value="#ffffff">White</option>
-                            <option value="#000000">Black</option>
-                            <option value="#FFF8E7">Cream</option>
-                            <option value="#D3D3D3">Light Gray</option>
-                            <option value="#36454F">Charcoal</option>
-                            <option value="#87CEEB">Sky Blue</option>
-                            <option value="#FADADD">Pale Pink</option>
-                            <option value="#98FF98">Mint Green</option>
-                            <option value="#E6E6FA">Lavender</option>
-                            <option value="#FFFFE0">Soft Yellow</option>
-                            <option value="#F5F5DC">Tan</option>
-                        </select>
-                    </span>
-                    <span>
                         Deck Font Style:
                         <select class="cardFont" id="fontSelector" name="fonts">
                             <optgroup label="Serif">
@@ -162,21 +146,6 @@
                         </select>
                     </span>
                     <span>
-                        Deck Font Size:
-                        <select class="fontSize" required>
-
-                            <option value="16px">16</option>
-                            <option value="18px">18</option>
-                            <option value="20px">20</option>
-                            <option value="22px">22</option>
-                            <option value="24px">24</option>
-                            <option value="26px">26</option>
-                            <option value="28px">28</option>
-                            <option value="30px">30</option>
-                        </select>
-                    </span>
-
-                    <span>
                         Deck Font Weight:
                         <select class="howManyCards" required>
                             <option value="100">100 - Thin/Hairline</option>
@@ -191,8 +160,25 @@
                         </select>
                     </span>
                     <span>
+                        Background Color:
+                        {{-- <select class="cardColor" required>
+                            <option value="#ffffff">White</option>
+                            <option value="#000000">Black</option>
+                            <option value="#FFF8E7">Cream</option>
+                            <option value="#D3D3D3">Light Gray</option>
+                            <option value="#36454F">Charcoal</option>
+                            <option value="#87CEEB">Sky Blue</option>
+                            <option value="#FADADD">Pale Pink</option>
+                            <option value="#98FF98">Mint Green</option>
+                            <option value="#E6E6FA">Lavender</option>
+                            <option value="#FFFFE0">Soft Yellow</option>
+                            <option value="#F5F5DC">Tan</option>
+                        </select> --}}
+                        <input class='cardColor' id="color" type="color" value="#ffffff">
+                    </span>
+                    <span>
                         Deck Font Color:
-                        <select class="font_color" required>
+                        {{-- <select class="font_color" required>
                             <option value="black">Black</option>
                             <option value="white">White</option>
                             <option value="red">Red</option>
@@ -205,8 +191,23 @@
                             <option value="pink">Pink</option>
                             <option value="gray">Gray</option>
                             <option value="cyan">Cyan</option>
-                        </select>
+                        </select> --}}
+                        <input class='font_color' id="color" type="color" value="#000000">
 
+                    </span>
+                    <span>
+                        Deck Font Size:
+                        {{-- <select class="fontSize" required>
+                            <option value="16px">16</option>
+                            <option value="18px">18</option>
+                            <option value="20px">20</option>
+                            <option value="22px">22</option>
+                            <option value="24px">24</option>
+                            <option value="26px">26</option>
+                            <option value="28px">28</option>
+                            <option value="30px">30</option>
+                        </select> --}}
+                        <input class= "rangeFinder" type="range" value="16" min="1" max="64">
                     </span>
                 </div>
             </div>

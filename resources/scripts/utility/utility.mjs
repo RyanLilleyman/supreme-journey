@@ -99,9 +99,9 @@ export class UtilityCenter {
             deck_info.innerHTML =
                 "<span>" +
                 this.capitalizeFirstLetter(name) +
-                "</span><span> (" +
+                "</span><span> " +
                 cards.length +
-                ")</span>";
+                "</span>";
 
             deck.appendChild(deck_info);
             deck_info.addEventListener("click", (e) => {

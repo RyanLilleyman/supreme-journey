@@ -161,8 +161,16 @@ export class DeckDOM extends DeckCreator {
             } else {
                 const name = this.Deck.Name;
                 const cards = this.Deck.Cards;
-                if (this.Deck.Cards.length > 1) {
-                    this.removeLastCard();
+                const last_index = cards.length - 1;
+                if (cards.length > 1) {
+                    let last_card = cards[last_index];
+                    if (
+                        !last_card.front.blob &&
+                        !last_card.front.text &&
+                        !last_card.back
+                    ) {
+                        this.removeLastCard();
+                    }
                 }
                 await DECK_GLOBALS.addDeck(name, cards);
             }

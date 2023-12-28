@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Sucessful Session.</h1>
+    <h1>Successful Session.</h1>
     <div>{!! $noarrays !!}</div>
     <div>{!! $arrays !!}</div>
 </body>

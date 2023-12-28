@@ -225,6 +225,9 @@ class Session {
                             const inner_size =
                                 document.querySelector(".fontSize");
                             inner_size.value = outer_key;
+                            this.#session_settings[property] =
+                                e.target.value + "px";
+                            // console.log(this.#session_settings[property]);
                         });
 
                     document
@@ -235,7 +238,7 @@ class Session {
                             outer_size.value = event.target.value;
                             this.#session_settings[property] =
                                 event.target.value + "px";
-                            console.log(this.#session_settings[property]);
+                            // console.log(this.#session_settings[property]);
                         });
                     return;
                 }

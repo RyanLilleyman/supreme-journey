@@ -55,8 +55,16 @@ class DeckController extends Controller
 
         // Sets the formdata array to the $cards variable that was inside the request payload.
         $cards = $request->input('cards');
+
+
         // Self explanatory
         $length = count($cards);
+        // if ($cards){
+        //     $length = count($cards);
+        // } else {
+        //     throw new \Exception("Deck cannot contain ONLY blank cards.", 1);
+        //     return;
+        // }
 
         $cards_test_array = array();
         for ($i = 0; $i < $length; $i++) {
@@ -92,7 +100,7 @@ class DeckController extends Controller
                 $to_add->imgUrl = $disk->putFile('images/'.$deck->id, $blob);
             } else {
                 // Otherwise, set the imgUrl to an empty string.
-                $to_add->imgUrl = '';
+                $to_add->imgUrl = ' ';
             }
 
             // Save to the current deck and add a new card with the same models (relationships) as above.
@@ -148,17 +156,36 @@ class DeckController extends Controller
 
         // Sets the formdata array to the $cards variable that was inside the request payload.
         $cards = $request->input('cards');
+
         // Self explanatory
-        $length = count($cards);
+        if ($cards){
+            $length = count($cards);
+        } else {
+            throw new \Exception("Deck cannot contain ONLY blank cards.", 1);
+            return;
+        }
+
 
         $cards_test_array = array();
         for ($i = 0; $i < $length; $i++) {
             // Make a new card model.
             $to_add = new Card();
             // Add to the front card model the text field specific card from the associative array
-            $to_add->front = $request->input('cards.'.$i.'.front.text');
+            $front = $request->input('cards.'.$i.'.front.text');
             // Add to the back card model the text field specific card from the associative array
-            $to_add->back = $request->input('cards.'.$i.'.back');
+            $back = $request->input('cards.'.$i.'.back');
+            if($front){
+                $to_add->front = $front;
+            }else{
+                $to_add->front = '';
+            }
+
+            // Add to the back card model the text field specific card from the associative array
+            if($back){
+                $to_add->back = $back;
+            }else{
+                $to_add->back = '';
+            }
 
 
             $blob = $request->file('cards.'.$i.'.front.blob');

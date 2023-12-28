@@ -77,26 +77,36 @@ class Fession extends Controller
         // This loop also stores each card in the local file system under storage/app/fronts and storage/app/backs respectively.
         foreach ($shuffledCardsArray as $card){
 
+            if($card['front']){
+                $front_text = $card['front'];
+            } else {
+                $front_text = ' ';
+            }
             if ($card['imgUrl']!='') {
                 $front_card = View::make('cards.front_card_with_image',[
-                    'front'=>$card['front'],
+                    'front'=>$front_text,
                     'imgUrl'=>$card['imgUrl'],
                 ])->render();
                 Storage::put('fronts/'.$card['id'].'.html', $front_card);
                 array_push($front_urls, url('fronts/'.$card['id'].'.html'));
             } else {
                 $front_card = View::make('cards.front_card', [
-                    'front'=>$card['front'],
+                    'front'=>$front_text,
                 ])->render();
                 Storage::put('fronts/'.$card['id'].'.html', $front_card);
                 array_push($front_urls, url('fronts/'.$card['id'].'.html'));
             }
 
 
+            if($card['back']){
+                $back_text = $card['back'];
+            } else {
+                $back_text = ' ';
+            }
 
             $back_card = View::make('cards.back_card',[
                 'deck'=>$deck_id,
-                'back'=>$card['back'],
+                'back'=>$back_text,
                 'id' => $card['id'],
             ])->render();
             Storage::put('backs/'.$card['id'].'.html', $back_card);

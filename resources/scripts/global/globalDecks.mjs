@@ -63,6 +63,10 @@ class GlobalDecks {
             }
         });
 
+        if (ne.length == 0) {
+            alert("Cannot have blank cards");
+            return;
+        }
         ne.forEach((element, i) => {
             formData.append(`cards[${i}][front][text]`, element.front.text);
             formData.append(`cards[${i}][front][blob]`, element.front.blob);
@@ -87,6 +91,10 @@ class GlobalDecks {
                 ne.push(card);
             }
         });
+        if (ne.length == 0) {
+            alert("Cannot have blank cards");
+            return;
+        }
 
         ne.forEach((element, i) => {
             formData.append(`cards[${i}][front][text]`, element.front.text);

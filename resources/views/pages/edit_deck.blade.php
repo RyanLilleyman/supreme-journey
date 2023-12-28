@@ -145,7 +145,7 @@
                         <button type="submit" class="finishButton" title='Finish'>
                             <span class="finishShadow"></span>
                             <span class="finishEdge"></span>
-                            <span class="finishFront">Finish Deck</span>
+                            <span class="finishFront">Update Deck</span>
                         </button>
                     </div>
                 </div>

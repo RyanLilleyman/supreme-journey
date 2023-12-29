@@ -313,28 +313,44 @@ export class DeckDOM extends DeckCreator {
         };
 
         const handleChange = async (e) => {
-            console.log(e);
-
             const selectedFiles = fileInput.files;
             if (selectedFiles && selectedFiles.length > 0) {
                 const selectedFile = selectedFiles[0];
                 const mimeType = this.detectMIMEType(selectedFile);
 
                 const arrayBuffer = await selectedFile.arrayBuffer();
-                const blob = await this.getBlob(arrayBuffer, mimeType);
-                const object_url = this.getBlobUrl(blob);
+                console.log(this.Index);
+                console.log(this.Current.Id);
 
-                if (object_url) {
-                    this.handleImageCreation(blob);
-                    this.displayImage();
-                }
+                const blob = await this.getBlob(arrayBuffer, mimeType);
+                console.log("blob: " + blob);
+                const request = new Request(
+                    "/api/cache/" + this.Current.Id + "/" + this.Index,
+                    {
+                        method: "POST",
+                        body: blob,
+                    }
+                );
+                fetch(request)
+                    .then((r) => r.blob())
+                    .then((blob) => {
+                        console.log(blob);
+                        const object_url = this.getBlobUrl(blob);
+
+                        if (object_url) {
+                            this.handleImageCreation(blob);
+                            this.displayImage();
+                        }
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
             }
             fileInput.value = null;
             rebindClickListener();
         };
 
         openFileImage.addEventListener("click", handleClick);
-
         return fileInput;
     }
 

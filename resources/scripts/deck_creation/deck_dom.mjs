@@ -324,13 +324,10 @@ export class DeckDOM extends DeckCreator {
 
                 const blob = await this.getBlob(arrayBuffer, mimeType);
                 console.log("blob: " + blob);
-                const request = new Request(
-                    "/api/cache/" + this.Current.Id + "/" + this.Index,
-                    {
-                        method: "POST",
-                        body: blob,
-                    }
-                );
+                const request = new Request("/api/cache/" + this.Current.Id, {
+                    method: "POST",
+                    body: blob,
+                });
                 fetch(request)
                     .then((r) => r.blob())
                     .then((blob) => {

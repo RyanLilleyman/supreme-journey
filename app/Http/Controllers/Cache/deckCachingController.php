@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class deckCachingController extends Controller
 {
-    public function cacheImage(Request $request, $deck_uuid, $image_id){
-        $key = $deck_uuid . '_' . $image_id;
+    public function cacheImage(Request $request, $card_uuid){
+        $key = $card_uuid;
         $image = $request->getContent();
 
         if (Cache::has($key)){
@@ -20,6 +20,13 @@ class deckCachingController extends Controller
 
         $image = Cache::get($key);
         $response = response($image);
+
+        $tempFilePath = tempnam(sys_get_temp_dir(), 'temp_blob_');
+        file_put_contents($tempFilePath, $image);
+        $mimeType = mime_content_type($tempFilePath);
+        unlink($tempFilePath);
+
+        $response->header('Content-Type', $mimeType);
         return $response;
     }
 }

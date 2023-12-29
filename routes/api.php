@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileFromStorage;
 use App\Http\Controllers\GrabResultsController;
-use App\Http\Controllers\deckCachingController;
+use App\Http\Controllers\Cache\deckCachingController;
 
 
 /*
@@ -29,5 +29,5 @@ Route::get('/grab-blob', [FileFromStorage::class, 'grab_blob_from_url']);
 Route::get('/fetch-results', GrabResultsController::class);
 
 // Caches the deck and card by index in the deck during creation.
-Route::post('/cache/{deck_uuid}/{image_id}',[deckCachingController::class, 'cacheImage']);
+Route::post('/cache/{card_uuid}',[deckCachingController::class, 'cacheImage']);
 

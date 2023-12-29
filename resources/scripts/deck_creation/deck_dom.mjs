@@ -164,14 +164,25 @@ export class DeckDOM extends DeckCreator {
                 const last_index = cards.length - 1;
                 if (cards.length > 1) {
                     let last_card = cards[last_index];
-                    if (
-                        !last_card.front.blob &&
-                        !last_card.front.text &&
-                        !last_card.back
-                    ) {
-                        this.removeLastCard();
-                    }
+                    let card_id = last_card.Id;
+                    let url = "/api/cache/" + card_id;
+                    const request = new Request(url, {
+                        method: "GET",
+                    });
+                    fetch(request)
+                        .then((r) => r.blob())
+                        .then((blob) => {
+                            console.log(blob);
+                            if (
+                                !blob > 0 &&
+                                !last_card.Front &&
+                                !last_card.Back
+                            ) {
+                                this.removeLastCard();
+                            }
+                        });
                 }
+                console.log(cards);
                 await DECK_GLOBALS.addDeck(name, cards);
             }
         });
@@ -247,13 +258,22 @@ export class DeckDOM extends DeckCreator {
         }
         const imgElement = document.createElement("img");
 
-        const img = this.Deck.Cards[this.Index].front.blob;
-
-        if (img) {
-            imgElement.src = this.getBlobUrl(img);
-            this.showRemoveImgButton();
-            imagePossible.appendChild(imgElement);
-        }
+        // const img = this.Deck.Cards[this.Index].front.blob;
+        let card_id = this.Current.Id;
+        let url = "/api/cache/" + card_id;
+        const request = new Request(url, {
+            method: "GET",
+        });
+        fetch(request)
+            .then((r) => r.blob())
+            .then((blob) => {
+                console.log(blob);
+                if (blob.size > 0) {
+                    imgElement.src = this.getBlobUrl(blob);
+                    this.showRemoveImgButton();
+                    imagePossible.appendChild(imgElement);
+                }
+            });
     }
 
     /**
@@ -319,11 +339,8 @@ export class DeckDOM extends DeckCreator {
                 const mimeType = this.detectMIMEType(selectedFile);
 
                 const arrayBuffer = await selectedFile.arrayBuffer();
-                console.log(this.Index);
-                console.log(this.Current.Id);
 
                 const blob = await this.getBlob(arrayBuffer, mimeType);
-                console.log("blob: " + blob);
                 const request = new Request("/api/cache/" + this.Current.Id, {
                     method: "POST",
                     body: blob,
@@ -335,7 +352,7 @@ export class DeckDOM extends DeckCreator {
                         const object_url = this.getBlobUrl(blob);
 
                         if (object_url) {
-                            this.handleImageCreation(blob);
+                            // this.handleImageCreation(blob);
                             this.displayImage();
                         }
                     })

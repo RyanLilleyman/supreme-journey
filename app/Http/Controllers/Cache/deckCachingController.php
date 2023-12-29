@@ -29,4 +29,26 @@ class deckCachingController extends Controller
         $response->header('Content-Type', $mimeType);
         return $response;
     }
+
+    public function grabImage(Request $request, $card_uuid){
+        $key = $card_uuid;
+        $image = Cache::get($key);
+        $response = response($image);
+
+        $tempFilePath = tempnam(sys_get_temp_dir(), 'temp_blob_');
+        file_put_contents($tempFilePath, $image);
+        $mimeType = mime_content_type($tempFilePath);
+        unlink($tempFilePath);
+
+        $response->header('Content-Type', $mimeType);
+        return $response;
+    }
+
+    public function deleteImage($card_uuid){
+        Cache::forget($card_uuid);
+    }
+
+    public function clearCache(){
+        Cache::flush();
+    }
 }

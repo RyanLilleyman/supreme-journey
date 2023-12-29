@@ -8,9 +8,11 @@ import { v4 as uuidv4 } from "uuid";
  */
 class Card {
     #id;
-    constructor(front = { text: "", blob: "" }, back = "") {
-        this.front = front;
-        this.back = back;
+    #front;
+    #back;
+    constructor(front = "", back = "") {
+        this.#front = front;
+        this.#back = back;
         this.#id = uuidv4();
     }
 
@@ -22,7 +24,7 @@ class Card {
      * get Front() based on the suggestions from Codieum.
      */
     get Front() {
-        return this.front;
+        return this.#front;
     }
 
     /**
@@ -33,7 +35,7 @@ class Card {
      * based on suggestions from Codieum.
      */
     get Back() {
-        return this.back;
+        return this.#back;
     }
 
     /**
@@ -49,24 +51,24 @@ class Card {
      * I wrote this method to set the front text field.
      */
     setFrontText(text) {
-        this.front.text = text;
-        return this.front.text;
+        this.#front = text;
+        return this.#front;
     }
 
-    /**
-     * I wrote this method to set the front blob field.
-     */
-    setFrontImage(blob = "") {
-        this.front.blob = blob;
-        return this.front.image;
-    }
+    // /**
+    //  * I wrote this method to set the front blob field.
+    //  */
+    // setFrontImage(blob = "") {
+    //     this.front.blob = blob;
+    //     return this.front.image;
+    // }
 
     /**
      * I wrote this method to set the back text field.
      */
     setBack(back) {
-        this.back = back;
-        return this.back;
+        this.#back = back;
+        return this.#back;
     }
 
     /**
@@ -76,7 +78,7 @@ class Card {
      * It isn't used in the application. I kept it in for transparency.
      */
     toObject() {
-        return { front: this.front, back: this.back };
+        return { front: this.#front, back: this.#back };
     }
 }
 

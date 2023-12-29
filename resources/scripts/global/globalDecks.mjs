@@ -56,28 +56,57 @@ class GlobalDecks {
     async addDeck(name, cards) {
         let formData = new FormData();
         formData.append("name", name);
+
         let ne = [];
         cards.forEach((card) => {
-            if (card.front.text || card.back || card.front.blob) {
-                ne.push(card);
-            }
+            let card_id = card.Id;
+            let url = "/api/cache/" + card_id;
+            const request = new Request(url, {
+                method: "GET",
+            });
+            fetch(request)
+                .then((r) => r.blob())
+                .then((blob) => {
+                    console.log(blob);
+                    if (blob.size > 0 || card.Front || card.Back) {
+                        ne.push(card);
+                        console.log(ne);
+                    }
+                });
         });
 
-        if (ne.length == 0) {
-            alert("Cannot have blank cards");
-            return;
-        }
-        ne.forEach((element, i) => {
-            formData.append(`cards[${i}][front][text]`, element.front.text);
-            formData.append(`cards[${i}][front][blob]`, element.front.blob);
-            formData.append(`cards[${i}][back]`, element.back);
+        const url = "/api/cache/clear";
+        const request = new Request(url, {
+            method: "GET",
         });
+        fetch(request)
+            .then((r) => r.json())
+            .then((json) => {
+                console.log(json);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
 
-        return await DECK_SERVICES.postDecks(formData).then((r) => {
-            console.log(r);
-            alert("Deck added!");
-            window.location.href = "/";
-        });
+        // if (ne.length == 0) {
+        //     alert("Cannot have blank cards");
+        //     return;
+        // }
+
+        // ne.forEach((element, i) => {
+        //     formData.append(`cards[${i}][id]`, element.Id);
+        //     formData.append(`cards[${i}][front]`, element.Front);
+        //     formData.append(`cards[${i}][back]`, element.Back);
+        // });
+        // console.log("form");
+        // for (let [k, v] of formData.entries()) {
+        //     console.log(k, v);
+        // }
+        // return await DECK_SERVICES.postDecks(formData).then((r) => {
+        //     console.log(r);
+        //     alert("Deck added!");
+        //     // window.location.href = "/";
+        // });
     }
 
     async updateDeck(id, name, cards) {

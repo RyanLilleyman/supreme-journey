@@ -31,3 +31,10 @@ Route::get('/fetch-results', GrabResultsController::class);
 // Caches the deck and card by index in the deck during creation.
 Route::post('/cache/{card_uuid}',[deckCachingController::class, 'cacheImage']);
 
+// Grabs cached image
+Route::get('/cache/{card_uuid}',[deckCachingController::class, 'grabImage']);
+
+// Deletes cached image
+Route::get('/del_cache/{card_uuid}',[deckCachingController::class, 'deleteImage']);
+
+Route::get('/api/cache/clear',[deckCachingController::class, 'clearCache']);

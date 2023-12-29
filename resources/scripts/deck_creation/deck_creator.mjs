@@ -141,7 +141,18 @@ export class DeckCreator {
      * I wrote this method to reset the front image blob field to an empty string for the current card.
      */
     handleDeleteImg() {
-        this.Current.setFrontImage();
+        const url = "/api/del_cache/" + this.Current.Id;
+        const request = new Request(url, {
+            method: "GET",
+        });
+        fetch(request)
+            .then((r) => r.json())
+            .then((json) => {
+                console.log(json);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     }
 
     /**
@@ -169,7 +180,7 @@ export class DeckCreator {
     handleClear() {
         this.Current.setFrontText("");
         this.Current.setBack("");
-        this.Current.setFrontImage();
+        // this.Current.setFrontImage();
     }
 
     /**
@@ -184,13 +195,13 @@ export class DeckCreator {
         this.handleCardNumber();
     }
 
-    /**
-     * I wrote this method to handle the image creation for the current card if the blob is provided.
-     * Otherwise, it sets the current cards image to an empty string.
-     */
-    handleImageCreation(blob = "") {
-        this.Current.setFrontImage(blob);
-    }
+    // /**
+    //  * I wrote this method to handle the image creation for the current card if the blob is provided.
+    //  * Otherwise, it sets the current cards image to an empty string.
+    //  */
+    // handleImageCreation(blob = "") {
+    //     this.Current.setFrontImage(blob);
+    // }
 
     /**
      * I wrote this method to change the card number based on the

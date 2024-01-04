@@ -25,7 +25,7 @@ function timepiece() {
             }
 
             for (let card of cards) {
-                await delay(1000);
+                await delay(100);
                 if (card.imgUrl) {
                     uuid = uuidv4();
                     await UtilityCenter.grabBlobFromUrl(card.imgUrl).then(

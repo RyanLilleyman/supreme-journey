@@ -53,60 +53,67 @@ class GlobalDecks {
      * It then calls the post method of the DECK_SERVICES singleton to make a request to the backend
      * server.
      */
-    async addDeck(name, cards) {
+    async addDeck(name, deck) {
+        let containsOnlyNewLine = (str) => {
+            return /^(\n+)$/.test(str);
+        };
+
+        let cards = deck;
         let formData = new FormData();
         formData.append("name", name);
-
-        let ne = [];
-        cards.forEach((card) => {
-            let card_id = card.Id;
-            let url = "/api/cache/" + card_id;
-            const request = new Request(url, {
-                method: "GET",
-            });
-            fetch(request)
-                .then((r) => r.blob())
-                .then((blob) => {
-                    console.log(blob);
-                    if (blob.size > 0 || card.Front || card.Back) {
-                        ne.push(card);
-                        console.log(ne);
+        let cleanCards = (cards) => {
+            let cleaned = [];
+            cards.forEach((card) => {
+                if (card.Id || card.Front || card.Back) {
+                    if (
+                        (!card.Id && containsOnlyNewLine(card.Front)) ||
+                        containsOnlyNewLine(card.Back)
+                    ) {
+                        return;
+                    } else {
+                        cleaned.push(card);
                     }
-                });
-        });
-
-        const url = "/api/cache/clear";
-        const request = new Request(url, {
-            method: "GET",
-        });
-        fetch(request)
-            .then((r) => r.json())
-            .then((json) => {
-                console.log(json);
-            })
-            .catch((e) => {
-                console.log(e);
+                }
             });
+            return cleaned;
+        };
 
-        // if (ne.length == 0) {
-        //     alert("Cannot have blank cards");
-        //     return;
-        // }
+        console.log("cleanCards", cleanCards(cards));
+        let ne = cleanCards(cards);
 
-        // ne.forEach((element, i) => {
-        //     formData.append(`cards[${i}][id]`, element.Id);
-        //     formData.append(`cards[${i}][front]`, element.Front);
-        //     formData.append(`cards[${i}][back]`, element.Back);
+        if (ne.length == 0) {
+            alert("Cannot have blank cards");
+            return;
+        }
+
+        ne.forEach((element, i) => {
+            formData.append(`cards[${i}][id]`, element.Id);
+            formData.append(`cards[${i}][front]`, element.Front);
+            formData.append(`cards[${i}][back]`, element.Back);
+        });
+        console.log("form");
+        for (let [k, v] of formData.entries()) {
+            console.log(k, v);
+        }
+
+        return await DECK_SERVICES.postDecks(formData).then((r) => {
+            console.log(r);
+            alert("Deck added!");
+            // window.location.href = "/";
+        });
+
+        // const url = "/api/cache/clear";
+        // const request = new Request(url, {
+        //     method: "GET",
         // });
-        // console.log("form");
-        // for (let [k, v] of formData.entries()) {
-        //     console.log(k, v);
-        // }
-        // return await DECK_SERVICES.postDecks(formData).then((r) => {
-        //     console.log(r);
-        //     alert("Deck added!");
-        //     // window.location.href = "/";
-        // });
+        // fetch(request)
+        //     .then((r) => r.json())
+        //     .then((json) => {
+        //         console.log(json);
+        //     })
+        //     .catch((e) => {
+        //         console.log(e);
+        //     });
     }
 
     async updateDeck(id, name, cards) {

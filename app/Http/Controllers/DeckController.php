@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Deck;
 use App\Models\Card;
 use App\Http\Requests\StoreDeckRequest;
+use Illuminate\Support\Facades\Cache;
 
 class DeckController extends Controller
 {
@@ -87,9 +88,13 @@ class DeckController extends Controller
             }
 
 
+            $blob = Cache::get($request->input('cards.'.$i.'.id'));
 
-            $blob = $request->file('cards.'.$i.'.front.blob');
+            // $blob = $request->file('cards.'.$i.'.front.blob');
             if ($blob) {
+                $tmpFilePath = tempnam(sys_get_temp_dir(), 'card');
+                file_put_contents($tmpFilePath, $blob);
+                $file = new \Illuminate\Http\File($tmpFilePath);
                 /**
                 * [13] “File Storage,” Laravel, https://laravel.com/docs/10.x/filesystem#automatic-streaming (accessed Dec. 12, 2023).
                 * The specific disk assignment and relevant putFile method can be found in the above documentation.
@@ -97,7 +102,8 @@ class DeckController extends Controller
                 $disk = \Illuminate\Support\Facades\Storage::disk('public');
                 // Put the file into the current storage/app/public directory and
                 // set the imgUrl of the card model to the resulting url
-                $to_add->imgUrl = $disk->putFile('images/'.$deck->id, $blob);
+                $to_add->imgUrl = $disk->putFile('images/'.$deck->id, $file);
+                unlink($tmpFilePath);
             } else {
                 // Otherwise, set the imgUrl to an empty string.
                 $to_add->imgUrl = ' ';

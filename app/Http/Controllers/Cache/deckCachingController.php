@@ -50,5 +50,6 @@ class deckCachingController extends Controller
 
     public function clearCache(){
         Cache::flush();
+        return response()->json(['message' => 'Cache cleared']);
     }
 }

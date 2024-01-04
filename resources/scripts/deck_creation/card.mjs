@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
 /**
  * I wrote this class to encapsulate the attributes of a standard flash card. The front contains
  * an object literal with two fields. The first field, entitled 'text', is designed for strings.
@@ -10,10 +8,10 @@ class Card {
     #id;
     #front;
     #back;
-    constructor(front = "", back = "") {
+    constructor(id = "", front = "", back = "") {
         this.#front = front;
         this.#back = back;
-        this.#id = uuidv4();
+        this.#id = id;
     }
 
     /**
@@ -69,6 +67,11 @@ class Card {
     setBack(back) {
         this.#back = back;
         return this.#back;
+    }
+
+    set Id(value = "") {
+        this.#id = value;
+        return this.#id;
     }
 
     /**

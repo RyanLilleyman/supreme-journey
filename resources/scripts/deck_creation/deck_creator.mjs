@@ -10,10 +10,16 @@ import Card from "./card.mjs";
  * cards within a new Deck().
  */
 export class DeckCreator {
+    #cleaned;
+    #cleanEmpty;
+    #cleanNewLineOnly;
     constructor() {
         this.deck = new Deck();
         this.idx = 0;
         this.currentCard = this.setBlank();
+        this.#cleaned = false;
+        this.#cleanEmpty = false;
+        this.#cleanNewLineOnly = false;
     }
 
     /**
@@ -24,6 +30,10 @@ export class DeckCreator {
      */
     get Index() {
         return this.idx;
+    }
+
+    set Index(value) {
+        this.idx = value;
     }
 
     /**
@@ -44,6 +54,30 @@ export class DeckCreator {
      */
     get Current() {
         return this.currentCard;
+    }
+
+    get Cleaned() {
+        return this.#cleaned;
+    }
+
+    set Cleaned(value) {
+        this.#cleaned = value;
+    }
+
+    get CleanEmpty() {
+        return this.#cleanEmpty;
+    }
+
+    set CleanEmpty(value) {
+        this.#cleanEmpty = value;
+    }
+
+    get CleanNewLine() {
+        return this.#cleanNewLineOnly;
+    }
+
+    set CleanNewLine(value) {
+        this.#cleanNewLineOnly = value;
     }
 
     /**
@@ -142,6 +176,7 @@ export class DeckCreator {
      */
     handleDeleteImg() {
         const url = "/api/del_cache/" + this.Current.Id;
+        this.Current.Id = null;
         const request = new Request(url, {
             method: "GET",
         });
@@ -189,7 +224,27 @@ export class DeckCreator {
      * It increments the index and handles the card number on the dom.
      */
     handleCreation() {
+        let containsOnlyNewLine = (str) => {
+            return /^(\n+)$/.test(str);
+        };
+
+        let isBlank = (card) => !card.Id && !card.Front && !card.Back;
+
+        if (isBlank(this.Current)) {
+            alert("Card cannot be blank.");
+            return;
+        }
+
+        if (
+            (!this.Current.Id && containsOnlyNewLine(this.Current.Back)) ||
+            containsOnlyNewLine(this.Current.Front)
+        ) {
+            alert("Card cannot only have whitespace characters");
+            return;
+        }
+
         alert("Card added");
+
         this.setCurrent(this.setBlank());
         this.idx++;
         this.handleCardNumber();
@@ -208,8 +263,10 @@ export class DeckCreator {
      * current index plus one, due to zero based indexing.
      */
     handleCardNumber() {
+        console.log(this.Current);
         let element = document.querySelector(".cardNumber");
-        element.innerHTML = (this.Index + 1).toString();
+        element.innerHTML =
+            (this.Index + 1).toString() + " of " + this.Deck.Cards.length;
         return (this.Index + 1).toString();
     }
 }

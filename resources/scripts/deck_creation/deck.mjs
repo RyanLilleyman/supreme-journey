@@ -28,6 +28,10 @@ export default class Deck {
         return this.cards;
     }
 
+    set Cards(value) {
+        this.cards = value;
+    }
+
     /**
      * I wrote this method to add a card to the back of the Cards array.
      */

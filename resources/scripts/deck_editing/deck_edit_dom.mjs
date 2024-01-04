@@ -43,9 +43,9 @@ export class DeckEDITDOM extends DeckEditor {
         if (cards.length > currentIndex) {
             const currentCard = cards[currentIndex];
             const element = document.querySelector(".frontCardCreate");
-            if (currentCard.Front.text) {
-                element.value = currentCard.Front.text;
-                return currentCard.Front.text;
+            if (currentCard.Front) {
+                element.value = currentCard.Front;
+                return currentCard.Front;
             }
         }
         return "";
@@ -254,21 +254,20 @@ export class DeckEDITDOM extends DeckEditor {
      * image element to the imagePossible div element.
      */
     displayImage() {
-        const imagePossible = document.getElementById("imagePossible");
-        const first_image = imagePossible.childNodes[0];
-        if (first_image) {
-            imagePossible.removeChild(first_image);
-        }
-        const imgElement = document.createElement("img");
-
-        const img = this.Deck.Cards[this.Index].front.blob;
-
-        if (img) {
-            let blob_url = this.getBlobUrl(img);
-            imgElement.src = blob_url;
-            this.showRemoveImgButton();
-            imagePossible.appendChild(imgElement);
-        }
+        console.log("image processing here");
+        // const imagePossible = document.getElementById("imagePossible");
+        // const first_image = imagePossible.childNodes[0];
+        // if (first_image) {
+        //     imagePossible.removeChild(first_image);
+        // }
+        // const imgElement = document.createElement("img");
+        // const img = this.Deck.Cards[this.Index].front.bb;
+        // if (img) {
+        //     let blob_url = this.getBlobUrl(img);
+        //     imgElement.src = blob_url;
+        //     this.showRemoveImgButton();
+        //     imagePossible.appendChild(imgElement);
+        // }
     }
 
     /**
@@ -365,7 +364,7 @@ export class DeckEDITDOM extends DeckEditor {
         this.bindDestroy();
         this.bindFinish();
         this.bindEnterKey();
-        if (this.Current.Front.blob) {
+        if (this.Current.Id) {
             this.displayImage();
         }
         // this.bindIKey();

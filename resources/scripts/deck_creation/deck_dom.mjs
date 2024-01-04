@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 /**
  * I wrote the import statements below to allow DeckDOM access to various methods to the hash map within
  * the DECK_GLOBALS module.
@@ -38,9 +40,9 @@ export class DeckDOM extends DeckCreator {
         if (cards.length > currentIndex) {
             const currentCard = cards[currentIndex];
             const element = document.querySelector(".frontCardCreate");
-            if (currentCard.Front.text) {
-                element.value = currentCard.Front.text;
-                return currentCard.Front.text;
+            if (currentCard.Front) {
+                element.value = currentCard.Front;
+                return currentCard.Front;
             }
         }
         return "";
@@ -165,22 +167,23 @@ export class DeckDOM extends DeckCreator {
                 if (cards.length > 1) {
                     let last_card = cards[last_index];
                     let card_id = last_card.Id;
-                    let url = "/api/cache/" + card_id;
-                    const request = new Request(url, {
-                        method: "GET",
-                    });
-                    fetch(request)
-                        .then((r) => r.blob())
-                        .then((blob) => {
-                            console.log(blob);
-                            if (
-                                !blob > 0 &&
-                                !last_card.Front &&
-                                !last_card.Back
-                            ) {
-                                this.removeLastCard();
-                            }
+                    if (card_id) {
+                        let url = "/api/cache/" + card_id;
+                        const request = new Request(url, {
+                            method: "GET",
                         });
+                        fetch(request)
+                            .then((r) => r.blob())
+                            .then((blob) => {
+                                if (
+                                    !blob > 0 &&
+                                    !last_card.Front &&
+                                    !last_card.Back
+                                ) {
+                                    this.removeLastCard();
+                                }
+                            });
+                    }
                 }
                 console.log(cards);
                 await DECK_GLOBALS.addDeck(name, cards);
@@ -259,21 +262,24 @@ export class DeckDOM extends DeckCreator {
         const imgElement = document.createElement("img");
 
         // const img = this.Deck.Cards[this.Index].front.blob;
+
         let card_id = this.Current.Id;
         let url = "/api/cache/" + card_id;
         const request = new Request(url, {
             method: "GET",
         });
-        fetch(request)
-            .then((r) => r.blob())
-            .then((blob) => {
-                console.log(blob);
-                if (blob.size > 0) {
-                    imgElement.src = this.getBlobUrl(blob);
-                    this.showRemoveImgButton();
-                    imagePossible.appendChild(imgElement);
-                }
-            });
+        if (this.Current.Id) {
+            fetch(request)
+                .then((r) => r.blob())
+                .then((blob) => {
+                    console.log(blob);
+                    if (blob.size > 0) {
+                        imgElement.src = this.getBlobUrl(blob);
+                        this.showRemoveImgButton();
+                        imagePossible.appendChild(imgElement);
+                    }
+                });
+        }
     }
 
     /**
@@ -340,8 +346,20 @@ export class DeckDOM extends DeckCreator {
 
                 const arrayBuffer = await selectedFile.arrayBuffer();
 
+                let url = "";
+                if (!this.Current.Id) {
+                    let card_id = uuidv4();
+                    this.currentCard;
+                    this.Current.Id = card_id;
+                    url = "/api/cache/" + card_id;
+                    console.log("route taken");
+                } else {
+                    let card_id = this.Current.Id;
+                    url = "/api/cache/" + card_id;
+                }
+
                 const blob = await this.getBlob(arrayBuffer, mimeType);
-                const request = new Request("/api/cache/" + this.Current.Id, {
+                const request = new Request(url, {
                     method: "POST",
                     body: blob,
                 });

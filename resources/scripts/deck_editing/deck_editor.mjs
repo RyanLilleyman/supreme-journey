@@ -71,6 +71,7 @@ export class DeckEditor {
      * to the current card accessed by the current Index.
      */
     updateCard() {
+        console.log(this.Current);
         this.currentCard = this.Deck.Cards[this.Index];
         this.handleCardNumber();
     }

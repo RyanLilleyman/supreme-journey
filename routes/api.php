@@ -37,4 +37,5 @@ Route::get('/cache/{card_uuid}',[deckCachingController::class, 'grabImage']);
 // Deletes cached image
 Route::get('/del_cache/{card_uuid}',[deckCachingController::class, 'deleteImage']);
 
+// Deletes the cache
 Route::get('/api/cache/clear',[deckCachingController::class, 'clearCache']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 use App\Models\fronts;
 use App\Models\backs;
@@ -116,13 +117,22 @@ class FileFromStorage extends Controller
     }
 
 
-    public function grab_blob_from_url(Request $request){
+    public function cache_blob_from_url(Request $request){
         $url = $request->query('param1');
         $file = Storage::disk('public')->get($url);
         $type = Storage::disk(
             'public'
         )->mimeType($url);
 
-        return response($file)->header('Content-Type',$type);
+        $uuid = Str::orderedUuid();
+
+        if (Cache::has($uuid)){
+            Cache::forget($uuid);
+        }
+
+        Cache::put($uuid, $file, 6400);
+
+        // return response($file)->header('Content-Type',$type);
+        return response()->json(['ID'=> $uuid]);
     }
 }

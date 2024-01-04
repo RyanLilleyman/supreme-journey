@@ -38,7 +38,6 @@
                 <!--I added classes to the list items below, added a new name for the webapp inside the h1 tag,
            and added a custom image for the branding.-->
                 <li class="navListItem"><a href="/">Home</a></li>
-                <li class="navListItem"><a href="/about">About</a></li>
                 <li class="navListItem">
                     <a href="/catalogue">Deck Catalog</a>
                 </li>

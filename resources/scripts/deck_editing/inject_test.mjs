@@ -18,7 +18,6 @@ function timepiece() {
             let deck_to_edit = new Deck();
             let trimmed_name = name.replace(" Deck", "");
             deck_to_edit.setName(trimmed_name);
-            let uuid = "";
 
             function delay(ms) {
                 return new Promise((resolve) => setTimeout(resolve, ms));
@@ -27,29 +26,32 @@ function timepiece() {
             for (let card of cards) {
                 await delay(100);
                 if (card.imgUrl) {
-                    uuid = uuidv4();
                     await UtilityCenter.grabBlobFromUrl(card.imgUrl).then(
                         (res) => {
-                            console.log(res);
-                            const url = "/api/cache/" + uuid;
+                            console.log("response", res);
+                            let new_card = new Card(
+                                res.ID,
+                                card.front,
+                                card.back
+                            );
+                            console.log("new card", new_card);
+                            deck_to_edit.addCard(new_card);
+                            // const url = "/api/cache/" + uuid;
 
-                            const request = new Request(url, {
-                                method: "POST",
-                                body: res,
-                            });
-                            fetch(request)
-                                .then((r) => r.blob())
-                                .then((blob) => {
-                                    console.log("the blobs are", blob);
-                                })
-                                .catch((e) => {
-                                    console.log(e);
-                                });
+                            // const request = new Request(url, {
+                            //     method: "POST",
+                            //     body: res,
+                            // });
+                            // fetch(request)
+                            //     .then((r) => r.blob())
+                            //     .then((blob) => {
+                            //         console.log("the blobs are", blob);
+                            //     })
+                            //     .catch((e) => {
+                            //         console.log(e);
+                            //     });
                         }
                     );
-
-                    let new_card = new Card(uuid, card.front, card.back);
-                    deck_to_edit.addCard(new_card);
                 } else {
                     let new_card = new Card("", card.front, card.back);
                     deck_to_edit.addCard(new_card);

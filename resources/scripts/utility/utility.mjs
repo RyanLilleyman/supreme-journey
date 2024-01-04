@@ -271,7 +271,7 @@ export class UtilityCenter {
     static async grabBlobFromUrl(imgUrl) {
         return new Promise((res, rej) => {
             fetch("api/grab-blob/?param1=" + imgUrl)
-                .then((r) => res(r.blob()))
+                .then((r) => res(r.json()))
                 .catch((e) => {
                     console.log(e);
                     rej(e);

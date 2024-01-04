@@ -33,7 +33,6 @@
             </div>
             <ul class="menu-items">
                 <li class="navListItem"><a href="/">Home</a></li>
-                <li class="navListItem"><a href="/about">About</a></li>
                 <li class="navListItem">
                     <a href="/catalogue">Deck Catalog</a>
                 </li>

@@ -39,7 +39,6 @@ Route::view('/back-session', 'pages.back_session');
 Route::view('/frontsess', 'pages.front_session');
 Route::view('/results', 'pages.results');
 Route::view('/references', 'pages.references');
-Route::view('/about', 'pages.about');
 
 // Route::get('/',[Fession::class,'delete_session_files']);
 
@@ -78,9 +77,6 @@ Route::post('cache/{id}', [FileFromStorage::class,'post_cache_id']);
 
 // Grabs the deck based on the deck_id
 Route::get('cache/', [FileFromStorage::class, 'grab_cache_id']);
-
-
-
 
 
 // Redirects to the correct api route for fetching results

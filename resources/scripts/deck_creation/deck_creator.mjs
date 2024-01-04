@@ -182,9 +182,10 @@ export class DeckCreator {
         });
         fetch(request)
             .then((r) => r.json())
-            .then((json) => {
-                console.log(json);
-            })
+            .then(
+                (json) => json
+                // console.log(json);
+            )
             .catch((e) => {
                 console.log(e);
             });
@@ -263,7 +264,7 @@ export class DeckCreator {
      * current index plus one, due to zero based indexing.
      */
     handleCardNumber() {
-        console.log(this.Current);
+        // console.log(this.Current);
         let element = document.querySelector(".cardNumber");
         element.innerHTML =
             (this.Index + 1).toString() + " of " + this.Deck.Cards.length;

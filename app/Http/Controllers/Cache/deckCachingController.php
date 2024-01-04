@@ -48,7 +48,7 @@ class deckCachingController extends Controller
         Cache::forget($card_uuid);
     }
 
-    public function clearCache(){
+    public static function clearCache(){
         Cache::flush();
         return response()->json(['message' => 'Cache cleared']);
     }

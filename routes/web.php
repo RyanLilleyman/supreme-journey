@@ -7,6 +7,7 @@ use App\Http\Controllers\Fession;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\FileFromStorage;
 use App\Http\Controllers\DeckController;
+use App\Http\Controllers\Cache\deckCachingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ use App\Http\Controllers\DeckController;
 // General routes
 Route::get('/', function(){
     Fession::delete_session_files();
+    deckCachingController::clearCache();
     return view('pages.home');
 });
 

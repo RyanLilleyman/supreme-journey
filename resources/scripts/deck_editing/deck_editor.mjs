@@ -127,7 +127,7 @@ export class DeckEditor {
      */
     bindCardCreators() {
         const frontCard = document.querySelector(".frontCardCreate");
-        frontCard.value = this.Current.Front.text;
+        frontCard.value = this.Current.Front;
         frontCard.addEventListener("input", (e) => {
             const target = e.target;
             this.Current.setFrontText(target.value);
@@ -147,7 +147,20 @@ export class DeckEditor {
      * I wrote this method to reset the front image blob field to an empty string for the current card.
      */
     handleDeleteImg() {
-        this.Current.setFrontImage();
+        const url = "/api/del_cache/" + this.Current.Id;
+        this.Current.Id = null;
+        const request = new Request(url, {
+            method: "GET",
+        });
+        fetch(request)
+            .then((r) => r.json())
+            .then(
+                (json) => json
+                // console.log(json);
+            )
+            .catch((e) => {
+                console.log(e);
+            });
     }
 
     /**
@@ -184,6 +197,25 @@ export class DeckEditor {
      * It increments the index and handles the card number on the dom.
      */
     handleCreation() {
+        let containsOnlyNewLine = (str) => {
+            return /^(\n+)$/.test(str);
+        };
+
+        let isBlank = (card) => !card.Id && !card.Front && !card.Back;
+
+        if (isBlank(this.Current)) {
+            alert("Card cannot be blank.");
+            return;
+        }
+
+        if (
+            (!this.Current.Id && containsOnlyNewLine(this.Current.Back)) ||
+            containsOnlyNewLine(this.Current.Front)
+        ) {
+            alert("Card cannot only have whitespace characters");
+            return;
+        }
+
         alert("Card added");
         if (this.Index == this.Deck.Cards.length - 1) {
             this.setCurrent(this.setBlank());
@@ -199,9 +231,9 @@ export class DeckEditor {
      * I wrote this method to handle the image creation for the current card if the blob is provided.
      * Otherwise, it sets the current cards image to an empty string.
      */
-    handleImageCreation(blob = "") {
-        this.Current.setFrontImage(blob);
-    }
+    // handleImageCreation(blob = "") {
+    //     this.Current.setFrontImage(blob);
+    // }
 
     /**
      * I wrote this method to change the card number based on the
@@ -209,7 +241,8 @@ export class DeckEditor {
      */
     handleCardNumber() {
         let element = document.querySelector(".cardNumber");
-        element.innerHTML = (this.Index + 1).toString();
+        element.innerHTML =
+            (this.Index + 1).toString() + " of " + this.Deck.Cards.length;
         return (this.Index + 1).toString();
     }
 }

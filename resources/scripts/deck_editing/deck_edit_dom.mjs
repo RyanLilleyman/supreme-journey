@@ -6,6 +6,7 @@
  */
 import DECK_GLOBALS from "../global/globalDecks.mjs";
 import { DeckEditor } from "./deck_editor.mjs";
+import { v4 as uuidv4 } from "uuid";
 
 /**
  * I wrote the below sub class as an exportable class, following ES6 conventions, that
@@ -20,7 +21,7 @@ export class DeckEDITDOM extends DeckEditor {
     ) {
         super(deck, idx, currentCard, deck_id);
         this.isFileHandleClickBound = false;
-        this.clearCardOnDOM();
+        // this.clearCardOnDOM();
         this.inject();
     }
 
@@ -40,7 +41,7 @@ export class DeckEDITDOM extends DeckEditor {
     innerFrontTextArea() {
         const cards = this.Deck.Cards;
         const currentIndex = this.Index;
-        if (cards.length > currentIndex) {
+        if (cards.length >= currentIndex) {
             const currentCard = cards[currentIndex];
             const element = document.querySelector(".frontCardCreate");
             if (currentCard.Front) {
@@ -170,15 +171,29 @@ export class DeckEDITDOM extends DeckEditor {
             } else {
                 const name = this.Deck.Name;
                 const cards = this.Deck.Cards;
-                let last_card = this.Deck.Cards[this.Deck.Cards.length - 1];
-                if (
-                    !last_card.front.text &&
-                    !last_card.back &&
-                    !last_card.front.blob
-                ) {
-                    this.removeLastCard();
+                const last_index = cards.length - 1;
+                if (cards.length > 1) {
+                    let last_card = cards[last_index];
+                    let card_id = last_card.Id;
+                    if (card_id) {
+                        let url = "/api/cache/" + card_id;
+                        const request = new Request(url, {
+                            method: "GET",
+                        });
+                        fetch(request)
+                            .then((r) => r.blob())
+                            .then((blob) => {
+                                if (
+                                    !blob > 0 &&
+                                    !last_card.Front &&
+                                    !last_card.Back
+                                ) {
+                                    this.removeLastCard();
+                                }
+                            });
+                    }
                 }
-
+                console.log(cards);
                 await DECK_GLOBALS.updateDeck(this.Id, name, cards);
             }
         });
@@ -255,12 +270,29 @@ export class DeckEDITDOM extends DeckEditor {
      */
     displayImage() {
         console.log("image processing here");
-        // const imagePossible = document.getElementById("imagePossible");
-        // const first_image = imagePossible.childNodes[0];
-        // if (first_image) {
-        //     imagePossible.removeChild(first_image);
-        // }
-        // const imgElement = document.createElement("img");
+        const imagePossible = document.getElementById("imagePossible");
+        const first_image = imagePossible.childNodes[0];
+        if (first_image) {
+            imagePossible.removeChild(first_image);
+        }
+        const imgElement = document.createElement("img");
+        let card_id = this.Current.Id;
+        let url = "/api/cache/" + card_id;
+        const request = new Request(url, {
+            method: "GET",
+        });
+        if (this.Current.Id) {
+            fetch(request)
+                .then((r) => r.blob())
+                .then((blob) => {
+                    console.log(blob);
+                    if (blob.size > 0) {
+                        imgElement.src = this.getBlobUrl(blob);
+                        this.showRemoveImgButton();
+                        imagePossible.appendChild(imgElement);
+                    }
+                });
+        }
         // const img = this.Deck.Cards[this.Index].front.bb;
         // if (img) {
         //     let blob_url = this.getBlobUrl(img);
@@ -333,13 +365,37 @@ export class DeckEDITDOM extends DeckEditor {
                 const mimeType = this.detectMIMEType(selectedFile);
 
                 const arrayBuffer = await selectedFile.arrayBuffer();
-                const blob = await this.getBlob(arrayBuffer, mimeType);
-                const object_url = this.getBlobUrl(blob);
 
-                if (object_url) {
-                    this.handleImageCreation(blob);
-                    this.displayImage();
+                let url = "";
+                if (!this.Current.Id) {
+                    let card_id = uuidv4();
+                    this.Current.Id = card_id;
+                    url = "/api/cache/" + card_id;
+                    console.log("route taken");
+                } else {
+                    let card_id = this.Current.Id;
+                    url = "/api/cache/" + card_id;
                 }
+
+                const blob = await this.getBlob(arrayBuffer, mimeType);
+                const request = new Request(url, {
+                    method: "POST",
+                    body: blob,
+                });
+                fetch(request)
+                    .then((r) => r.blob())
+                    .then((blob) => {
+                        console.log(blob);
+                        const object_url = this.getBlobUrl(blob);
+
+                        if (object_url) {
+                            // this.handleImageCreation(blob);
+                            this.displayImage();
+                        }
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
             }
             fileInput.value = null;
             rebindClickListener();
@@ -364,6 +420,7 @@ export class DeckEDITDOM extends DeckEditor {
         this.bindDestroy();
         this.bindFinish();
         this.bindEnterKey();
+        this.handleCardNumber();
         if (this.Current.Id) {
             this.displayImage();
         }

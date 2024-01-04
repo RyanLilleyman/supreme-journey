@@ -177,7 +177,7 @@ class DeckController extends Controller
             // Make a new card model.
             $to_add = new Card();
             // Add to the front card model the text field specific card from the associative array
-            $front = $request->input('cards.'.$i.'.front.text');
+            $front = $request->input('cards.'.$i.'.front');
             // Add to the back card model the text field specific card from the associative array
             $back = $request->input('cards.'.$i.'.back');
             if($front){
@@ -194,8 +194,13 @@ class DeckController extends Controller
             }
 
 
-            $blob = $request->file('cards.'.$i.'.front.blob');
+            $blob = Cache::get($request->input('cards.'.$i.'.id'));
+
+            // $blob = $request->file('cards.'.$i.'.front.blob');
             if ($blob) {
+                $tmpFilePath = tempnam(sys_get_temp_dir(), 'card');
+                file_put_contents($tmpFilePath, $blob);
+                $file = new \Illuminate\Http\File($tmpFilePath);
                 /**
                 * [13] “File Storage,” Laravel, https://laravel.com/docs/10.x/filesystem#automatic-streaming (accessed Dec. 12, 2023).
                 * The specific disk assignment and relevant putFile method can be found in the above documentation.
@@ -203,17 +208,18 @@ class DeckController extends Controller
                 $disk = \Illuminate\Support\Facades\Storage::disk('public');
                 // Put the file into the current storage/app/public directory and
                 // set the imgUrl of the card model to the resulting url
-                $to_add->imgUrl = $disk->putFile('images/'.$deck->id, $blob);
+                $to_add->imgUrl = $disk->putFile('images/'.$deck->id, $file);
+                unlink($tmpFilePath);
             } else {
                 // Otherwise, set the imgUrl to an empty string.
-                $to_add->imgUrl = '';
+                $to_add->imgUrl = ' ';
             }
 
             // Save to the current deck and add a new card with the same models (relationships) as above.
             $deck->cards()->save($to_add);
             $deck->load('cards');
         }
-        return response()->json(['message'=>'Deck updated successfully']);
+        return response()->json(['message'=>'Deck updated successfully','deck'=>$deck]);
     }
 
     /**

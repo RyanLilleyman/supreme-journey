@@ -99,46 +99,81 @@ class GlobalDecks {
         return await DECK_SERVICES.postDecks(formData).then((r) => {
             console.log(r);
             alert("Deck added!");
-            // window.location.href = "/";
+            const url = "/api/cache/clear";
+            const request = new Request(url, {
+                method: "GET",
+            });
+            fetch(request)
+                .then((r) => r.json())
+                .then((json) => {
+                    console.log(json);
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+            window.location.href = "/";
         });
-
-        // const url = "/api/cache/clear";
-        // const request = new Request(url, {
-        //     method: "GET",
-        // });
-        // fetch(request)
-        //     .then((r) => r.json())
-        //     .then((json) => {
-        //         console.log(json);
-        //     })
-        //     .catch((e) => {
-        //         console.log(e);
-        //     });
     }
 
     async updateDeck(id, name, cards) {
+        let containsOnlyNewLine = (str) => {
+            return /^(\n+)$/.test(str);
+        };
+
+        let cardArr = cards;
         let formData = new FormData();
         formData.append("_method", "PUT");
-        formData.append("name", name);
 
-        let ne = [];
-        cards.forEach((card) => {
-            if (card.front.text || card.back || card.front.blob) {
-                ne.push(card);
-            }
-        });
+        formData.append("name", name);
+        let cleanCards = (cards) => {
+            let cleaned = [];
+            cards.forEach((card) => {
+                if (card.Id || card.Front || card.Back) {
+                    if (
+                        (!card.Id && containsOnlyNewLine(card.Front)) ||
+                        containsOnlyNewLine(card.Back)
+                    ) {
+                        return;
+                    } else {
+                        cleaned.push(card);
+                    }
+                }
+            });
+            return cleaned;
+        };
+
+        let ne = cleanCards(cardArr);
+
         if (ne.length == 0) {
             alert("Cannot have blank cards");
             return;
         }
 
         ne.forEach((element, i) => {
-            formData.append(`cards[${i}][front][text]`, element.front.text);
-            formData.append(`cards[${i}][front][blob]`, element.front.blob);
-            formData.append(`cards[${i}][back]`, element.back);
+            formData.append(`cards[${i}][id]`, element.Id);
+            formData.append(`cards[${i}][front]`, element.Front);
+            formData.append(`cards[${i}][back]`, element.Back);
         });
-        return await DECK_SERVICES.putDeck(id, formData).then(() => {
+        console.log("form");
+        for (let [k, v] of formData.entries()) {
+            console.log(k, v);
+        }
+
+        return await DECK_SERVICES.putDeck(id, formData).then((r) => {
+            console.log(r);
             alert("Deck updated!");
+            const url = "/api/cache/clear";
+            const request = new Request(url, {
+                method: "GET",
+            });
+            fetch(request)
+                .then((r) => r.json())
+                .then((json) => {
+                    console.log(json);
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
             window.location.href = "/";
         });
     }

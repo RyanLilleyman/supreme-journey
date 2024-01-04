@@ -349,7 +349,6 @@ export class DeckDOM extends DeckCreator {
                 let url = "";
                 if (!this.Current.Id) {
                     let card_id = uuidv4();
-                    this.currentCard;
                     this.Current.Id = card_id;
                     url = "/api/cache/" + card_id;
                     console.log("route taken");

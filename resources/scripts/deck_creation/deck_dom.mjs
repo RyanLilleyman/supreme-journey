@@ -385,6 +385,11 @@ export class DeckDOM extends DeckCreator {
         return fileInput;
     }
 
+    bindDeckName() {
+        const deckGap = document.querySelector(".deckName");
+        deckGap.style.gap = "4rem";
+    }
+
     /**
      * I wrote this method to inject the event listeners and relevant callbacks into the create_deck document upon loading.
      */
@@ -399,6 +404,7 @@ export class DeckDOM extends DeckCreator {
         this.bindDestroy();
         this.bindFinish();
         this.bindEnterKey();
+        this.bindDeckName();
         // this.bindIKey();
     }
 }

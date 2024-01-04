@@ -406,6 +406,11 @@ export class DeckEDITDOM extends DeckEditor {
         return fileInput;
     }
 
+    bindDeckName() {
+        const deckGap = document.querySelector(".deckName");
+        deckGap.style.gap = "4rem";
+    }
+
     /**
      * I wrote this method to inject the event listeners and relevant callbacks into the create_deck document upon loading.
      */
@@ -421,6 +426,7 @@ export class DeckEDITDOM extends DeckEditor {
         this.bindFinish();
         this.bindEnterKey();
         this.handleCardNumber();
+        this.bindDeckName();
         if (this.Current.Id) {
             this.displayImage();
         }

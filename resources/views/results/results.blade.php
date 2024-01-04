@@ -90,7 +90,7 @@
         </div>
     </main>
 
-    <footer class="footer">&copy; Something Copyright</footer>
+    <footer class="footer"></footer>
 
 </body>
 

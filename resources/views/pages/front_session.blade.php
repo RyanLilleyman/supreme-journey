@@ -68,7 +68,7 @@
             I modified the class names and the inner content of these buttons.-->
         </div>
     </main>
-    <footer class="footer">&copy; Something Copyright</footer>
+    <footer class="footer"></footer>
 </body>
 
 </html>

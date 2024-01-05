@@ -197,7 +197,7 @@
                                 <option value="300">300 sec.</option>
                             </select>
                         </span>
-                        <span class = 'Session_Holder_Span'>Time Round Time:
+                        <span class = 'Session_Holder_Span'>Time to Respond:
                             <select class="timePerRoundSelect" name="seconds">
                                 <option value="0">No Timer</option>
                                 <option value="5">5 sec.</option>
@@ -213,7 +213,7 @@
                         </span>
                         <span class ='Session_Holder_Span'>Show Session Time: <span
                                 class = 'toggleSessionTime'></span></span>
-                        <span class='Session_Holder_Span'>Show Round Time:<span
+                        <span class='Session_Holder_Span'>Show Time to Respond:<span
                                 class = 'toggleRoundTime'></span></span>
                     </div>
                     <!--[9] “Building a magical 3D button,” Building a Magical 3D button with HTML and CSS, https://www.joshwcomeau.com/animation/3d-button/ (accessed Dec. 12, 2023).

@@ -40,6 +40,9 @@ Route::view('/frontsess', 'pages.front_session');
 Route::view('/results', 'pages.results');
 Route::view('/references', 'pages.references');
 
+Route::get('/loading', function () {
+    return view('loading.loading');
+});
 // Route::get('/',[Fession::class,'delete_session_files']);
 
 // Deck Route handler
